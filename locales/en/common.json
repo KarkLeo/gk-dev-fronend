@@ -1,0 +1,9 @@
+{
+  "title": "Page title",
+  "button": "Page button",
+  "languages": {
+    "ru": "Russian",
+    "uk": "Ukrainian",
+    "en": "English"
+  }
+}

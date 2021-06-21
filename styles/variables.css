@@ -1,0 +1,22 @@
+:root {
+  /*==== colors ====*/
+  --c-main-black: #000;
+  --c-main-white: #fff;
+  --c-light-gray: #eee;
+  --с-medium-gray: #bbb;
+
+  /*==== fonts ====*/
+  --font-main: 'Raleway', sans-serif;
+
+  /*==== spacing ====*/
+  --spacing-1: 0.25rem;
+  --spacing-2: 0.5rem;
+  --spacing-3: 1rem;
+  --spacing-4: 2rem;
+
+  /*==== max width ====*/
+  --max-width: 80rem;
+
+  /*==== shadow ====*/
+  --shadow: 0 0.25rem 0.5rem 1.5px rgba(0, 0, 0, 0.1);
+}

@@ -1,0 +1,11 @@
+.Counter {
+  background-color: indigo;
+}
+
+.Counter__Body {
+  background-color: aqua;
+}
+
+.Counter__Body_red {
+  background-color: red;
+}

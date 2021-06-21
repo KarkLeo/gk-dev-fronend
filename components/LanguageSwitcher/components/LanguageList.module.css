@@ -1,0 +1,46 @@
+.root {
+  position: absolute;
+  top: var(--spacing-1);
+  left: 50%;
+
+  width: max-content;
+  padding: var(--spacing-2) 0;
+
+  background-color: var(--c-main-white);
+  box-shadow: var(--shadow);
+
+  transform: translateX(-50%);
+}
+
+.list {
+  margin: 0;
+  padding: 0;
+
+  list-style: none;
+}
+
+.item {
+}
+
+.link {
+  display: block;
+  width: 100%;
+  padding: var(--spacing-1) var(--spacing-3);
+
+  font-size: 1rem;
+  font-weight: 500;
+  text-decoration: none;
+  line-height: 1.6;
+}
+.link:hover {
+  background-color: var(--c-light-gray);
+}
+
+.link_active {
+  color: var(--с-medium-gray);
+
+  cursor: default;
+}
+.link_active:hover {
+  background-color: transparent;
+}

@@ -1,0 +1,28 @@
+.appear {
+}
+.appearActive {
+}
+.appearDone {
+}
+.enter {
+  opacity: 0;
+  transform: translateY(-66%) translateX(-50%);
+}
+.enterActive {
+  opacity: 100%;
+  transform: translateY(0) translateX(-50%);
+  transition: all ease-in-out 200ms;
+}
+.enterDone {
+}
+.exit {
+  transform: translateY(0) translateX(-50%);
+  opacity: 100%;
+}
+.exitActive {
+  transform: translateY(-66%) translateX(-50%);
+  opacity: 0;
+  transition: all ease-in-out 200ms;
+}
+.exitDone {
+}
