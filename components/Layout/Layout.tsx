@@ -1,14 +1,19 @@
 import Header from 'components/Header'
 import React from 'react'
-import style from './Layout.module.css'
+import s from './Layout.module.css'
+import { ContactsSettingsData } from 'services/static'
 
-const Layout: React.FC = ({ children }) => {
+interface LayoutProps {
+  contact: ContactsSettingsData
+}
+
+const Layout: React.FC<LayoutProps> = ({ contact, children }) => {
   return (
-    <div className={style.root}>
-      <Header />
-      <div className={style.body}>
-        <div className={style.content}>{children}</div>
-      </div>
+    <div className={s.root}>
+      <Header contact={contact} />
+      <main className={s.body}>
+        <div className={s.content}>{children}</div>
+      </main>
       <div>Footer</div>
     </div>
   )

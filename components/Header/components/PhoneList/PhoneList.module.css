@@ -1,0 +1,48 @@
+.root {
+  display: flex;
+  align-items: center;
+  padding: var(--spacing-1);
+}
+
+.icon {
+  width: 2rem;
+
+  margin-right: var(--spacing-2);
+
+  fill: var(--c-main-white);
+}
+
+/*==== phone list ====*/
+
+.phoneList {
+  display: flex;
+  padding: 0;
+  margin: 0;
+
+  list-style: none;
+}
+
+.phoneList__item {
+  margin: 0 var(--spacing-2);
+}
+
+/*==== phone ====*/
+
+.phone {
+  display: flex;
+  flex-direction: column;
+
+  text-decoration: none;
+}
+
+.phone__number {
+  font-size: 1rem;
+  line-height: 1.6;
+  color: var(--c-main-white);
+}
+
+.phone__label {
+  font-size: 0.725rem;
+  line-height: 1.2;
+  color: var(--c-main-white);
+}

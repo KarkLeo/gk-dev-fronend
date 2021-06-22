@@ -20,11 +20,11 @@ const LanguageSwitcher: React.FC = () => {
       <button
         onClick={openHandler}
         className={style.button}
-        type="button"
-        aria-haspopup="true"
+        type='button'
+        aria-haspopup='true'
       >
         <span>{t(`languages.${router.locale as 'ru'}`)}</span>
-        <Icon iconId="arrow_drop_down" className={style.button__icon} />
+        <Icon iconId='arrow_drop_down' className={style.button__icon} />
       </button>
       <CSSTransition
         in={isOpen}
