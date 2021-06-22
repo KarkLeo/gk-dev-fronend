@@ -50,3 +50,13 @@ export const Sprite: React.FC = () => {
 }
 
 export default Sprite
+
+export const viewBox = {
+  favorite: '0 0 24 24',
+  favorite_border: '0 0 24 24',
+  arrow_drop_down: '0 0 24 24',
+  location: '0 0 24 24',
+  user: '0 0 24 24',
+  phone: '0 0 24 24',
+  cart: '0 0 24 24',
+}

@@ -1,20 +1,14 @@
 import React from 'react'
+import { viewBox } from './Sprite'
 
 interface IconProps {
-  iconId:
-    | 'favorite'
-    | 'favorite_border'
-    | 'arrow_drop_down'
-    | 'location'
-    | 'user'
-    | 'phone'
-    | 'cart'
+  iconId: keyof typeof viewBox
   className?: string
 }
 
 const Icon: React.FC<IconProps> = ({ iconId, className }) => {
   return (
-    <svg className={className}>
+    <svg className={className} viewBox={viewBox[iconId]}>
       <use href={`#${iconId}`} />
     </svg>
   )
