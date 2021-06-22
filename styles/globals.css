@@ -3,6 +3,9 @@ body {
   padding: 0;
   margin: 0;
   font-family: var(--font-main);
+  -webkit-font-feature-settings: 'lnum';
+  -moz-font-feature-settings: 'lnum';
+  font-feature-settings: 'lnum';
 }
 
 a {
