@@ -1,0 +1,21 @@
+.list {
+  display: flex;
+  align-items: center;
+  padding: 0;
+  margin: 0;
+
+  list-style: none;
+}
+
+.item {
+  padding: var(--spacing-1) var(--spacing-2);
+  margin: 0;
+}
+
+.icon {
+  display: block;
+  height: 2rem;
+
+  fill: var(--c-main-black);
+  color: var(--c-main-black);
+}

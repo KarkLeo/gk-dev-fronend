@@ -1,7 +1,24 @@
 .root {
+}
+
+.top {
   background-color: var(--c-main-black);
 }
 
+.bottom {
+  position: sticky;
+  top: 0;
+  left: 0;
+  z-index: 999;
+
+  background-color: var(--c-main-white);
+  border-bottom: 1px solid var(--c-main-black);
+  transition: all 150ms ease-in-out;
+}
+:global(.sticky) > .bottom {
+  background-color: rgba(255, 255, 255, 0.9);
+  backdrop-filter: blur(0.2rem);
+}
 /*==== grid ====*/
 
 .grid {
