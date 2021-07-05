@@ -4,15 +4,15 @@ import nextI18NextConfig from 'next-i18next.config'
 import Layout from 'components/Layout'
 import { GetStaticProps } from 'next'
 import { staticData } from 'services'
-import { ContactsSettingsData } from 'services/static'
+import { MetaData } from 'services/static'
 
-interface HomePageProps {
-  contact: ContactsSettingsData
+interface ContactsProps {
+  meta: MetaData
 }
 
-const Contacts: React.FC<HomePageProps> = ({ contact }: HomePageProps) => {
+const Contacts: React.FC<ContactsProps> = ({ meta }) => {
   return (
-    <Layout contact={contact}>
+    <Layout meta={meta}>
       <h1>Contact page</h1>
     </Layout>
   )
@@ -21,7 +21,7 @@ const Contacts: React.FC<HomePageProps> = ({ contact }: HomePageProps) => {
 //===== fetching data =====
 
 export const getStaticProps: GetStaticProps = async ({ locale }) => {
-  const contact = await staticData.getContactSettings({
+  const meta = await staticData.getMeta({
     lang: locale ? locale : 'ru',
   })
 
@@ -32,7 +32,7 @@ export const getStaticProps: GetStaticProps = async ({ locale }) => {
         ['common'],
         nextI18NextConfig
       )),
-      contact,
+      meta,
     },
   }
 }
