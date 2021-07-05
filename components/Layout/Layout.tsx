@@ -1,20 +1,23 @@
 import Header from 'components/Header'
 import React from 'react'
 import s from './Layout.module.css'
-import { ContactsSettingsData } from 'services/static'
+import { MetaData } from 'services/static'
+import { DefaultLocalesParams } from '../../common/utils/locales-params'
+import Footer from 'components/Footer'
 
 interface LayoutProps {
-  contact: ContactsSettingsData
+  meta: MetaData
+  localesParams?: DefaultLocalesParams
 }
 
-const Layout: React.FC<LayoutProps> = ({ contact, children }) => {
+const Layout: React.FC<LayoutProps> = ({ meta, localesParams, children }) => {
   return (
     <div className={s.root}>
-      <Header contact={contact} />
+      <Header meta={meta} localesParams={localesParams} />
       <main className={s.body}>
         <div className={s.content}>{children}</div>
       </main>
-      <div>Footer</div>
+      <Footer meta={meta} />
     </div>
   )
 }
