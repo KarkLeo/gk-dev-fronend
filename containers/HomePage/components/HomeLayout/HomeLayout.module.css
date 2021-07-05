@@ -1,0 +1,22 @@
+.root {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+.head {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+}
+
+.body {
+  height: 100%;
+  flex-grow: 1;
+}
+
+.content {
+  max-width: var(--max-width);
+  padding: var(--spacing-3);
+  margin: var(--spacing-2) auto;
+}
