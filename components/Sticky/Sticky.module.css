@@ -1,0 +1,11 @@
+.root {
+  height: var(--height, auto);
+}
+
+.body {
+  position: var(--position, static);
+  top: var(--top, auto);
+  left: var(--left, auto);
+  width: var(--width, auto);
+  z-index: 9999;
+}
