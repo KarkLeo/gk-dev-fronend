@@ -4,11 +4,13 @@ import { useTranslation } from 'next-i18next'
 import useOutsideClick from 'common/hooks/useOutsideClick'
 import style from './LanguageList.module.css'
 import classNames from 'classnames'
+import { DefaultLocalesParams } from '../../../common/utils/locales-params'
 
 interface languageListProps {
   current?: string
   list?: string[]
   path: string
+  localesParams?: DefaultLocalesParams
   closeCallback: () => void
 }
 
@@ -16,6 +18,7 @@ const LanguageList: React.FC<languageListProps> = ({
   current,
   list,
   path,
+  localesParams,
   closeCallback,
 }) => {
   const { t } = useTranslation('common')
@@ -32,7 +35,15 @@ const LanguageList: React.FC<languageListProps> = ({
                   {t(`languages.${lang as 'ru'}`)}
                 </span>
               ) : (
-                <Link href={path} locale={lang} prefetch={false}>
+                <Link
+                  href={
+                    localesParams
+                      ? { pathname: path, query: localesParams[lang] }
+                      : path
+                  }
+                  locale={lang}
+                  prefetch={false}
+                >
                   <a className={style.link}>{t(`languages.${lang as 'ru'}`)}</a>
                 </Link>
               )}

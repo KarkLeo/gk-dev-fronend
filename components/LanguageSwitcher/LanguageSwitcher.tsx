@@ -6,8 +6,15 @@ import Icon from 'components/Icon'
 import style from './LanguageSwitcher.module.css'
 import animate from './LSTransition.module.css'
 import { CSSTransition } from 'react-transition-group'
+import { DefaultLocalesParams } from '../../common/utils/locales-params'
 
-const LanguageSwitcher: React.FC = () => {
+interface LanguageSwitcherProps {
+  localesParams?: DefaultLocalesParams
+}
+
+const LanguageSwitcher: React.FC<LanguageSwitcherProps> = ({
+  localesParams,
+}) => {
   const router = useRouter()
   const { t } = useTranslation('common')
 
@@ -35,6 +42,7 @@ const LanguageSwitcher: React.FC = () => {
         <LanguageList
           list={router.locales}
           path={router.pathname}
+          localesParams={localesParams}
           current={router.locale}
           closeCallback={closeHandler}
         />
