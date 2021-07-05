@@ -1,5 +1,5 @@
 const mobileMax = '768px'
-const tabMax = '1024px'
+const tabMax = '1200px'
 
 export const mobileOnly = `(max-width: ${mobileMax})`
 export const mobileAndTab = `(max-width: ${tabMax})`
