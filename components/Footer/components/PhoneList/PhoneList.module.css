@@ -1,0 +1,39 @@
+.root {
+  padding: var(--spacing-1);
+}
+
+/*==== phone list ====*/
+
+.phoneList {
+  display: flex;
+  flex-direction: column;
+  padding: 0;
+  margin: 0;
+
+  list-style: none;
+}
+
+.phoneList__item {
+  margin: 0 0 var(--spacing-2);
+}
+
+/*==== phone ====*/
+
+.phone {
+  display: flex;
+  flex-direction: column;
+
+  text-decoration: none;
+}
+
+.phone__number {
+  font-size: 1rem;
+  line-height: 1.6;
+  color: var(--c-main-white);
+}
+
+.phone__label {
+  font-size: 0.725rem;
+  line-height: 1.2;
+  color: var(--c-main-white);
+}
