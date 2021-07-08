@@ -3,12 +3,13 @@
   align-items: center;
   padding: 0;
   margin: 0;
+  gap: var(--layout-gap);
 
   list-style: none;
 }
 
 .item {
-  padding: var(--spacing-1) var(--spacing-2);
+  padding: var(--spacing-1) 0;
   margin: 0;
 }
 

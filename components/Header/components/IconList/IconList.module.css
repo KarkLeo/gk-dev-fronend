@@ -3,19 +3,33 @@
   align-items: center;
   padding: 0;
   margin: 0;
+  gap: var(--spacing-3);
 
   list-style: none;
 }
 
 .item {
-  padding: var(--spacing-1) var(--spacing-2);
+  padding: var(--spacing-1) 0;
   margin: 0;
 }
 
 .icon {
   display: block;
-  height: 2rem;
+  height: 1.8rem;
 
-  fill: var(--c-main-black);
-  color: var(--c-main-black);
+  fill: var(--c-main-white);
+  color: var(--c-main-white);
+}
+
+@media screen and (min-width: 1280px) {
+  .list {
+    gap: var(--spacing-2);
+  }
+
+  .icon {
+    height: 2rem;
+
+    fill: var(--c-main-black);
+    color: var(--c-main-black);
+  }
 }

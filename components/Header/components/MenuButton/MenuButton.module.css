@@ -1,0 +1,51 @@
+.root {
+  position: relative;
+  z-index: 999999;
+
+  width: 1.8rem;
+  height: 1.8rem;
+}
+
+.button {
+  position: absolute;
+  top: 0;
+  right: 0;
+  left: 0;
+  bottom: 0;
+
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0;
+  margin: 0;
+
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+}
+
+.button_active {
+}
+
+.dash {
+  display: block;
+  width: 100%;
+  height: 0.2rem;
+
+  background-color: var(--c-main-white);
+  transition: transform 150ms ease-in-out;
+}
+
+.button_active .dash:nth-child(1) {
+  transform: translateY(0.6rem) rotate(135deg);
+}
+.button_active .dash:nth-child(2) {
+  transform: scaleY(0.01) rotate(180deg);
+}
+.button_active .dash:nth-child(3) {
+  transform: translateY(-0.6rem) rotate(225deg);
+}

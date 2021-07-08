@@ -2,7 +2,7 @@
   position: relative;
 
   width: min-content;
-  padding: var(--spacing-2) var(--spacing-3);
+  padding: var(--spacing-2) 0;
 }
 
 .button {

@@ -1,0 +1,12 @@
+.root {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 9999;
+
+  display: block;
+  width: 60vw;
+  height: 100vh;
+
+  background-color: var(--c-main-black);
+}
