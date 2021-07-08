@@ -12,6 +12,7 @@ interface ProductCarouselProps {}
 const ProductCarousel: React.FC<ProductCarouselProps> = () => {
   return (
     <div className={s.root}>
+      <h2 className={s.title}>Карусель товаров</h2>
       <Swiper
         speed={1000}
         loop={true}

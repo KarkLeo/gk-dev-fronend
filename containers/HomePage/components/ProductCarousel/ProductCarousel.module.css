@@ -7,3 +7,13 @@
 .root :global(.swiper-slide) {
   height: auto;
 }
+
+.title {
+  margin: 0 0 0.8em;
+
+  font-size: 2.7rem;
+  font-weight: 700;
+  line-height: 1.2;
+  color: var(--c-main-black);
+  text-align: center;
+}
