@@ -7,6 +7,7 @@ import { HomePageData, MetaData } from 'services/static'
 import HomeLayout from 'containers/HomePage/components/HomeLayout/HomeLayout'
 import ProductGrid from '../components/ProductGrid/ProductGrid'
 import ProductCarousel from '../containers/HomePage/components/ProductCarousel/ProductCarousel'
+import InfoBlock from '../containers/HomePage/components/InfoBlock/InfoBlock'
 
 interface HomePageProps {
   meta: MetaData
@@ -26,6 +27,7 @@ export default function Home({ meta, pageData }: HomePageProps) {
 
       <ProductGrid />
       <ProductCarousel />
+      <InfoBlock />
     </HomeLayout>
   )
 }
