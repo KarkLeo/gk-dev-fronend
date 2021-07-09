@@ -1,7 +1,9 @@
 .root {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  grid-gap: 4rem;
+  display: flex;
+  flex-direction: column;
+  gap: var(--layout-gap);
+
+  margin: var(--spacing-4) 0;
 }
 
 .left {
@@ -21,7 +23,7 @@
   display: block;
   width: 100%;
   height: 100%;
-  min-height: 80vh;
+  min-height: 30vh;
 
   object-fit: cover;
   object-position: center;
@@ -30,7 +32,7 @@
 .title {
   margin: 0 0 0.8em;
 
-  font-size: 2.7rem;
+  font-size: 2rem;
   font-weight: 700;
   line-height: 1.2;
   color: var(--c-main-black);
@@ -39,7 +41,7 @@
 .subtitle {
   margin: 0 0 0.8em;
 
-  font-size: 1.6rem;
+  font-size: 1.4rem;
   font-weight: 300;
   line-height: 1.4;
   color: var(--c-main-black);
@@ -80,4 +82,33 @@
   color: var(--c-main-white);
 
   background-color: var(--c-main-black);
+}
+
+@media screen and (min-width: 768px) {
+}
+
+@media screen and (min-width: 1280px) {
+  .root {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-gap: 4rem;
+  }
+
+  .image {
+    display: block;
+    width: 100%;
+    height: 100%;
+    min-height: 80vh;
+
+    object-fit: cover;
+    object-position: center;
+  }
+
+  .title {
+    font-size: 2.7rem;
+  }
+
+  .subtitle {
+    font-size: 1.6rem;
+  }
 }
