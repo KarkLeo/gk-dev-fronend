@@ -13,9 +13,10 @@
   --spacing-2: 0.5rem;
   --spacing-3: 1rem;
   --spacing-4: 2rem;
+  --spacing-5: 4rem;
 
   /*==== layout ====*/
-  --max-width:  100%;
+  --max-width: 100%;
   --layout-aside: 1.5rem;
   --layout-gap: 1.5rem;
 
@@ -24,12 +25,12 @@
 }
 
 @media screen and (min-width: 768px) {
-   :root {
-     /*==== layout ====*/
-     --max-width: 62rem;
-     --layout-aside: 2rem;
-     --layout-gap: 1.5rem;
-   }
+  :root {
+    /*==== layout ====*/
+    --max-width: 62rem;
+    --layout-aside: 2rem;
+    --layout-gap: 1.5rem;
+  }
 }
 
 @media screen and (min-width: 1280px) {

@@ -1,6 +1,5 @@
 import { useEffect, useState } from 'react'
 
-
 type UseMediaQueryT = (query: string) => boolean
 /**
  * Check CSS media query and update

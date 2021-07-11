@@ -8,9 +8,19 @@
   opacity: 0;
   transform: translateX(-100%);
 }
+.enter::after {
+  background-color: rgba(0, 0, 0, 0);
+  backdrop-filter: blur(0);
+}
+
 .enterActive {
   opacity: 100%;
   transform: translateX(0);
+  transition: all ease-in-out 200ms;
+}
+.enterActive::after {
+  background-color: rgba(0, 0, 0, 0.4);
+  backdrop-filter: blur(0.25rem);
   transition: all ease-in-out 200ms;
 }
 .enterDone {
@@ -19,9 +29,18 @@
   transform: translateX(0);
   opacity: 100%;
 }
+.exit::after {
+  background-color: rgba(0, 0, 0, 0.4);
+  backdrop-filter: blur(0.25rem);
+}
 .exitActive {
   transform: translateX(-100%);
   opacity: 0;
+  transition: all ease-in-out 200ms;
+}
+.exitActive::after {
+  background-color: rgba(0, 0, 0, 0);
+  backdrop-filter: blur(0);
   transition: all ease-in-out 200ms;
 }
 .exitDone {

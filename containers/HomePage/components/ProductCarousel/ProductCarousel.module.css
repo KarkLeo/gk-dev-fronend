@@ -1,5 +1,7 @@
 .root {
   --swiper-theme-color: var(--c-main-black);
+
+  margin: var(--spacing-5) 0;
 }
 
 .root :global(.swiper-slide) {

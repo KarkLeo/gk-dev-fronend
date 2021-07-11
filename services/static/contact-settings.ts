@@ -7,6 +7,30 @@ export interface PhoneListItem {
   phone_number: string
 }
 
+export interface EmailListItem {
+  id: string
+  label: string
+  email: string
+}
+
+export interface SocialListItem {
+  id: string
+  name: string
+  url: string
+  icon:
+    | 'email'
+    | 'facebook'
+    | 'instagram'
+    | 'linkedin'
+    | 'pinterest'
+    | 'telegram'
+    | 'tiktok'
+    | 'twitter'
+    | 'viber'
+    | 'whatsapp'
+    | 'youtube'
+}
+
 export interface CategoryListItem {
   id: string
   name: string

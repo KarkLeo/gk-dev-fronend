@@ -21,10 +21,7 @@ const MenuBar: React.FC<MenuBarProps> = ({ open, children }) => {
       classNames={{ ...animate }}
       unmountOnExit
     >
-      <div className={s.root}>
-        sdfsdfsdf
-        {children}
-      </div>
+      <div className={s.root}>{children}</div>
     </CSSTransition>
   )
 }

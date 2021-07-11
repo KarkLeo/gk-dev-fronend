@@ -1,9 +1,9 @@
 .root {
 }
 
-/*==== phone list ====*/
+/*==== email list ====*/
 
-.phoneList {
+.emailList {
   display: flex;
   flex-direction: column;
   padding: 0;
@@ -12,13 +12,13 @@
   list-style: none;
 }
 
-.phoneList__item {
+.emailList__item {
   margin: 0 0 var(--spacing-2);
 }
 
 /*==== phone ====*/
 
-.phone {
+.email {
   display: flex;
   flex-direction: column;
 

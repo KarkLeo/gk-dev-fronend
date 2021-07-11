@@ -3,7 +3,6 @@
   grid-auto-flow: column;
   grid-gap: var(--spacing-2);
   margin: 0;
-  padding: var(--spacing-1) var(--spacing-3);
 }
 
 .item {

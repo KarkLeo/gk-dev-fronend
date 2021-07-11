@@ -1,0 +1,31 @@
+.root {
+}
+
+.socialList {
+  display: flex;
+  gap: var(--layout-gap);
+  padding: 0;
+  margin: 0;
+
+  list-style: none;
+}
+
+.socialList__item {
+  padding: 0;
+  margin: 0;
+}
+
+.socialLink {
+  display: block;
+  padding: 0.2rem;
+
+  text-decoration: none;
+}
+
+.socialLink__icon {
+  display: block;
+  height: 1.8rem;
+
+  fill: var(--c-main-white);
+  color: var(--c-main-white);
+}
