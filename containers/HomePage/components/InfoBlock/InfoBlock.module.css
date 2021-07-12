@@ -31,7 +31,7 @@
 .title {
   margin: 0 0 0.8em;
 
-  font-size: 2rem;
+  font-size: 1.6rem;
   font-weight: 700;
   line-height: 1.2;
   color: var(--c-main-black);
@@ -40,7 +40,7 @@
 .subtitle {
   margin: 0 0 0.8em;
 
-  font-size: 1.4rem;
+  font-size: 1.2rem;
   font-weight: 300;
   line-height: 1.4;
   color: var(--c-main-black);
@@ -49,7 +49,7 @@
 .text {
   margin: 0;
 
-  font-size: 1.2rem;
+  font-size: 1rem;
   font-weight: 400;
   line-height: 1.4;
   color: var(--c-main-black);
@@ -64,7 +64,7 @@
   box-sizing: border-box;
 
   font-family: var(--font-main);
-  font-size: 1.4rem;
+  font-size: 1.2rem;
   font-weight: 700;
   line-height: 1;
   text-transform: uppercase;
@@ -84,6 +84,21 @@
 }
 
 @media screen and (min-width: 768px) {
+  .title {
+    font-size: 2.4rem;
+  }
+
+  .subtitle {
+    font-size: 1.4rem;
+  }
+
+  .text {
+    font-size: 1.2rem;
+  }
+
+  .button {
+    font-size: 1.4rem;
+  }
 }
 
 @media screen and (min-width: 1280px) {

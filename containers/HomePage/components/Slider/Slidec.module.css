@@ -22,7 +22,8 @@
 
   display: flex;
   align-items: flex-end;
-  padding: var(--spacing-5) var(--layout-aside);
+  padding: var(--spacing-5)
+    max(var(--layout-aside), calc((100% - var(--max-width)) / 2));
   box-sizing: border-box;
 }
 
