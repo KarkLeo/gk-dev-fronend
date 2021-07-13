@@ -37,6 +37,12 @@ export interface CategoryListItem {
   slug: string
 }
 
+export interface AddressListItem {
+  id: string
+  address: string
+  coordinates: string
+}
+
 export interface MetaData {
   contactSetting: {
     list_of_numbers: PhoneListItem[]

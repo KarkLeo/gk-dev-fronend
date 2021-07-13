@@ -9,6 +9,8 @@
   },
   "dependencies": {
     "@apollo/client": "^3.3.20",
+    "@turf/bbox": "^6.5.0",
+    "@turf/turf": "^6.5.0",
     "@types/graphql": "^14.5.0",
     "@types/react-transition-group": "^4.4.1",
     "classnames": "^2.3.1",
@@ -22,6 +24,7 @@
     "react": "17.0.2",
     "react-dom": "17.0.2",
     "react-i18next": "^11.11.0",
+    "react-map-gl": "^6.1.16",
     "react-redux": "^7.2.4",
     "react-transition-group": "^4.4.2",
     "redux": "^4.1.0",

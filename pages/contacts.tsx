@@ -1,21 +1,23 @@
 import React from 'react'
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
 import nextI18NextConfig from 'next-i18next.config'
-import Layout from 'components/Layout'
 import { GetStaticProps } from 'next'
 import { staticData } from 'services'
 import { MetaData } from 'services/static'
+import ContactPage from '../containers/ContactPage'
+
+export interface MapSettings {
+  style: string
+  token: string
+}
 
 interface ContactsProps {
   meta: MetaData
+  mapSettings: MapSettings
 }
 
-const Contacts: React.FC<ContactsProps> = ({ meta }) => {
-  return (
-    <Layout meta={meta}>
-      <h1>Contact page</h1>
-    </Layout>
-  )
+const Contacts: React.FC<ContactsProps> = ({ meta, mapSettings }) => {
+  return <ContactPage meta={meta} mapSettings={mapSettings} />
 }
 
 //===== fetching data =====
@@ -25,6 +27,11 @@ export const getStaticProps: GetStaticProps = async ({ locale }) => {
     lang: locale ? locale : 'ru',
   })
 
+  const mapSettings: MapSettings = {
+    style: process.env.MAP_STYLE as string,
+    token: process.env.MAP_API_KEY as string,
+  }
+
   return {
     props: {
       ...(await serverSideTranslations(
@@ -33,6 +40,7 @@ export const getStaticProps: GetStaticProps = async ({ locale }) => {
         nextI18NextConfig
       )),
       meta,
+      mapSettings,
     },
   }
 }
