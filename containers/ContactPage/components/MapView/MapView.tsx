@@ -41,7 +41,7 @@ const MapView: React.FC<MapViewProps> = ({ mapSettings }) => {
         setViewport({
           latitude: latitude,
           longitude: longitude,
-          zoom: zoom > 1 ? zoom - 1 : zoom,
+          zoom: zoom > 0.5 ? zoom - 0.5 : zoom,
           bearing: 0,
           pitch: 0,
         })

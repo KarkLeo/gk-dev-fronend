@@ -1,0 +1,33 @@
+.root {
+  margin: var(--spacing-4) 0;
+}
+
+/*==== email list ====*/
+
+.addressList {
+  display: flex;
+  flex-direction: column;
+  padding: 0;
+  margin: 0;
+
+  list-style: none;
+}
+
+.addressList__item {
+  margin: 0 0 var(--spacing-3);
+}
+
+/*==== phone ====*/
+
+.address {
+  display: flex;
+  flex-direction: column;
+
+  font-size: 1.4rem;
+  line-height: 1.6;
+  color: var(--c-main-black);
+  text-decoration: none;
+}
+.address:hover {
+  text-decoration: underline;
+}
