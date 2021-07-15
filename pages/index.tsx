@@ -23,7 +23,7 @@ export default function Home({ meta, pageData }: HomePageProps) {
         <link rel='icon' href='/favicon.ico' />
       </Head>
 
-      <h1>Home page 32231</h1>
+      <h1>Home page</h1>
 
       <ProductGrid />
       <ProductCarousel />

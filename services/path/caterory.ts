@@ -32,3 +32,42 @@ export const getCategorySlug = async (): Promise<CategorySlugData> => {
   })
   return res.data
 }
+
+export interface CategorySlugWithProducts extends CategorySlug {
+  products: { id: string }[]
+}
+
+export interface HeadCategorySlugWithProducts extends CategorySlugWithProducts {
+  localizations: CategorySlugWithProducts[]
+}
+
+export interface CategorySlugWithProductsData {
+  productCategories: HeadCategorySlugWithProducts[]
+}
+
+const GET_CATEGORY_SLUG_WITH_PRODUCTS = gql`
+  query {
+    productCategories {
+      slug
+      locale
+      products {
+        id
+      }
+      localizations {
+        slug
+        locale
+        products {
+          id
+        }
+      }
+    }
+  }
+`
+
+export const getCategorySlugWithProducts =
+  async (): Promise<CategorySlugWithProductsData> => {
+    const res = await client.query<CategorySlugWithProductsData, {}>({
+      query: GET_CATEGORY_SLUG_WITH_PRODUCTS,
+    })
+    return res.data
+  }

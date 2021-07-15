@@ -5,10 +5,12 @@ import { pathData, staticData } from 'services'
 import { MetaData } from 'services/static'
 import {
   CategoryLocalesParams,
+  CategoryURLParams,
   getCategoryLocalesParams,
 } from 'common/utils/locales-params'
 import { GetStaticPaths, GetStaticProps } from 'next'
 import CategoryPage from 'containers/CategoryPage'
+import { PRODUCTS_PER_PAGE } from '../../common/constans/paginaiton'
 
 interface CategoryProps {
   meta: MetaData
@@ -23,23 +25,50 @@ interface PagePath {
   locale: string
   params: {
     category: string
+    page: string
   }
 }
 
 export const getStaticPaths: GetStaticPaths = async () => {
-  const res = await pathData.getCategorySlug()
+  const res = await pathData.getCategorySlugWithProducts()
 
   const paths = res.productCategories.reduce((res, i) => {
     const category = [
       // create all category locales` array
-      { slug: i.slug, locale: i.locale },
+      { slug: i.slug, locale: i.locale, products: i.products },
       ...i.localizations,
-    ].map((i) => ({ params: { category: i.slug }, locale: i.locale }))
-
+    ]
+      .map((i) => ({
+        // convert from categories locales` array to page path`s array (temp params pageCount)
+        params: {
+          category: i.slug,
+          pageCount: Math.ceil(i.products.length / PRODUCTS_PER_PAGE),
+        },
+        locale: i.locale,
+      }))
+      .reduce((categoryRes, i) => {
+        // crete path params` array with page number
+        if (i.params.pageCount < 2) return categoryRes
+        // remove path with categories has 1 page
+        else {
+          let pages = []
+          for (let j = 2; j <= i.params.pageCount; j++) {
+            // generate all pages path
+            pages.push({
+              locale: i.locale,
+              params: {
+                category: i.params.category,
+                page: String(j),
+              },
+            })
+          }
+          return [...categoryRes, ...pages]
+        }
+      }, [] as PagePath[])
     return [...res, ...category]
   }, [] as PagePath[])
 
-  return { paths, fallback: false }
+  return { paths, fallback: true }
 }
 
 export const getStaticProps: GetStaticProps = async ({ locale, params }) => {
