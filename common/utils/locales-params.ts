@@ -5,10 +5,14 @@ export type DefaultLocalesParams = Record<string, Record<string, string>>
 /**
  * Object with params for one locale
  */
-export interface CategoryURLParams {
-  category: string
-  page?: string
-}
+export type CategoryURLParams =
+  | {
+      category: string
+      page: string
+    }
+  | {
+      category: string
+    }
 
 /**
  * Object with locales query property
