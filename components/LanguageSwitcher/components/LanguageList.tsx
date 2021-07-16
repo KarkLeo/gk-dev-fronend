@@ -1,10 +1,10 @@
-import React, {useRef} from 'react'
+import React, { useRef } from 'react'
 import Link from 'next/link'
-import {useTranslation} from 'next-i18next'
+import { useTranslation } from 'next-i18next'
 import useOutsideClick from 'common/hooks/useOutsideClick'
 import style from './LanguageList.module.css'
 import classNames from 'classnames'
-import {CategoryLocalesParams} from 'common/utils/locales-params'
+import { CategoryLocalesParams } from 'common/utils/locales-params'
 
 interface languageListProps {
   current?: string

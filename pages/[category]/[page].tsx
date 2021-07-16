@@ -5,12 +5,11 @@ import { pathData, staticData } from 'services'
 import { MetaData } from 'services/static'
 import {
   CategoryLocalesParams,
-  CategoryURLParams,
   getCategoryLocalesParams,
 } from 'common/utils/locales-params'
 import { GetStaticPaths, GetStaticProps } from 'next'
 import CategoryPage from 'containers/CategoryPage'
-import { PRODUCTS_PER_PAGE } from '../../common/constans/paginaiton'
+import { PRODUCTS_PER_PAGE } from 'common/constans/paginaiton'
 
 interface CategoryProps {
   meta: MetaData
@@ -67,8 +66,7 @@ export const getStaticPaths: GetStaticPaths = async () => {
       }, [] as PagePath[])
     return [...res, ...category]
   }, [] as PagePath[])
-
-  return { paths, fallback: true }
+  return { paths, fallback: false }
 }
 
 export const getStaticProps: GetStaticProps = async ({ locale, params }) => {
