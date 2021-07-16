@@ -66,7 +66,7 @@ export const getStaticPaths: GetStaticPaths = async () => {
       }, [] as PagePath[])
     return [...res, ...category]
   }, [] as PagePath[])
-  return { paths, fallback: false }
+  return { paths, fallback: false } // todo add fallback page
 }
 
 export const getStaticProps: GetStaticProps = async ({ locale, params }) => {

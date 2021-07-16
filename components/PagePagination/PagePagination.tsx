@@ -3,6 +3,7 @@ import Pagination from 'rc-pagination'
 import PagePaginationItem from './PagePaginationItem'
 import { useRouter } from 'next/router'
 import * as locales from './locales'
+import s from './PagePagination.module.css'
 
 const PagePagination: React.FC = () => {
   const router = useRouter()
@@ -17,7 +18,7 @@ const PagePagination: React.FC = () => {
     typeof router.query.page === 'string' ? parseInt(router.query.page) : 1
 
   return (
-    <div>
+    <div className={s.root}>
       <Pagination
         total={100}
         itemRender={itemRender}
