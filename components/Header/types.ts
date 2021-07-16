@@ -1,7 +1,7 @@
 import { MetaData } from 'services/static'
-import { DefaultLocalesParams } from 'common/utils/locales-params'
+import { CategoryLocalesParams } from 'common/utils/locales-params'
 
 export interface HeaderProps {
   meta: MetaData
-  localesParams?: DefaultLocalesParams
+  localesParams?: CategoryLocalesParams
 }

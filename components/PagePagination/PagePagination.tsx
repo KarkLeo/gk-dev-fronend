@@ -13,8 +13,6 @@ const PagePagination: React.FC = () => {
     [router.pathname, router.query]
   )
 
-  console.log(locales[(router.locale as 'ru') || 'ru'])
-
   const current: number =
     typeof router.query.page === 'string' ? parseInt(router.query.page) : 1
 

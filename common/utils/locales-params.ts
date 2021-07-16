@@ -2,10 +2,17 @@ import { CategorySlugData } from '../../services/path'
 
 export type DefaultLocalesParams = Record<string, Record<string, string>>
 
-export interface CategoryURLParams {
-  category: string
-  page?: string
-}
+/**
+ * Object with params for one locale
+ */
+export type CategoryURLParams =
+  | {
+      category: string
+      page: string
+    }
+  | {
+      category: string
+    }
 
 /**
  * Object with locales query property

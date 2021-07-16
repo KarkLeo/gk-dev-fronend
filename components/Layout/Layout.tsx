@@ -2,12 +2,12 @@ import Header from 'components/Header'
 import React from 'react'
 import s from './Layout.module.css'
 import { MetaData } from 'services/static'
-import { DefaultLocalesParams } from '../../common/utils/locales-params'
+import { CategoryLocalesParams } from 'common/utils/locales-params'
 import Footer from 'components/Footer'
 
 interface LayoutProps {
   meta: MetaData
-  localesParams?: DefaultLocalesParams
+  localesParams?: CategoryLocalesParams
 }
 
 const Layout: React.FC<LayoutProps> = ({ meta, localesParams, children }) => {
