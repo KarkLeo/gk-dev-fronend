@@ -4,13 +4,13 @@ import { useTranslation } from 'next-i18next'
 import useOutsideClick from 'common/hooks/useOutsideClick'
 import style from './LanguageList.module.css'
 import classNames from 'classnames'
-import { DefaultLocalesParams } from '../../../common/utils/locales-params'
+import { CategoryLocalesParams } from 'common/utils/locales-params'
 
 interface languageListProps {
   current?: string
   list?: string[]
   path: string
-  localesParams?: DefaultLocalesParams
+  localesParams?: CategoryLocalesParams
   closeCallback: () => void
 }
 

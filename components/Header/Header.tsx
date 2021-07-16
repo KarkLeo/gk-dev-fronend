@@ -1,13 +1,11 @@
 import LanguageSwitcher from 'components/LanguageSwitcher'
 import React from 'react'
 import s from './Header.module.css'
-import { MetaData } from 'services/static'
 import PhoneList from './components/PhoneList/PhoneList'
 import PageList from './components/PageList/PageList'
 import Logo from './components/Logo/Logo'
 import IconList from './components/IconList/IconList'
 import CategoryList from './components/CategoryList/CategoryList'
-import { DefaultLocalesParams } from '../../common/utils/locales-params'
 import Sticky from 'components/Sticky/Sticky'
 import { HeaderProps } from './types'
 
