@@ -34,7 +34,7 @@ export const getCategorySlug = async (): Promise<CategorySlugData> => {
 }
 
 export interface CategorySlugWithProducts extends CategorySlug {
-  products: { id: string }[]
+  products: { id: string; slug: string }[]
 }
 
 export interface HeadCategorySlugWithProducts extends CategorySlugWithProducts {
@@ -52,12 +52,14 @@ const GET_CATEGORY_SLUG_WITH_PRODUCTS = gql`
       locale
       products {
         id
+        slug
       }
       localizations {
         slug
         locale
         products {
           id
+          slug
         }
       }
     }
