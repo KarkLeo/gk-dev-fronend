@@ -7,24 +7,23 @@
 
 /*===== pagination =====*/
 
-.root :global(.rc-pagination-item),
-.root :global(.rc-pagination-prev) {
-  display: inline-flex;
+.root :global(.rc-pagination) {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-3);
+}
+
+.root :global(.rc-pagination-item) {
+  display: flex;
   justify-content: center;
   align-items: center;
   height: 2.6rem;
   width: 2.6rem;
-  margin-right: var(--spacing-3);
+  margin-right: 0;
 
   font-size: 1.2rem;
 }
-
+.root :global(.rc-pagination-prev),
 .root :global(.rc-pagination-next) {
-  display: inline-flex;
-  justify-content: center;
-  align-items: center;
-  height: 2.6rem;
-  width: 2.6rem;
-
-  font-size: 1.2rem;
+  display: none;
 }
