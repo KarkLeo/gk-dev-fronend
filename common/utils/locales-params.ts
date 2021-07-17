@@ -1,4 +1,4 @@
-import { CategorySlugData } from '../../services/path'
+import { CategorySlugData } from 'services/path'
 
 export type DefaultLocalesParams = Record<string, Record<string, string>>
 
