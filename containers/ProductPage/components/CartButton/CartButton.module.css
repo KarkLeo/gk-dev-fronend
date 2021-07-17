@@ -1,0 +1,33 @@
+.root {
+  margin: var(--spacing-3) 0;
+}
+
+.button {
+  align-self: center;
+  justify-self: end;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 0.6em;
+  margin: 0;
+  box-sizing: border-box;
+
+  font-family: var(--font-main);
+  font-size: 1.8rem;
+  font-weight: 700;
+  line-height: 1;
+  text-transform: uppercase;
+  letter-spacing: 0.001em;
+  color: var(--c-main-black);
+
+  background-color: transparent;
+  border: 2px solid var(--c-main-black);
+  border-radius: 0;
+  cursor: pointer;
+  transition: all 150ms ease-in-out;
+}
+.button:hover {
+  color: var(--c-main-white);
+
+  background-color: var(--c-main-black);
+}

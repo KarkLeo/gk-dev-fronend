@@ -1,0 +1,37 @@
+.root {
+  display: flex;
+  flex-direction: column;
+}
+
+.price {
+  margin: 0 0 0.2em;
+
+  font-size: 3rem;
+  font-weight: 900;
+  color: var(--c-main-black);
+}
+
+.price_old {
+  margin: 0 0 0.6em;
+
+  font-size: 1.8rem;
+  font-weight: 500;
+  color: var(--c-main-black);
+  text-decoration: line-through;
+}
+
+.price_other {
+  margin-right: 1.4em;
+
+  font-size: 1rem;
+  font-weight: 300;
+  color: var(--c-main-black);
+  white-space: nowrap;
+}
+
+.price__list {
+  justify-self: start;
+  align-self: end;
+  display: flex;
+  align-items: center;
+}

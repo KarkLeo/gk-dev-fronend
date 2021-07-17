@@ -9,10 +9,7 @@ const ProductCard: React.FC<ProductCardProps> = ({ title }) => {
   return (
     <div className={s.wrap}>
       <div className={s.card}>
-        <a
-          className={s.link}
-          href='https://www.google.com/search?q=dfs&oq=dfs&aqs=chrome..69i57j0l5j0i10j0l3.384j0j7&sourceid=chrome&ie=UTF-8'
-        >
+        <a className={s.link} href='https://www.google.com/'>
           <div className={s.image}>
             <img
               className={s.image__source}

@@ -2,9 +2,9 @@ import React from 'react'
 import s from './ProductCarousel.module.css'
 import { Swiper, SwiperSlide } from 'swiper/react'
 import SwiperCore, { Autoplay, Navigation } from 'swiper/core'
-import ProductCard from '../../../../components/ProductCard/ProductCard'
-import useMediaQuery from '../../../../common/hooks/useMediaQuery'
-import { mobileOnly, tabOnly } from '../../../../styles/mediaQuery'
+import ProductCard from 'components/ProductCard/ProductCard'
+import useMediaQuery from 'common/hooks/useMediaQuery'
+import { mobileOnly, tabOnly } from 'styles/mediaQuery'
 
 // install Swiper modules
 SwiperCore.use([Autoplay, Navigation])

@@ -8,6 +8,7 @@ import {
   getCategoryLocalesParams,
 } from 'common/utils/locales-params'
 import { GetStaticPaths, GetStaticProps } from 'next'
+import ProductPage from '../../../containers/ProductPage'
 
 interface CategoryProps {
   meta: MetaData
@@ -15,7 +16,7 @@ interface CategoryProps {
 }
 
 const Category: React.FC<CategoryProps> = ({ meta, localesParams }) => {
-  return <div>Product page</div>
+  return <ProductPage meta={meta} localesParams={localesParams} />
 }
 
 interface PagePath {
