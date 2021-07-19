@@ -2,7 +2,7 @@ import React from 'react'
 import s from './ProductPage.module.css'
 import Layout from 'components/Layout'
 import { MetaData } from 'services/static'
-import { CategoryLocalesParams } from 'common/utils/locales-params'
+import { DefaultLocalesParams } from 'common/utils/locales-params'
 import Title from './components/Title/Title'
 import Price from './components/Price/Price'
 import CartButton from './components/CartButton/CartButton'
@@ -12,7 +12,7 @@ import ProductCarousel from '../HomePage/components/ProductCarousel/ProductCarou
 
 interface CategoryPageProps {
   meta: MetaData
-  localesParams?: CategoryLocalesParams
+  localesParams?: DefaultLocalesParams
 }
 
 const ProductPage: React.FC<CategoryPageProps> = ({ meta, localesParams }) => {

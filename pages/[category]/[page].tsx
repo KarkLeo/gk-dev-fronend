@@ -4,7 +4,7 @@ import nextI18NextConfig from 'next-i18next.config'
 import { pathData, staticData } from 'services'
 import { MetaData } from 'services/static'
 import {
-  CategoryLocalesParams,
+  DefaultLocalesParams,
   getCategoryLocalesParams,
 } from 'common/utils/locales-params'
 import { GetStaticPaths, GetStaticProps } from 'next'
@@ -13,7 +13,7 @@ import { PRODUCTS_PER_PAGE } from 'common/constans/paginaiton'
 
 interface CategoryProps {
   meta: MetaData
-  localesParams: CategoryLocalesParams
+  localesParams: DefaultLocalesParams
 }
 
 const Category: React.FC<CategoryProps> = ({ meta, localesParams }) => {
@@ -73,7 +73,7 @@ export const getStaticProps: GetStaticProps = async ({ locale, params }) => {
   const meta = await staticData.getMeta({
     lang: locale ? locale : 'ru',
   })
-  const lang = await pathData.getCategorySlug()
+  const categorySlugSet = await pathData.getCategorySlug()
 
   return {
     props: {
@@ -85,7 +85,7 @@ export const getStaticProps: GetStaticProps = async ({ locale, params }) => {
       meta,
       localesParams:
         params &&
-        getCategoryLocalesParams(lang, {
+        getCategoryLocalesParams(categorySlugSet, {
           ...params,
           category: params.category as string,
         }),

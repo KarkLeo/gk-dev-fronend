@@ -2,12 +2,12 @@ import React from 'react'
 import ProductGrid from 'components/ProductGrid/ProductGrid'
 import Layout from 'components/Layout'
 import { MetaData } from 'services/static'
-import { CategoryLocalesParams } from 'common/utils/locales-params'
+import { DefaultLocalesParams } from 'common/utils/locales-params'
 import PagePagination from 'components/PagePagination/PagePagination'
 
 interface CategoryPageProps {
   meta: MetaData
-  localesParams: CategoryLocalesParams
+  localesParams: DefaultLocalesParams
 }
 
 const CategoryPage: React.FC<CategoryPageProps> = ({ meta, localesParams }) => {

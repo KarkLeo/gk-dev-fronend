@@ -1,14 +1,14 @@
 import React from 'react'
 import s from './HomeLayout.module.css'
 import { HomePageSlider, MetaData } from 'services/static'
-import { CategoryLocalesParams } from 'common/utils/locales-params'
+import { DefaultLocalesParams } from 'common/utils/locales-params'
 import Header from 'components/Header'
 import Footer from 'components/Footer'
 import Slider from '../Slider/Slider'
 
 interface HomeLayoutProps {
   meta: MetaData
-  localesParams?: CategoryLocalesParams
+  localesParams?: DefaultLocalesParams
   slides: HomePageSlider[]
 }
 

@@ -6,10 +6,10 @@ import Icon from 'components/Icon'
 import style from './LanguageSwitcher.module.css'
 import animate from './LSTransition.module.css'
 import { CSSTransition } from 'react-transition-group'
-import { CategoryLocalesParams } from '../../common/utils/locales-params'
+import { DefaultLocalesParams } from '../../common/utils/locales-params'
 
 interface LanguageSwitcherProps {
-  localesParams?: CategoryLocalesParams
+  localesParams?: DefaultLocalesParams
 }
 
 const LanguageSwitcher: React.FC<LanguageSwitcherProps> = ({

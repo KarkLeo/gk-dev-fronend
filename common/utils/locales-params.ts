@@ -1,11 +1,13 @@
-import { CategorySlugData } from 'services/path'
-
-export type DefaultLocalesParams = Record<string, Record<string, string>>
+import { CategorySlugData, ProductSlugData } from 'services/path'
 
 /**
  * Object with params for one locale
  */
-export type CategoryURLParams =
+export type DefaultURLParams =
+  | {
+      category: string
+      product: string
+    }
   | {
       category: string
       page: string
@@ -17,9 +19,9 @@ export type CategoryURLParams =
 /**
  * Object with locales query property
  * keys - language key
- * values - object with category slug
+ * values - object with default params
  */
-export type CategoryLocalesParams = Record<string, CategoryURLParams>
+export type DefaultLocalesParams = Record<string, DefaultURLParams>
 
 /**
  * Create locales query object with categories
@@ -29,8 +31,8 @@ export type CategoryLocalesParams = Record<string, CategoryURLParams>
  */
 export const getCategoryLocalesParams = (
   resLocales: CategorySlugData,
-  params: CategoryURLParams
-): CategoryLocalesParams =>
+  params: DefaultURLParams
+): DefaultLocalesParams =>
   resLocales.productCategories.reduce((res, i) => {
     if (
       i.slug === params.category ||
@@ -42,17 +44,22 @@ export const getCategoryLocalesParams = (
       )
     }
     return res
-  }, {} as CategoryLocalesParams)
+  }, {} as DefaultLocalesParams)
 
-/**
- * Object with locales query property
- * keys - language key
- * values - object with category slug and page number
- */
-export type CategoryLocalesWithPageParams = Record<
-  string,
-  {
-    category: string
-    page: number
-  }
->
+export const getProductLocalesParams = (
+  resLocales: ProductSlugData
+): DefaultLocalesParams =>
+  resLocales.products.reduce((res, i) => {
+    res[i.locale] = {
+      category: i.category.slug,
+      product: i.slug,
+    }
+    i.localizations.forEach(
+      (i) =>
+        (res[i.locale] = {
+          category: i.category.slug,
+          product: i.slug,
+        })
+    )
+    return res
+  }, {} as DefaultLocalesParams)
