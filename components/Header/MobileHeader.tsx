@@ -5,8 +5,12 @@ import s from './Header.module.css'
 import MenuButton from './components/MenuButton/MenuButton'
 import MenuBar from './components/MenuBar/MenuBar'
 import { HeaderProps } from './types'
+import LanguageSwitcher from '../LanguageSwitcher'
+import CategoryList from './components/CategoryList/CategoryList'
+import PageList from './components/PageList/PageList'
+import PhoneList from './components/PhoneList/PhoneList'
 
-const MobileHeader: React.FC<HeaderProps> = () => {
+const MobileHeader: React.FC<HeaderProps> = ({ meta, localesParams }) => {
   const [state, setState] = useState(false)
 
   return (
@@ -16,7 +20,12 @@ const MobileHeader: React.FC<HeaderProps> = () => {
           <div className={s.grid__item}>
             <MenuButton open={state} onClick={() => setState(!state)} />
             <MenuBar open={state}>
-              <h1>sdfsdfsdfsdff</h1>
+              <PhoneList
+                list_of_numbers={meta.contactSetting.list_of_numbers}
+              />
+              <CategoryList categories={meta.productCategories} />
+              <PageList />
+              <LanguageSwitcher localesParams={localesParams} />
             </MenuBar>
             <Logo />
           </div>

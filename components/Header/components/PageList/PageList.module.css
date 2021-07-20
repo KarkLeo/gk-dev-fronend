@@ -4,6 +4,8 @@
   grid-gap: var(--spacing-2);
   margin: 0;
   padding: var(--spacing-1) 0;
+
+  list-style: none;
 }
 
 .item {

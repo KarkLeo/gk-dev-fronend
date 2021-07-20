@@ -1,9 +1,10 @@
 .list {
   display: flex;
-  align-items: center;
+  flex-direction: column;
+  align-items: flex-start;
   padding: 0;
   margin: 0;
-  gap: var(--layout-gap);
+  gap: var(--spacing-2);
 
   list-style: none;
 }
@@ -14,8 +15,24 @@
 }
 
 .link {
-  font-size: 1rem;
-  font-weight: 500;
+  padding: var(--spacing-2) 0;
+
+  font-size: 1.2rem;
+  font-weight: 700;
   text-decoration: none;
-  color: var(--c-main-black);
+  color: var(--c-main-white);
+}
+
+@media screen and (min-width: 1280px) {
+  .list {
+    flex-direction: row;
+    align-items: center;
+    gap: var(--layout-gap);
+  }
+
+  .link {
+    font-size: 1rem;
+    font-weight: 500;
+    color: var(--c-main-black);
+  }
 }

@@ -3,6 +3,7 @@
 
   width: min-content;
   padding: var(--spacing-2) 0;
+  margin-top: auto;
 }
 
 .button {
@@ -12,7 +13,7 @@
   padding: 0;
 
   font-family: var(--font-main);
-  font-size: 0.9rem;
+  font-size: 1rem;
   font-weight: 500;
   color: var(--c-main-white);
 
@@ -27,4 +28,10 @@
   margin-left: var(--spacing-1);
 
   fill: var(--c-main-white);
+}
+
+@media screen and (min-width: 1280px) {
+  .button {
+    font-size: 0.9rem;
+  }
 }
