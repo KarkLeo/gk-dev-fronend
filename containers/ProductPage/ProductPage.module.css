@@ -1,5 +1,46 @@
 .grid {
   display: grid;
-  grid-template-columns: 4fr 2fr;
+  grid-template-columns: 1fr;
   grid-gap: var(--layout-gap);
+  align-items: start;
+}
+
+.grid__images {
+  order: 2;
+}
+
+.grid__title {
+  order: 1;
+}
+
+.grid__content {
+  order: 3;
+}
+
+@media screen and (min-width: 768px) {
+  .grid {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .grid__images {
+    order: 1;
+    grid-column: 1 / 2;
+    grid-row: span 2;
+  }
+
+  .grid__title {
+    order: 2;
+    grid-column: 2 / 3;
+  }
+
+  .grid__content {
+    order: 3;
+    grid-column: 2 / 3;
+  }
+}
+
+@media screen and (min-width: 1280px) {
+  .grid {
+    grid-template-columns: 4fr 2fr;
+  }
 }

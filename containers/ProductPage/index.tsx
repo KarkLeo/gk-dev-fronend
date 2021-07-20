@@ -19,9 +19,13 @@ const ProductPage: React.FC<CategoryPageProps> = ({ meta, localesParams }) => {
   return (
     <Layout meta={meta} localesParams={localesParams}>
       <div className={s.grid}>
-        <ImageSlider />
-        <div>
+        <div className={s.grid__images}>
+          <ImageSlider />
+        </div>
+        <div className={s.grid__title}>
           <Title />
+        </div>
+        <div className={s.grid__content}>
           <Price />
           <CartButton />
           <Description />
