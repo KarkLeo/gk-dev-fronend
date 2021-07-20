@@ -23,11 +23,20 @@
   display: flex;
   flex-direction: column;
 
-  font-size: 1.4rem;
+  font-size: 1.2rem;
   line-height: 1.6;
   color: var(--c-main-black);
   text-decoration: none;
 }
 .address:hover {
   text-decoration: underline;
+}
+
+@media screen and (min-width: 768px) {
+}
+
+@media screen and (min-width: 1280px) {
+  .address {
+    font-size: 1.4rem;
+  }
 }

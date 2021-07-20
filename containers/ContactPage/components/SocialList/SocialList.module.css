@@ -36,6 +36,15 @@
   color: var(--c-main-black);
 }
 .socialLink__name {
-  font-size: 1.4rem;
+  font-size: 1.2rem;
   line-height: 0.6;
+}
+
+@media screen and (min-width: 768px) {
+}
+
+@media screen and (min-width: 1280px) {
+  .socialLink__name {
+    font-size: 1.4rem;
+  }
 }
