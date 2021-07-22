@@ -1,13 +1,13 @@
 import React from 'react'
 import s from './ProductCarousel.module.css'
 import { Swiper, SwiperSlide } from 'swiper/react'
-import SwiperCore, { Autoplay, Navigation } from 'swiper/core'
+import SwiperCore, { Autoplay, Navigation, Pagination } from 'swiper/core'
 import ProductCard from 'components/ProductCard/ProductCard'
 import useMediaQuery from 'common/hooks/useMediaQuery'
 import { mobileOnly, tabOnly } from 'styles/mediaQuery'
 
 // install Swiper modules
-SwiperCore.use([Autoplay, Navigation])
+SwiperCore.use([Autoplay, Pagination, Navigation])
 
 interface ProductCarouselProps {}
 
@@ -22,6 +22,9 @@ const ProductCarousel: React.FC<ProductCarouselProps> = () => {
         speed={1000}
         spaceBetween={tab && mobile ? 24 : 32}
         loop={true}
+        pagination={{
+          clickable: true,
+        }}
         navigation={true}
         autoplay={{
           delay: 3000,

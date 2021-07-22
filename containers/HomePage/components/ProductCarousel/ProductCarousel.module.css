@@ -1,11 +1,38 @@
 .root {
   --swiper-theme-color: var(--c-main-black);
+  --swiper-navigation-size: 2rem;
 
   margin: var(--spacing-5) 0;
 }
 
 .root :global(.swiper-slide) {
   height: auto;
+}
+
+.root :global(.swiper-container) {
+  padding-bottom: calc(var(--swiper-navigation-size) + var(--spacing-3));
+}
+
+.root :global(.swiper-pagination) {
+  bottom: var(--spacing-3);
+
+  text-align: left;
+
+  transform: translateY(50%);
+}
+
+.root :global(.swiper-button-next),
+.root :global(.swiper-button-prev) {
+  top: auto;
+  bottom: var(--spacing-3);
+  z-index: 999;
+
+  transform: translateY(50%);
+}
+
+.root :global(.swiper-button-prev) {
+  left: auto;
+  right: calc(var(--swiper-navigation-size) + var(--spacing-3));
 }
 
 .title {
@@ -27,5 +54,9 @@
 @media screen and (min-width: 1280px) {
   .title {
     font-size: 2.7rem;
+  }
+
+  .root :global(.swiper-container) {
+    padding-bottom: calc(var(--swiper-navigation-size) + var(--spacing-4));
   }
 }
