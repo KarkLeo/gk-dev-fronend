@@ -1,19 +1,11 @@
 import { gql } from '@apollo/client'
 import client from '../apollo-client'
-
-export interface HomePageSlider {
-  id: string
-  title: string
-  description: string
-  image: {
-    url: string
-    formats: JSON
-  }
-}
+import { HomePageContent, HomePageSlider } from './types/home-page.types'
 
 export interface HomePageData {
   homePage: {
     slider: HomePageSlider[]
+    content: HomePageContent
   }
 }
 
@@ -31,6 +23,37 @@ const GET_HOME_PAGE = gql`
         image {
           url
           formats
+        }
+      }
+      content {
+        ... on ComponentHomePageProductCarousel {
+          __typename
+          id
+          title
+          products {
+            name
+            vandor_code
+            price
+            old_price
+            wholesale_price
+            photos {
+              url
+            }
+          }
+        }
+        ... on ComponentHomePageInfoBlock {
+          __typename
+          id
+          title
+          sub_title
+          description
+          image {
+            url
+          }
+          button {
+            text
+            url
+          }
         }
       }
     }
