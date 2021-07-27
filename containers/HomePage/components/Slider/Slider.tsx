@@ -1,5 +1,5 @@
 import React from 'react'
-import { HomePageSlider } from 'services/static'
+import { HomePageSlider } from 'services/static/'
 import Image from 'next/image'
 import s from './Slidec.module.css'
 import { Swiper, SwiperSlide } from 'swiper/react'
@@ -44,7 +44,7 @@ const Slider: React.FC<SliderProps> = ({ slides }) => {
               </div>
 
               <Image
-                src={i.image ? i.image.url : ''}
+                src={i.image ? i.image.formats.large.url : ''}
                 alt={i.title}
                 layout='fill'
                 className={s.slide__image}

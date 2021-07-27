@@ -1,14 +1,16 @@
 import React from 'react'
 import s from './AddressList.module.css'
-import { addressesTest } from '../../testData'
+import { AddressListItem } from 'services/static'
 
-interface AddressListProps {}
+interface AddressListProps {
+  data: AddressListItem[]
+}
 
-const AddressList: React.FC = () => {
+const AddressList: React.FC<AddressListProps> = ({ data }) => {
   return (
     <div className={s.root}>
       <ul className={s.addressList}>
-        {addressesTest.map((i) => (
+        {data.map((i) => (
           <li key={i.id} className={s.addressList__item}>
             <a
               href={`https://www.google.com/maps/search/?api=1&query=${i.coordinates.replace(

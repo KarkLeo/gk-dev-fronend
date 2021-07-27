@@ -1,16 +1,16 @@
 import React from 'react'
-import { PhoneListItem } from 'services/static'
+import { PhoneListItem } from 'services/static/'
 import s from './PhoneList.module.css'
 
 interface PhoneListProps {
-  list_of_numbers: PhoneListItem[]
+  data: PhoneListItem[]
 }
 
-const PhoneList: React.FC<PhoneListProps> = ({ list_of_numbers }) => {
+const PhoneList: React.FC<PhoneListProps> = ({ data }) => {
   return (
     <div className={s.root}>
       <ul className={s.phoneList}>
-        {list_of_numbers.map((i) => (
+        {data.map((i) => (
           <li key={i.id} className={s.phoneList__item}>
             <a
               href={`tel:${i.phone_number}`}

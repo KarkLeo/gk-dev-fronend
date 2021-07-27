@@ -2,15 +2,16 @@ import React, { useEffect, useRef, useState } from 'react'
 import s from './MapView.module.css'
 import MapGL, { NavigationControl, WebMercatorViewport } from 'react-map-gl'
 import { MapSettings } from 'pages/contacts'
-import { addressesTest } from '../../testData'
 import Pin from './components/Pin/Pin'
 import { convertFromGoogleMaps, convertToBbox } from 'common/utils/coordinads'
+import { AddressListItem } from 'services/static'
 
 interface MapViewProps {
   mapSettings: MapSettings
+  data: AddressListItem[]
 }
 
-const MapView: React.FC<MapViewProps> = ({ mapSettings }) => {
+const MapView: React.FC<MapViewProps> = ({ mapSettings, data }) => {
   const rootRef = useRef<HTMLDivElement>(null)
   const [viewport, setViewport] = useState({
     latitude: 0,
@@ -23,7 +24,7 @@ const MapView: React.FC<MapViewProps> = ({ mapSettings }) => {
   useEffect(() => {
     const initMapPosition = () => {
       if (rootRef.current) {
-        const [minLng, minLat, maxLng, maxLat] = convertToBbox(addressesTest)
+        const [minLng, minLat, maxLng, maxLat] = convertToBbox(data)
 
         const vp = new WebMercatorViewport({
           width: rootRef.current.offsetWidth,
@@ -63,7 +64,7 @@ const MapView: React.FC<MapViewProps> = ({ mapSettings }) => {
         mapboxApiAccessToken={mapSettings.token}
         scrollZoom={false}
       >
-        {addressesTest.map((i) => (
+        {data.map((i) => (
           <Pin
             key={i.id}
             latitude={convertFromGoogleMaps(i.coordinates).latitude}

@@ -1,5 +1,5 @@
 import React from 'react'
-import { HomePageContent } from 'services/static/types/home-page.types'
+import { HomePageContent } from 'services/static/'
 import InfoBlock from '../InfoBlock/InfoBlock'
 import ProductCarousel from '../ProductCarousel/ProductCarousel'
 
@@ -12,7 +12,7 @@ const ContentReducer: React.FC<ContentReducerProps> = ({ data }) => {
     case 'ComponentHomePageInfoBlock':
       return <InfoBlock data={data} />
     case 'ComponentHomePageProductCarousel':
-      return <ProductCarousel />
+      return <ProductCarousel data={data} />
     default:
       return null
   }

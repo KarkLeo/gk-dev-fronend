@@ -28,7 +28,7 @@ const Footer: React.FC<FooterProps> = ({ meta }) => {
             s.grid__item_social
           )}
         >
-          <SocialList />
+          <SocialList data={meta.contactSetting.list_of_links} />
         </div>
         <div className={s.grid__item}>
           <CategoryList categories={meta.productCategories} />
@@ -37,10 +37,10 @@ const Footer: React.FC<FooterProps> = ({ meta }) => {
           <PageList />
         </div>
         <div className={classNames(s.grid__item, s.grid__item_right)}>
-          <PhoneList list_of_numbers={meta.contactSetting.list_of_numbers} />
+          <PhoneList data={meta.contactSetting.list_of_numbers} />
         </div>
         <div className={classNames(s.grid__item, s.grid__item_right)}>
-          <EmailList />
+          <EmailList data={meta.contactSetting.list_of_emails} />
         </div>
       </div>
     </footer>

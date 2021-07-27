@@ -32,6 +32,11 @@ export const Sprite: React.FC = () => {
   <symbol xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" id="cart">
     <circle cx="176" cy="416" r="16" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="32"/><circle cx="400" cy="416" r="16" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="32"/><path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="32" d="M48 80h64l48 272h256"/><path d="M160 288h249.44a8 8 0 007.85-6.43l28.8-144a8 8 0 00-7.85-9.57H128" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="32"/>
   </symbol>
+  <symbol xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" id="image">
+    <rect xmlns="http://www.w3.org/2000/svg" x="48" y="80" width="416" height="352" rx="48" ry="48" fill="none" stroke="currentColor" stroke-linejoin="round" stroke-width="32"/>
+    <circle xmlns="http://www.w3.org/2000/svg" cx="336" cy="176" r="32" fill="none" stroke="currentColor" stroke-miterlimit="10" stroke-width="32"/>
+    <path xmlns="http://www.w3.org/2000/svg" d="M304 335.79l-90.66-90.49a32 32 0 00-43.87-1.3L48 352M224 432l123.34-123.34a32 32 0 0143.11-2L464 368" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="32"/> 
+  </symbol>
   
   <!-- 
     Social icons
@@ -86,6 +91,7 @@ export const viewBox = {
   user: '0 0 512 512',
   phone: '0 0 512 512',
   cart: '0 0 512 512',
+  image: '0 0 512 512',
 
   twitter: '0 0 512 512',
   youtube: '0 0 576 512',

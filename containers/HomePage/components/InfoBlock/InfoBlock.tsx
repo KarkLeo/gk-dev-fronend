@@ -1,6 +1,6 @@
 import React from 'react'
 import s from './InfoBlock.module.css'
-import { HomePageInfoBlock } from 'services/static/types/home-page.types'
+import { HomePageInfoBlock } from 'services/static/'
 
 interface InfoBlockProps {
   data: HomePageInfoBlock
@@ -10,7 +10,11 @@ const InfoBlock: React.FC<InfoBlockProps> = ({ data }) => {
   return (
     <div className={s.root}>
       <div className={s.left}>
-        <img src={data.image.url} alt={data.title} className={s.image} />
+        <img
+          src={data.image.formats.medium.url}
+          alt={data.title}
+          className={s.image}
+        />
       </div>
       <div className={s.right}>
         <h2 className={s.title}>{data.title}</h2>
