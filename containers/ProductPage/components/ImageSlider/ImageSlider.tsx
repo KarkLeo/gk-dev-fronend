@@ -4,25 +4,18 @@ import s from './ImageSlider.module.css'
 // import Swiper core and required modules
 import SwiperCore, { Navigation, Thumbs } from 'swiper/core'
 import { Swiper, SwiperSlide } from 'swiper/react'
-import useMediaQuery from '../../../../common/hooks/useMediaQuery'
-import { desktopOnly } from '../../../../styles/mediaQuery'
+import useMediaQuery from 'common/hooks/useMediaQuery'
+import { desktopOnly } from 'styles/mediaQuery'
+import { DefaultImageType } from 'services/static'
 
 // install Swiper modules
 SwiperCore.use([Navigation, Thumbs])
 
-const imageArray = [
-  'https://picsum.photos/',
-  'https://picsum.photos/',
-  'https://picsum.photos/',
-  'https://picsum.photos/',
-  'https://picsum.photos/',
-  'https://picsum.photos/',
-  'https://picsum.photos/',
-]
+interface ImageSliderProps {
+  data: DefaultImageType[]
+}
 
-interface ImageSliderProps {}
-
-const ImageSlider: React.FC<ImageSliderProps> = () => {
+const ImageSlider: React.FC<ImageSliderProps> = ({ data }) => {
   const [thumbsSwiper, setThumbsSwiper] = useState<any | null>(null)
   const isDesktop = useMediaQuery(desktopOnly)
   return (
@@ -38,10 +31,10 @@ const ImageSlider: React.FC<ImageSliderProps> = () => {
             watchSlidesProgress={true}
             direction={isDesktop ? 'vertical' : 'horizontal'}
           >
-            {imageArray.map((i, index) => (
-              <SwiperSlide key={index}>
+            {data.map((i) => (
+              <SwiperSlide key={i.url}>
                 <div className={s.image}>
-                  <img src={i + 50 + index + '/' + 50 + index} />
+                  <img src={i.formats.small.url} alt='' />
                 </div>
               </SwiperSlide>
             ))}
@@ -55,10 +48,10 @@ const ImageSlider: React.FC<ImageSliderProps> = () => {
             navigation={true}
             thumbs={{ swiper: thumbsSwiper }}
           >
-            {imageArray.map((i, index) => (
-              <SwiperSlide key={index}>
+            {data.map((i) => (
+              <SwiperSlide key={i.url}>
                 <div className={s.image}>
-                  <img src={i + 50 + index + '/' + 50 + index} />
+                  <img src={i.formats.medium.url} alt='' />
                 </div>
               </SwiperSlide>
             ))}

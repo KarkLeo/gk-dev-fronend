@@ -32,6 +32,7 @@ const PagePagination: React.FC<PagePaginationProps> = ({ total }) => {
         current={current}
         onChange={() => undefined}
         locale={locales[(router.locale as 'ru') || 'ru']}
+        hideOnSinglePage
       />
     </div>
   )

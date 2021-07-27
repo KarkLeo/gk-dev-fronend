@@ -11,5 +11,9 @@
   },
   "pagesTitle": {
     "contactPage": "Контакти"
+  },
+  "productPage": {
+    "art": "арт.",
+    "back": "назад"
   }
 }

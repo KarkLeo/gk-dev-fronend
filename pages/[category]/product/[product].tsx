@@ -10,14 +10,18 @@ import {
 import { GetStaticPaths, GetStaticProps } from 'next'
 import ProductPage from 'containers/ProductPage'
 import { getAllProductsPath } from 'common/utils/path'
+import { ProductDetail } from 'services/static/types'
 
-interface CategoryProps {
+interface ProductProps {
   meta: MetaData
   localesParams: DefaultLocalesParams
+  product: ProductDetail
 }
 
-const Category: React.FC<CategoryProps> = ({ meta, localesParams }) => {
-  return <ProductPage meta={meta} localesParams={localesParams} />
+const Product: React.FC<ProductProps> = ({ meta, localesParams, product }) => {
+  return (
+    <ProductPage meta={meta} localesParams={localesParams} product={product} />
+  )
 }
 
 export const getStaticPaths: GetStaticPaths = async () => {
@@ -28,24 +32,21 @@ export const getStaticPaths: GetStaticPaths = async () => {
 }
 
 export const getStaticProps: GetStaticProps = async ({ locale, params }) => {
-  const meta = await staticData.getMeta({
-    lang: locale ? locale : 'ru',
-  })
-  const productSlugSet = await pathData.getProductSlug({
-    slug: params?.product as string,
-  })
+  const lang = locale ? locale : 'ru'
+  const slug = params ? (params.product as string) : ''
+
+  const meta = await staticData.getMeta({ lang })
+  const productSlugSet = await pathData.getProductSlug({ slug })
+  const product = await staticData.getProduct({ slug, lang })
 
   return {
     props: {
-      ...(await serverSideTranslations(
-        locale ? locale : 'ru',
-        ['common'],
-        nextI18NextConfig
-      )),
+      ...(await serverSideTranslations(lang, ['common'], nextI18NextConfig)),
       meta,
       localesParams: getProductLocalesParams(productSlugSet),
-    },
+      product: product.products[0] as ProductDetail,
+    } as ProductProps,
   }
 }
 
-export default Category
+export default Product

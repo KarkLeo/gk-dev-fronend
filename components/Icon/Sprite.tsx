@@ -36,6 +36,9 @@ export const Sprite: React.FC = () => {
     <rect xmlns="http://www.w3.org/2000/svg" x="48" y="80" width="416" height="352" rx="48" ry="48" fill="none" stroke="currentColor" stroke-linejoin="round" stroke-width="32"/>
     <circle xmlns="http://www.w3.org/2000/svg" cx="336" cy="176" r="32" fill="none" stroke="currentColor" stroke-miterlimit="10" stroke-width="32"/>
     <path xmlns="http://www.w3.org/2000/svg" d="M304 335.79l-90.66-90.49a32 32 0 00-43.87-1.3L48 352M224 432l123.34-123.34a32 32 0 0143.11-2L464 368" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="32"/> 
+  </symbol>  
+  <symbol xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" id="back_arrow">
+    <path xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="48" d="M244 400L100 256l144-144M120 256h292"/>
   </symbol>
   
   <!-- 
@@ -92,6 +95,7 @@ export const viewBox = {
   phone: '0 0 512 512',
   cart: '0 0 512 512',
   image: '0 0 512 512',
+  back_arrow: '0 0 512 512',
 
   twitter: '0 0 512 512',
   youtube: '0 0 576 512',

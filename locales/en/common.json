@@ -11,5 +11,9 @@
   },
   "pagesTitle": {
     "contactPage": "Contact page"
+  },
+  "productPage": {
+    "art": "art.",
+    "back": "back"
   }
 }
