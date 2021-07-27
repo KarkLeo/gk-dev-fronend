@@ -9,6 +9,7 @@ import {
 } from 'common/utils/locales-params'
 import { GetStaticPaths, GetStaticProps } from 'next'
 import ProductPage from 'containers/ProductPage'
+import { getAllProductsPath } from 'common/utils/path'
 
 interface CategoryProps {
   meta: MetaData
@@ -19,36 +20,9 @@ const Category: React.FC<CategoryProps> = ({ meta, localesParams }) => {
   return <ProductPage meta={meta} localesParams={localesParams} />
 }
 
-interface PagePath {
-  locale: string
-  params: {
-    category: string
-    product: string
-  }
-}
-
 export const getStaticPaths: GetStaticPaths = async () => {
   const res = await pathData.getCategorySlugWithProducts()
-
-  const paths = res.productCategories.reduce((res, i) => {
-    const products = [
-      // create all category locales` array
-      { slug: i.slug, locale: i.locale, products: i.products },
-      ...i.localizations,
-    ].reduce((productsRes, i) => {
-      // create products array and converts to page path
-      const pages: PagePath[] = i.products.map((product) => ({
-        locale: i.locale,
-        params: {
-          category: i.slug,
-          product: product.slug,
-        },
-      }))
-
-      return [...productsRes, ...pages]
-    }, [] as PagePath[])
-    return [...res, ...products]
-  }, [] as PagePath[])
+  const paths = getAllProductsPath(res.productCategories)
 
   return { paths, fallback: false } // todo add fallback page
 }

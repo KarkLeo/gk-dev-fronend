@@ -1,14 +1,11 @@
 import { CategorySlugData, ProductSlugData } from 'services/path'
-import { CategoryPagesParams, CategoryParams } from './path'
+import { CategoryPagesParams, CategoryParams, ProductParams } from './path'
 
 /**
  * Object with params for one locale
  */
 export type DefaultURLParams =
-  | {
-      category: string
-      product: string
-    }
+  | ProductParams
   | CategoryPagesParams
   | CategoryParams
 
