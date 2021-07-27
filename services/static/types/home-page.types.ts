@@ -1,17 +1,14 @@
 import {
   DefaultStrapiButton,
   DefaultStrapiImage,
-  ProductCard,
+  ProductCardType,
 } from './common.types'
 
 export interface HomePageSlider {
   id: string
   title: string
   description: string
-  image: {
-    url: string
-    formats: JSON
-  }
+  image: DefaultStrapiImage
 }
 
 export interface HomePageInfoBlock {
@@ -24,7 +21,7 @@ export interface HomePageInfoBlock {
 
 export interface HomePageProductCarousel {
   title: string
-  products: ProductCard[]
+  products: ProductCardType[]
 }
 
 export interface ComponentHomePageProductCarousel

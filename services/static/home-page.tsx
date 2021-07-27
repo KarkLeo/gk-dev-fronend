@@ -31,13 +31,19 @@ const GET_HOME_PAGE = gql`
           id
           title
           products {
+            id
+            slug
+            category {
+              slug
+            }
             name
-            vandor_code
+            vendor_code
             price
             old_price
             wholesale_price
             photos {
               url
+              formats
             }
           }
         }
@@ -49,6 +55,7 @@ const GET_HOME_PAGE = gql`
           description
           image {
             url
+            formats
           }
           button {
             text

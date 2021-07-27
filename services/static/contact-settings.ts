@@ -1,51 +1,19 @@
 import { gql } from '@apollo/client'
 import client from '../apollo-client'
-
-export interface PhoneListItem {
-  id: string
-  label: string
-  phone_number: string
-}
-
-export interface EmailListItem {
-  id: string
-  label: string
-  email: string
-}
-
-export interface SocialListItem {
-  id: string
-  name: string
-  url: string
-  icon:
-    | 'email'
-    | 'facebook'
-    | 'instagram'
-    | 'linkedin'
-    | 'pinterest'
-    | 'telegram'
-    | 'tiktok'
-    | 'twitter'
-    | 'viber'
-    | 'whatsapp'
-    | 'youtube'
-}
-
-export interface CategoryListItem {
-  id: string
-  name: string
-  slug: string
-}
-
-export interface AddressListItem {
-  id: string
-  address: string
-  coordinates: string
-}
+import {
+  AddressListItem,
+  CategoryListItem,
+  EmailListItem,
+  PhoneListItem,
+  SocialListItem,
+} from './types/contact-settings.types'
 
 export interface MetaData {
   contactSetting: {
     list_of_numbers: PhoneListItem[]
+    list_of_emails: EmailListItem[]
+    list_of_links: SocialListItem[]
+    list_of_addresses: AddressListItem[]
   }
   productCategories: CategoryListItem[]
 }
@@ -61,6 +29,22 @@ const GET_META = gql`
         id
         label
         phone_number
+      }
+      list_of_emails {
+        id
+        label
+        email
+      }
+      list_of_links {
+        id
+        icon
+        name
+        url
+      }
+      list_of_addresses {
+        id
+        address
+        coordinates
       }
     }
     productCategories(sort: "order", locale: $lang) {

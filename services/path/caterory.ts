@@ -50,14 +50,14 @@ const GET_CATEGORY_SLUG_WITH_PRODUCTS = gql`
     productCategories {
       slug
       locale
-      products {
+      products(limit: -1) {
         id
         slug
       }
       localizations {
         slug
         locale
-        products {
+        products(limit: -1) {
           id
           slug
         }
