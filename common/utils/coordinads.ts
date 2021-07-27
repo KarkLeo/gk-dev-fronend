@@ -6,6 +6,11 @@ export interface Coordinates {
   longitude: number
 }
 
+/**
+ * Convert google map string to coordinates object {latitude, longitude}
+ * @param coordinates - string
+ * @return coordinates object
+ */
 export const convertFromGoogleMaps = (coordinates: string): Coordinates => {
   const values = coordinates.split(', ')
   return {
@@ -14,6 +19,11 @@ export const convertFromGoogleMaps = (coordinates: string): Coordinates => {
   }
 }
 
+/**
+ * Crate rect in with all addresses
+ * @param addresses - address list item
+ * @return bbox object
+ */
 export const convertToBbox = (addresses: AddressListItem[]) => {
   const line = lineString(
     addresses.map((i) =>

@@ -8,5 +8,8 @@
   },
   "contactPage": {
     "name": "Contacts"
+  },
+  "pagesTitle": {
+    "contactPage": "Contact page"
   }
 }

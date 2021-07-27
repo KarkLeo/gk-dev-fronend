@@ -1,4 +1,5 @@
 import { CategorySlugData, ProductSlugData } from 'services/path'
+import { CategoryPagesParams, CategoryParams } from './path'
 
 /**
  * Object with params for one locale
@@ -8,13 +9,8 @@ export type DefaultURLParams =
       category: string
       product: string
     }
-  | {
-      category: string
-      page: string
-    }
-  | {
-      category: string
-    }
+  | CategoryPagesParams
+  | CategoryParams
 
 /**
  * Object with locales query property
