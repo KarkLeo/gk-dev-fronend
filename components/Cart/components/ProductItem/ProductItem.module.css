@@ -8,8 +8,8 @@
 
 .card {
   display: flex;
-  width: 18rem;
-  align-items: flex-start;
+  width: 24rem;
+  align-items: stretch;
   gap: var(--spacing-3);
 }
 
@@ -29,6 +29,13 @@
   font-size: 1.2rem;
   font-weight: 600;
   color: var(--c-main-black);
+}
+
+.cart__content {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-3);
+  justify-content: space-between;
 }
 
 /*===== button  =====*/
@@ -51,4 +58,34 @@
 
   fill: var(--c-medium-gray);
   color: var(--c-medium-gray);
+}
+
+/*===== price =====*/
+
+.priceGroup {
+  margin-top: auto;
+  display: flex;
+  justify-content: space-between;
+  gap: var(--spacing-2);
+  align-items: flex-end;
+}
+
+.price {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-1);
+}
+
+.price__init {
+  font-size: 1rem;
+  font-weight: 500;
+  line-height: 1.2;
+  color: var(--c-medium-gray);
+}
+
+.price__total {
+  font-size: 1.4rem;
+  font-weight: 600;
+  line-height: 1.2;
+  color: var(--c-main-black);
 }

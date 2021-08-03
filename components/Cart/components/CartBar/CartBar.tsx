@@ -18,6 +18,7 @@ const CartBar: React.FC<CartBarProps> = ({ outCLick }) => {
       {a.map((i) => (
         <ProductItem key={i} />
       ))}
+      <div className={s.total}>2443 грн</div>
     </div>
   )
 }
