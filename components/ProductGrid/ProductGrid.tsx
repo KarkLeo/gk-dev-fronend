@@ -1,7 +1,7 @@
 import ProductCard from 'components/ProductCard/ProductCard'
 import React from 'react'
 import s from './ProductGrid.module.css'
-import { ProductCardType } from '../../services/static'
+import { ProductCardType } from 'services/static'
 
 interface ProductGridProps {
   data: ProductCardType[]

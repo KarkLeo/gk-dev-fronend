@@ -40,6 +40,9 @@ export const Sprite: React.FC = () => {
   <symbol xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" id="back_arrow">
     <path xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="48" d="M244 400L100 256l144-144M120 256h292"/>
   </symbol>
+  <symbol xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" id="close">
+    <path xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="32" d="M368 368L144 144M368 144L144 368"/>
+  </symbol>
   
   <!-- 
     Social icons
@@ -96,6 +99,7 @@ export const viewBox = {
   cart: '0 0 512 512',
   image: '0 0 512 512',
   back_arrow: '0 0 512 512',
+  close: '0 0 512 512',
 
   twitter: '0 0 512 512',
   youtube: '0 0 576 512',

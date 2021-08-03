@@ -1,0 +1,54 @@
+.root {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--spacing-2);
+}
+
+/*===== card =====*/
+
+.card {
+  display: flex;
+  width: 18rem;
+  align-items: flex-start;
+  gap: var(--spacing-3);
+}
+
+.card__image {
+  --image-size: 6rem;
+
+  width: var(--image-size);
+  height: var(--image-size);
+
+  object-fit: cover;
+  object-position: center;
+}
+
+.card__title {
+  margin: 0;
+
+  font-size: 1.2rem;
+  font-weight: 600;
+  color: var(--c-main-black);
+}
+
+/*===== button  =====*/
+
+.button {
+  display: block;
+  margin: 0;
+  padding: 0;
+
+  background-color: transparent;
+  border: none;
+  border-radius: 0;
+  outline: 0;
+
+  cursor: pointer;
+}
+
+.button__icon {
+  width: 1.6rem;
+
+  fill: var(--с-medium-gray);
+  color: var(--с-medium-gray);
+}
