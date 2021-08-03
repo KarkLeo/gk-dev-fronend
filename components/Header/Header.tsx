@@ -8,6 +8,7 @@ import IconList from './components/IconList/IconList'
 import CategoryList from './components/CategoryList/CategoryList'
 import Sticky from 'components/Sticky/Sticky'
 import { HeaderProps } from './types'
+import Test from '../Counter/Test'
 
 const Header: React.FC<HeaderProps> = ({ meta, localesParams }) => {
   return (

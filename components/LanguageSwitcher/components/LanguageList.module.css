@@ -40,7 +40,7 @@
 }
 
 .link_active {
-  color: var(--с-medium-gray);
+  color: var(--c-medium-gray);
 
   cursor: default;
 }
