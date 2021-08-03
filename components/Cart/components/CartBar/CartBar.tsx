@@ -1,15 +1,15 @@
 import React, { useRef } from 'react'
-import ProductItem from '../ProductItem/ProductItem'
 import useOutsideClick from 'common/hooks/useOutsideClick'
-import s from './FavoriteBar.module.css'
+import ProductItem from '../ProductItem/ProductItem'
+import s from './CartBar.module.css'
 
 const a = [1, 23, 3, 4, 54, 7]
 
-interface FavoriteBarProps {
+interface CartBarProps {
   outCLick: () => void
 }
 
-const FavoriteBar: React.FC<FavoriteBarProps> = ({ outCLick }) => {
+const CartBar: React.FC<CartBarProps> = ({ outCLick }) => {
   const rootBarRef = useRef(null)
 
   useOutsideClick(rootBarRef, outCLick)
@@ -22,4 +22,4 @@ const FavoriteBar: React.FC<FavoriteBarProps> = ({ outCLick }) => {
   )
 }
 
-export default FavoriteBar
+export default CartBar
