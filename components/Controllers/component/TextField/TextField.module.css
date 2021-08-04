@@ -1,0 +1,52 @@
+.root {
+  width: 100%;
+  padding-bottom: var(--spacing-1);
+}
+
+.root_label {
+  display: block;
+}
+
+.label {
+  display: block;
+  margin: 0 0 var(--spacing-2);
+
+  font-size: 1.2rem;
+  font-weight: 600;
+  line-height: 1.2;
+  color: var(--c-main-black);
+}
+
+.field {
+  display: block;
+  width: 100%;
+  padding: var(--spacing-2) var(--spacing-1);
+  box-sizing: border-box;
+
+  font-size: 1rem;
+  font-weight: 500;
+  line-height: 1;
+  color: var(--c-main-black);
+
+  background-color: var(--c-main-white);
+  border: 2px solid var(--c-main-black);
+  border-radius: 0;
+  outline: none;
+}
+.field::placeholder {
+  color: var(--c-medium-gray);
+}
+
+.field_error {
+  border-color: var(--c-error);
+}
+
+.error {
+  display: block;
+  margin-top: var(--spacing-2);
+
+  font-size: 0.8rem;
+  font-weight: 500;
+  line-height: 1.2;
+  color: var(--c-error);
+}
