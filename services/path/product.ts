@@ -1,5 +1,5 @@
 import { gql } from '@apollo/client'
-import client from '../apollo-client'
+import { graphql } from '../'
 
 export interface ProductSlug {
   slug: string
@@ -41,7 +41,7 @@ const GET_PRODUCT_SLUG = gql`
 export const getProductSlug = async (
   variables: ProductSlugVars
 ): Promise<ProductSlugData> => {
-  const res = await client.query<ProductSlugData, ProductSlugVars>({
+  const res = await graphql.query<ProductSlugData, ProductSlugVars>({
     query: GET_PRODUCT_SLUG,
     variables,
   })

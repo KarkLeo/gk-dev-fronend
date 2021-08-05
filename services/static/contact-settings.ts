@@ -1,5 +1,5 @@
 import { gql } from '@apollo/client'
-import client from '../apollo-client'
+import { graphql } from '../'
 import {
   AddressListItem,
   CategoryListItem,
@@ -56,7 +56,7 @@ const GET_META = gql`
 `
 
 export const getMeta = async (variables: MetaVars): Promise<MetaData> => {
-  const res = await client.query<MetaData, MetaVars>({
+  const res = await graphql.query<MetaData, MetaVars>({
     query: GET_META,
     variables,
   })

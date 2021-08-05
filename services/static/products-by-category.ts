@@ -1,5 +1,5 @@
 import { gql } from '@apollo/client'
-import client from '../apollo-client'
+import { graphql } from '../'
 import { ProductCardType } from './types'
 
 //===== PRODUCTS BY CATEGORY =====
@@ -44,7 +44,7 @@ const GET_PRODUCTS_BY_CATEGORY = gql`
 export const getProductsByCategory = async (
   variables: ProductsByCategoryVars
 ): Promise<ProductsByCategoryData> => {
-  const res = await client.query<
+  const res = await graphql.query<
     ProductsByCategoryData,
     ProductsByCategoryVars
   >({
@@ -82,7 +82,7 @@ const GET_TOTAL_PRODUCTS_IN_CATEGORY = gql`
 export const getTotalProductsInCategory = async (
   variables: TotalProductsInCategoryVars
 ): Promise<TotalProductsInCategoryData> => {
-  const res = await client.query<
+  const res = await graphql.query<
     TotalProductsInCategoryData,
     TotalProductsInCategoryVars
   >({

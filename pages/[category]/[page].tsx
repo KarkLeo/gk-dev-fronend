@@ -1,7 +1,7 @@
 import React from 'react'
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
 import nextI18NextConfig from 'next-i18next.config'
-import { pathData, staticData } from 'services'
+import { pathServices, staticServices } from 'services'
 import { getCategoryLocalesParams } from 'common/utils/locales-params'
 import { GetStaticPaths, GetStaticProps } from 'next'
 import CategoryPage from 'containers/CategoryPage'
@@ -26,7 +26,7 @@ const Category: React.FC<CategoryProps> = ({
 }
 
 export const getStaticPaths: GetStaticPaths = async () => {
-  const res = await pathData.getCategorySlugWithProducts()
+  const res = await pathServices.getCategorySlugWithProducts()
 
   const paths = getAllCategoriesPagesPath(res.productCategories)
   return { paths, fallback: false } // todo add fallback page
@@ -37,13 +37,13 @@ export const getStaticProps: GetStaticProps = async ({ locale, params }) => {
   const slug = params ? (params.category as string) : ''
   const page = params ? parseInt(params.page as string) : 2
 
-  const meta = await staticData.getMeta({ lang })
-  const categorySlugSet = await pathData.getCategorySlug()
-  const totalProducts = await staticData.getTotalProductsInCategory({
+  const meta = await staticServices.getMeta({ lang })
+  const categorySlugSet = await pathServices.getCategorySlug()
+  const totalProducts = await staticServices.getTotalProductsInCategory({
     slug,
     lang,
   })
-  const products = await staticData.getProductsByCategory({
+  const products = await staticServices.getProductsByCategory({
     slug,
     lang,
     limit: PRODUCTS_PER_PAGE,

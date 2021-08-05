@@ -1,5 +1,5 @@
 import { gql } from '@apollo/client'
-import client from '../apollo-client'
+import { graphql } from '../'
 import { HomePageContent, HomePageSlider } from './types/home-page.types'
 
 export interface HomePageData {
@@ -70,7 +70,7 @@ const GET_HOME_PAGE = gql`
 export const getHomePage = async (
   variables: HomePageVars
 ): Promise<HomePageData> => {
-  const res = await client.query<HomePageData, HomePageVars>({
+  const res = await graphql.query<HomePageData, HomePageVars>({
     query: GET_HOME_PAGE,
     variables,
   })

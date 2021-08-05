@@ -1,5 +1,5 @@
 import { gql } from '@apollo/client'
-import client from '../apollo-client'
+import { graphql } from '../'
 
 export interface CategorySlug {
   slug: string
@@ -27,7 +27,7 @@ const GET_CATEGORY_SLUG = gql`
 `
 
 export const getCategorySlug = async (): Promise<CategorySlugData> => {
-  const res = await client.query<CategorySlugData, {}>({
+  const res = await graphql.query<CategorySlugData, {}>({
     query: GET_CATEGORY_SLUG,
   })
   return res.data
@@ -68,7 +68,7 @@ const GET_CATEGORY_SLUG_WITH_PRODUCTS = gql`
 
 export const getCategorySlugWithProducts =
   async (): Promise<CategorySlugWithProductsData> => {
-    const res = await client.query<CategorySlugWithProductsData, {}>({
+    const res = await graphql.query<CategorySlugWithProductsData, {}>({
       query: GET_CATEGORY_SLUG_WITH_PRODUCTS,
     })
     return res.data

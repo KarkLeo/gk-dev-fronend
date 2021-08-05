@@ -1,5 +1,5 @@
-import client from './apollo-client'
-export * as staticData from './static'
-export * as pathData from './path'
-
-export default client
+export * from './apollo-client'
+export * from './axios-client'
+export * as staticServices from './static'
+export * as pathServices from './path'
+export * as publicServices from './public'

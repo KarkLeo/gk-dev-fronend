@@ -1,7 +1,7 @@
 import React from 'react'
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
 import nextI18NextConfig from 'next-i18next.config'
-import { pathData, staticData } from 'services'
+import { pathServices, staticServices } from 'services'
 import { MetaData, ProductCardType } from 'services/static'
 import {
   DefaultLocalesParams,
@@ -36,7 +36,7 @@ const Category: React.FC<CategoryProps> = ({
 }
 
 export const getStaticPaths: GetStaticPaths = async () => {
-  const res = await pathData.getCategorySlug()
+  const res = await pathServices.getCategorySlug()
   const paths = getAllCategoryPath(res.productCategories)
 
   return { paths, fallback: false }
@@ -46,13 +46,13 @@ export const getStaticProps: GetStaticProps = async ({ locale, params }) => {
   const lang = locale ? locale : 'ru'
   const slug = params ? (params.category as string) : ''
 
-  const meta = await staticData.getMeta({ lang })
-  const categorySlugSet = await pathData.getCategorySlug()
-  const totalProducts = await staticData.getTotalProductsInCategory({
+  const meta = await staticServices.getMeta({ lang })
+  const categorySlugSet = await pathServices.getCategorySlug()
+  const totalProducts = await staticServices.getTotalProductsInCategory({
     slug,
     lang,
   })
-  const products = await staticData.getProductsByCategory({
+  const products = await staticServices.getProductsByCategory({
     slug,
     lang,
     limit: PRODUCTS_PER_PAGE,

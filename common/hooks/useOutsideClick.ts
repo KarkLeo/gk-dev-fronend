@@ -6,8 +6,8 @@ type UseOutsideClickT = (
 ) => void
 /**
  * Create outside click callback
- * @param root - ref in root element
- * @param callback - function call in outside click
+ * @param root - ref index.ts root element
+ * @param callback - function call index.ts outside click
  */
 const useOutsideClick: UseOutsideClickT = (root, callback) => {
   useEffect(() => {

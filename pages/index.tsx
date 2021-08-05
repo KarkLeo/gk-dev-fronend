@@ -2,7 +2,7 @@ import Head from 'next/head'
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
 import nextI18NextConfig from 'next-i18next.config'
 import { GetStaticProps } from 'next'
-import { staticData } from 'services'
+import { staticServices } from 'services'
 import { HomePageData, MetaData } from 'services/static'
 import HomeLayout from 'containers/HomePage/components/HomeLayout/HomeLayout'
 import ContentReducer from 'containers/HomePage/components/ContentReducer/ContentReducer'
@@ -30,8 +30,8 @@ export default function Home({ meta, pageData }: HomePageProps) {
 export const getStaticProps: GetStaticProps = async ({ locale }) => {
   const lang = locale ? locale : 'ru'
 
-  const meta = await staticData.getMeta({ lang })
-  const pageData = await staticData.getHomePage({ lang })
+  const meta = await staticServices.getMeta({ lang })
+  const pageData = await staticServices.getHomePage({ lang })
 
   return {
     props: {

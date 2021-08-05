@@ -20,7 +20,7 @@ export const convertFromGoogleMaps = (coordinates: string): Coordinates => {
 }
 
 /**
- * Crate rect in with all addresses
+ * Crate rect index.ts with all addresses
  * @param addresses - address list item
  * @return bbox object
  */
