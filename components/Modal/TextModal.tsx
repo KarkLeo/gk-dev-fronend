@@ -1,45 +1,57 @@
 import { Button, TextField } from 'components/Controllers'
-import React, { useCallback, useState } from 'react'
+import React, { useCallback, useEffect, useState } from 'react'
 import Modal from './Modal'
 import { UserRegister } from 'services/public'
 import { useDispatch } from 'react-redux'
 import { registerThunk } from '../../store/auth/thunks'
+import { nameValidate } from '../../common/validators/register'
+
+const initData: UserRegister = {
+  first_name: '',
+  last_name: '',
+  email: '',
+  password: '',
+  phone_number: '',
+}
+
+const initError: Record<keyof UserRegister, false | string> = {
+  first_name: false,
+  last_name: false,
+  email: false,
+  password: false,
+  phone_number: false,
+}
 
 const TextModal: React.FC = () => {
   const dispatch = useDispatch()
 
   const [status, setStatus] = useState(false)
 
-  const [data, setData] = useState<UserRegister>({
-    first_name: '',
-    last_name: '',
-    email: '',
-    password: '',
-  })
+  const [data, setData] = useState(initData)
+  const [error, setError] = useState(initError)
 
-  const changeFirstNameHandler = useCallback(
-    (first_name: string) => {
-      setData({ ...data, first_name })
-    },
+  useEffect(() => {
+    if (!status) {
+      setData(initData)
+      setError(initError)
+    }
+  }, [status, setData, setError])
+
+  const changeHandler = useCallback(
+    (key: keyof UserRegister) => (value: string) =>
+      setData({ ...data, [key]: value }),
     [data, setData]
   )
-  const changeLastNameHandler = useCallback(
-    (last_name: string) => {
-      setData({ ...data, last_name })
-    },
-    [data, setData]
+
+  const focusHandler = useCallback(
+    (key: keyof UserRegister) => () => setError({ ...error, [key]: false }),
+    [error, setError]
   )
-  const changeEmailNameHandler = useCallback(
-    (email: string) => {
-      setData({ ...data, email })
-    },
-    [data, setData]
-  )
-  const changePasswordNameHandler = useCallback(
-    (password: string) => {
-      setData({ ...data, password })
-    },
-    [data, setData]
+
+  const blurHandler = useCallback(
+    (key: keyof UserRegister) => () =>
+      setError({ ...error, [key]: nameValidate(data[key]) }),
+    [data, error, setError]
   )
 
   const sendHandler = useCallback(() => {
@@ -53,26 +65,41 @@ const TextModal: React.FC = () => {
         <Modal title={'Head of my modal'} close={() => setStatus(false)}>
           <TextField
             value={data.email}
-            onChange={changeEmailNameHandler}
+            onChange={changeHandler('email')}
             type='email'
-            label={'Login'}
+            label={'Email'}
+          />
+          <TextField
+            value={data.phone_number}
+            onChange={changeHandler('phone_number')}
+            type='email'
+            label={'Phone number'}
           />
           <TextField
             value={data.first_name}
-            onChange={changeFirstNameHandler}
+            onChange={changeHandler('first_name')}
             label={'First name'}
+            onFocus={focusHandler('first_name')}
+            onBlur={blurHandler('first_name')}
+            error={Boolean(error.first_name)}
+            errorMessage={error.first_name || ''}
           />
           <TextField
             value={data.last_name}
-            onChange={changeLastNameHandler}
-            label={'First name'}
+            onChange={changeHandler('last_name')}
+            label={'Last name'}
+            onFocus={focusHandler('last_name')}
+            onBlur={blurHandler('last_name')}
+            error={Boolean(error.last_name)}
+            errorMessage={error.last_name || ''}
           />
           <TextField
             value={data.password}
-            onChange={changePasswordNameHandler}
+            onChange={changeHandler('password')}
             type='password'
             label={'Password'}
           />
+
           <Button onClick={sendHandler}>Login</Button>
         </Modal>
       )}
