@@ -1,8 +1,8 @@
-import Icon from 'components/Icon'
 import React from 'react'
 import s from './IconList.module.css'
-import Favorite from '../../../Favorite/Favorite'
+import Favorite from 'components/Favorite/Favorite'
 import Cart from 'components/Cart/Cart'
+import ProfileButton from 'components/ProfileButton/ProfileButton'
 
 const IconList: React.FC = () => {
   return (
@@ -14,7 +14,7 @@ const IconList: React.FC = () => {
         <Cart iconClassName={s.icon} />
       </li>
       <li className={s.item}>
-        <Icon iconId='user' className={s.icon} />
+        <ProfileButton iconClassName={s.icon} />
       </li>
     </ul>
   )

@@ -8,7 +8,6 @@ import IconList from './components/IconList/IconList'
 import CategoryList from './components/CategoryList/CategoryList'
 import Sticky from 'components/Sticky/Sticky'
 import { HeaderProps } from './types'
-import TextModal from 'components/Modal/TextModal'
 
 const Header: React.FC<HeaderProps> = ({ meta, localesParams }) => {
   return (
@@ -32,7 +31,6 @@ const Header: React.FC<HeaderProps> = ({ meta, localesParams }) => {
               <CategoryList categories={meta.productCategories} />
             </div>
             <div className={s.grid__item}>
-              <TextModal />
               <IconList />
             </div>
           </div>
