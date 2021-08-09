@@ -2,12 +2,14 @@ import { gql } from '@apollo/client'
 import { graphql } from '../apollo-client'
 
 export interface UpdateUserData {
-  user: {
-    id: string
-    first_name: string
-    last_name: string
-    phone_number: string
-    email: string
+  updateUser: {
+    user: {
+      id: string
+      first_name: string
+      last_name: string
+      phone_number: string
+      email: string
+    }
   }
 }
 
@@ -22,7 +24,7 @@ export interface UpdateUserVars {
 const UPDATE_USER = gql`
   mutation (
     $id: ID!
-    $first_name: String!
+    $first_name: String
     $last_name: String
     $phone_number: String
     $email: String
@@ -44,7 +46,6 @@ const UPDATE_USER = gql`
         first_name
         last_name
         phone_number
-        username
         email
       }
     }
@@ -59,7 +60,9 @@ export const updateUser = async (
     const res = await graphql.mutate<UpdateUserData, UpdateUserVars>({
       mutation: UPDATE_USER,
       context: {
-        Authorization: `Bearer ${jwt}`,
+        headers: {
+          Authorization: `Bearer ${jwt}`,
+        },
       },
       variables,
     })

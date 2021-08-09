@@ -2,9 +2,11 @@ import { gql } from '@apollo/client'
 import { graphql } from '../apollo-client'
 
 export interface RegisterUserData {
-  jwt: string
-  user: {
-    id: string
+  register: {
+    jwt: string
+    user: {
+      id: string
+    }
   }
 }
 
