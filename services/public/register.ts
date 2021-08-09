@@ -1,8 +1,10 @@
 import { client } from '../'
-import { UserRegister } from './types'
+import { UserAuthResponse, UserRegister } from './types'
 
-export const register = async (user: UserRegister): Promise<string> => {
-  const res = await client.post<string>('/auth/register', {
+export const register = async (
+  user: UserRegister
+): Promise<UserAuthResponse> => {
+  const res = await client.post<UserAuthResponse>('/auth/register', {
     ...user,
   })
 
