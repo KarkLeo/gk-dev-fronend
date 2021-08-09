@@ -13,6 +13,7 @@
   box-sizing: border-box;
 
   background-color: rgba(0, 0, 0, 0.8);
+  backdrop-filter: blur(4px);
 }
 
 .body {
@@ -62,4 +63,6 @@
 .content {
   overflow-y: auto;
   min-height: 10rem;
+  padding: var(--spacing-4);
+  box-sizing: border-box;
 }
