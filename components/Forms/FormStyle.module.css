@@ -1,0 +1,17 @@
+.root {
+  padding: var(--spacing-1);
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-row-gap: var(--spacing-1);
+  grid-column-gap: var(--spacing-2);
+}
+
+.controls {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: var(--spacing-2);
+}
