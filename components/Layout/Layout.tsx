@@ -4,7 +4,6 @@ import s from './Layout.module.css'
 import { MetaData } from 'services/static'
 import { DefaultLocalesParams } from 'common/utils/locales-params'
 import Footer from 'components/Footer'
-import AppModals from 'components/AppModals'
 
 interface LayoutProps {
   meta: MetaData
