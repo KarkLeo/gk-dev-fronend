@@ -1,5 +1,6 @@
 export * from './apollo-client'
 export * from './axios-client'
+export * from './re-captcha-service'
 export * as staticServices from './static'
 export * as pathServices from './path'
 export * as publicServices from './public'
