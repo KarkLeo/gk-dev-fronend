@@ -8,6 +8,7 @@ import PhoneList from './components/PhoneList/PhoneList'
 import classNames from 'classnames'
 import EmailList from './components/EmailList/EmailList'
 import SocialList from './components/SocialList/SocialList'
+import AppModals from '../AppModals'
 
 interface FooterProps {
   meta: MetaData
@@ -43,6 +44,7 @@ const Footer: React.FC<FooterProps> = ({ meta }) => {
           <EmailList data={meta.contactSetting.list_of_emails} />
         </div>
       </div>
+      <AppModals />
     </footer>
   )
 }
