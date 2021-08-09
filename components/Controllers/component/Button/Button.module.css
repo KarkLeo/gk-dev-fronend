@@ -25,3 +25,8 @@
 
   background-color: var(--c-main-black);
 }
+
+.button:disabled {
+  pointer-events: none;
+  opacity: 0.4;
+}

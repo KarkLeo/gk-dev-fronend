@@ -51,7 +51,9 @@ export const TextField: React.FC<TextFieldProps> = ({
           id={id}
           placeholder={placeholder}
         />
-        {error && <span className={s.error}>{errorMessage}</span>}
+        <div className={s.error}>
+          {error && <span className={s.errorMessage}>{errorMessage}</span>}
+        </div>
       </label>
     </div>
   )
