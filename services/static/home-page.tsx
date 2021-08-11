@@ -1,6 +1,6 @@
 import { gql } from '@apollo/client'
 import { graphql } from '../'
-import { HomePageContent, HomePageSlider } from './types/home-page.types'
+import { HomePageContent, HomePageSlider } from './types'
 
 export interface HomePageData {
   homePage: {

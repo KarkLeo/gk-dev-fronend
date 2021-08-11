@@ -1,18 +1,14 @@
-import React, { useCallback, useMemo, useState } from 'react'
+import React, { useCallback, useMemo } from 'react'
 import Link from 'next/link'
 import Icon from '../../../Icon'
 import s from './ProductItem.module.css'
 import Counter from 'components/Counter/Counter'
 import { ProductCardType } from 'services/static'
 import { useDispatch } from 'react-redux'
-import {
-  removeCartProductAction,
-  setCartProductCountAction,
-} from '../../../../store/cart'
+import { removeCartProductAction, setCartProductCountAction } from 'store/cart'
 import { useTranslation } from 'next-i18next'
-import createProductLinkFromLocale from '../../../../common/utils/createProductLinkFromLocale'
-import { removeFavoriteProductAction } from '../../../../store/favorite'
-import { PRODUCT_PAGE_URL } from '../../../../route'
+import createProductLinkFromLocale from 'common/utils/createProductLinkFromLocale'
+import { PRODUCT_PAGE_URL } from 'route'
 import EmptyPhoto from '../../../EmptyPhoto/EmptyPhoto'
 
 interface ProductItemProps {

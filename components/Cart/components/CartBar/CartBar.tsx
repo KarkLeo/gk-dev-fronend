@@ -6,9 +6,7 @@ import { useSelector } from 'react-redux'
 import {
   getCartProductsSelector,
   getTotalCartPriceSelector,
-} from '../../../../store/cart/selectors'
-
-const a = [1, 23, 3, 4, 54, 7]
+} from 'store/cart/selectors'
 
 interface CartBarProps {
   outCLick: () => void
