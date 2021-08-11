@@ -26,6 +26,9 @@
   outline: none;
   cursor: pointer;
 }
+.button:disabled {
+  opacity: 0.4;
+}
 
 .field {
   --field-size: 2rem;

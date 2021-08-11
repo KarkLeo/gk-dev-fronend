@@ -1,6 +1,8 @@
 import React from 'react'
 import Icon from '../../../Icon'
 import s from './FavoriteIcon.module.css'
+import { useSelector } from 'react-redux'
+import { getFavoriteProductsCountSelector } from 'store/favorite/selectors'
 
 interface FavoriteIconProps {
   className?: string
@@ -8,10 +10,12 @@ interface FavoriteIconProps {
 }
 
 const FavoriteIcon: React.FC<FavoriteIconProps> = ({ className, onClick }) => {
+  const count = useSelector(getFavoriteProductsCountSelector)
+
   return (
     <button onClick={onClick} className={s.button}>
       <Icon iconId='favorite' className={className} />
-      <div className={s.badge}>6</div>
+      {count > 0 && <div className={s.badge}>{count}</div>}
     </button>
   )
 }

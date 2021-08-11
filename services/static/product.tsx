@@ -33,6 +33,15 @@ const GET_PRODUCT = gql`
         url
         formats
       }
+      locale
+      localizations {
+        locale
+        slug
+        name
+        category {
+          slug
+        }
+      }
     }
   }
 `

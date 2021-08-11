@@ -45,6 +45,15 @@ const GET_HOME_PAGE = gql`
               url
               formats
             }
+            locale
+            localizations {
+              locale
+              slug
+              name
+              category {
+                slug
+              }
+            }
           }
         }
         ... on ComponentHomePageInfoBlock {

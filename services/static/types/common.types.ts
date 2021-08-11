@@ -25,4 +25,13 @@ export interface ProductCardType {
   old_price: number | null
   wholesale_price: number
   photos: DefaultStrapiImage[]
+  locale: string
+  localizations: {
+    locale: string
+    slug: string
+    name: string
+    category: {
+      slug: string
+    }
+  }[]
 }
