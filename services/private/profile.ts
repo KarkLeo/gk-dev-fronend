@@ -1,5 +1,6 @@
 import { gql } from '@apollo/client'
 import { graphql } from '../apollo-client'
+import { UserAddressResponse } from '../public'
 
 export interface ProfileUserData {
   user: {
@@ -8,6 +9,7 @@ export interface ProfileUserData {
     last_name: string
     email: string
     phone_number: string
+    delivery_info: UserAddressResponse[] | null
   }
 }
 
@@ -23,6 +25,16 @@ const PROFILE_USER = gql`
       last_name
       email
       phone_number
+      delivery_info {
+        id
+        address
+        firs_name
+        last_name
+        phone_number
+        is_novaposhta
+        city
+        novaposhta_number
+      }
     }
   }
 `

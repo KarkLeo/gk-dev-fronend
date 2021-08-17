@@ -1,5 +1,6 @@
 import { gql } from '@apollo/client'
 import { graphql } from '../apollo-client'
+import { UserAddressResponse } from '../public'
 
 export interface UpdateUserData {
   updateUser: {
@@ -9,6 +10,7 @@ export interface UpdateUserData {
       last_name: string
       phone_number: string
       email: string
+      delivery_info: UserAddressResponse[] | null
     }
   }
 }
@@ -47,6 +49,16 @@ const UPDATE_USER = gql`
         last_name
         phone_number
         email
+        delivery_info {
+          id
+          address
+          firs_name
+          last_name
+          phone_number
+          is_novaposhta
+          city
+          novaposhta_number
+        }
       }
     }
   }

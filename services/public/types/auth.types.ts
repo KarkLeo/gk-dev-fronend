@@ -1,3 +1,5 @@
+import { UserAddressResponse } from './profile.types'
+
 export interface UserRegister {
   first_name: string
   last_name: string
@@ -25,5 +27,6 @@ export interface UserAuthResponse {
     last_name: string
     phone_number: string
     email: string
+    delivery_info: UserAddressResponse[] | null
   }
 }
