@@ -9,3 +9,28 @@
   outline: none;
   cursor: pointer;
 }
+
+.profile {
+  width: 2rem;
+  height: 2rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 0;
+  margin: 0;
+
+  font-size: 0.8rem;
+  font-weight: 500;
+  line-height: 1;
+  color: var(--c-main-white);
+
+  background-color: var(--c-main-black);
+  border-radius: 50%;
+}
+
+.profile__icon {
+  height: 1.4rem;
+
+  color: var(--c-main-white);
+  fill: var(--c-main-white);
+}
