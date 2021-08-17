@@ -78,3 +78,30 @@ export const phoneValidate = (str: string): ValidateType =>
 
 export const reCaptureValidate = (str: string): ValidateType =>
   validator.isEmpty(str) ? 'Поле не должно быть пустым' : false
+
+export const addressValidate = (str: string): ValidateType =>
+  validator.isEmpty(str)
+    ? 'Поле не должно быть пустым'
+    : !validator.isLength(str, {
+        min: 5,
+        max: 64,
+      })
+    ? 'Поле должно быть от 5 до 64 символов'
+    : false
+
+export const addressValidateWithParam = (
+  str: string,
+  param: boolean
+): ValidateType => param && addressValidate(str)
+
+export const numberValidate = (str: string): ValidateType =>
+  validator.isEmpty(str)
+    ? 'Поле не должно быть пустым'
+    : !validator.isInt(str, { min: 1 })
+    ? 'некорректный номер'
+    : false
+
+export const numberValidateWithParam = (
+  str: string,
+  param: boolean
+): ValidateType => param && numberValidate(str)

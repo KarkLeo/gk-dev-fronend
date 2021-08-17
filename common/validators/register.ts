@@ -1,4 +1,4 @@
-import { UserRegister } from '../../services/public'
+import { UserRegister } from 'services/public'
 import {
   confirmPasswordValidate,
   emailValidate,
