@@ -1,0 +1,30 @@
+.list {
+  display: flex;
+  flex-direction: column;
+  margin: 0;
+  gap: var(--spacing-3);
+
+  list-style: none;
+}
+
+.item {
+  margin: 0;
+  padding: 0;
+}
+
+.link {
+  padding: var(--spacing-1);
+
+  font-size: 1.4rem;
+  font-weight: 600;
+  line-height: 1.6;
+  color: var(--c-main-black);
+  text-decoration: none;
+}
+.link:hover {
+  text-decoration: underline;
+}
+.link_active {
+  opacity: 0.8;
+  pointer-events: none;
+}
