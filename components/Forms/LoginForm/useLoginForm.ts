@@ -1,4 +1,4 @@
-import { useDispatch } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 import { useCallback, useEffect, useMemo, useState } from 'react'
 import { UserLogin } from 'services/public'
 import { loginThunk } from 'store/auth'
@@ -9,7 +9,11 @@ import {
   initLoginError,
   LoginValidateObject,
 } from 'common/validators/login'
-import { openRegisterModalAction } from 'store/modal'
+import {
+  getModalErrorSelector,
+  openRegisterModalAction,
+  setErrorModalAction,
+} from 'store/modal'
 
 const useLoginForm = () => {
   const dispatch = useDispatch()
@@ -27,6 +31,10 @@ const useLoginForm = () => {
     [setData, setError]
   )
 
+  //===== get error =====
+
+  const errorForm = useSelector(getModalErrorSelector)
+
   //===== form checking =====
 
   const validateData = useMemo<LoginValidateObject>(
@@ -40,26 +48,29 @@ const useLoginForm = () => {
 
   const change = useCallback(
     (key: keyof UserLogin) => (value: string) =>
-      setData({ ...data, [key]: value }),
-    [data, setData]
+      setData((prevData) => ({ ...prevData, [key]: value })),
+    [setData]
   )
 
   const focus = useCallback(
-    (key: keyof UserLogin) => () => setError({ ...error, [key]: false }),
-    [error, setError]
+    (key: keyof UserLogin) => () => {
+      dispatch(setErrorModalAction(null))
+      setError((prevError) => ({ ...prevError, [key]: false }))
+    },
+    [setError, dispatch]
   )
 
   const blur = useCallback(
     (key: keyof UserLogin) => () =>
-      setError({ ...error, [key]: validateData[key]() }),
-    [validateData, error, setError]
+      setError((prevError) => ({ ...prevError, [key]: validateData[key]() })),
+    [validateData, setError]
   )
 
   const reCaptcha = useCallback(
     (token: string) => {
-      setData({ ...data, reCapture: token })
+      setData((prevData) => ({ ...prevData, reCapture: token }))
     },
-    [data, setData]
+    [setData]
   )
 
   const send = useCallback(() => {
@@ -74,6 +85,7 @@ const useLoginForm = () => {
     data,
     error,
     isError: !checkForm,
+    errorForm,
     handlers: {
       change,
       focus,

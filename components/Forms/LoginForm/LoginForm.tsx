@@ -5,7 +5,7 @@ import useLoginForm from './useLoginForm'
 import s from '../FormStyle.module.css'
 
 export const LoginForm = () => {
-  const { data, error, isError, handlers } = useLoginForm()
+  const { data, error, isError, errorForm, handlers } = useLoginForm()
 
   return (
     <div className={s.root}>
@@ -31,6 +31,7 @@ export const LoginForm = () => {
           errorMessage={error.password || ''}
         />
       </div>
+      {errorForm && <p>{errorForm}</p>}
       <div className={s.controls}>
         <Button onClick={handlers.send} disabled={isError}>
           Send

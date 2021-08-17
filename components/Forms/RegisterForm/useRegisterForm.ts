@@ -1,4 +1,4 @@
-import { useDispatch } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 import { useCallback, useEffect, useMemo, useState } from 'react'
 import {
   checkRegisterForm,
@@ -9,7 +9,11 @@ import {
 } from 'common/validators/register'
 import { UserRegister } from 'services/public'
 import { registerThunk } from 'store/auth/'
-import { openLoginModalAction } from 'store/modal'
+import {
+  getModalErrorSelector,
+  openLoginModalAction,
+  setErrorModalAction,
+} from 'store/modal'
 
 const useRegisterForm = () => {
   const dispatch = useDispatch()
@@ -27,6 +31,10 @@ const useRegisterForm = () => {
     [setData, setError]
   )
 
+  //===== get error =====
+
+  const errorForm = useSelector(getModalErrorSelector)
+
   //===== form checking =====
 
   const validateData = useMemo<RegisterValidateObject>(
@@ -40,26 +48,29 @@ const useRegisterForm = () => {
 
   const change = useCallback(
     (key: keyof UserRegister) => (value: string) =>
-      setData({ ...data, [key]: value }),
-    [data, setData]
+      setData((prevData) => ({ ...prevData, [key]: value })),
+    [setData]
   )
 
   const focus = useCallback(
-    (key: keyof UserRegister) => () => setError({ ...error, [key]: false }),
-    [error, setError]
+    (key: keyof UserRegister) => () => {
+      dispatch(setErrorModalAction(null))
+      setError((prevError) => ({ ...prevError, [key]: false }))
+    },
+    [setError, dispatch]
   )
 
   const blur = useCallback(
     (key: keyof UserRegister) => () =>
-      setError({ ...error, [key]: validateData[key]() }),
-    [validateData, error, setError]
+      setError((prevError) => ({ ...prevError, [key]: validateData[key]() })),
+    [validateData, setError]
   )
 
   const reCaptcha = useCallback(
     (token: string) => {
-      setData({ ...data, reCapture: token })
+      setData((prevData) => ({ ...prevData, reCapture: token }))
     },
-    [data, setData]
+    [setData]
   )
 
   const send = useCallback(() => {
@@ -74,6 +85,7 @@ const useRegisterForm = () => {
     data,
     error,
     isError: !checkForm,
+    errorForm,
     handlers: {
       change,
       focus,

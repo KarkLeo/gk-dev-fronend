@@ -5,7 +5,7 @@ import useRegisterForm from './useRegisterForm'
 import s from '../FormStyle.module.css'
 
 export const RegisterForm = () => {
-  const { data, error, isError, handlers } = useRegisterForm()
+  const { data, error, isError, errorForm, handlers } = useRegisterForm()
 
   return (
     <div className={s.root}>
@@ -68,6 +68,7 @@ export const RegisterForm = () => {
           errorMessage={error.confirmPassword || ''}
         />
       </div>
+      {errorForm && <p>{errorForm}</p>}
       <div className={s.controls}>
         <Button onClick={handlers.send} disabled={isError}>
           Send
