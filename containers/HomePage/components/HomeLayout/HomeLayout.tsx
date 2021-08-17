@@ -5,6 +5,7 @@ import { DefaultLocalesParams } from 'common/utils/locales-params'
 import Header from 'components/Header'
 import Footer from 'components/Footer'
 import Slider from '../Slider/Slider'
+import useAuth from '../../../../common/hooks/useAuth'
 
 interface HomeLayoutProps {
   meta: MetaData
@@ -18,6 +19,8 @@ const HomeLayout: React.FC<HomeLayoutProps> = ({
   slides,
   children,
 }) => {
+  useAuth()
+
   return (
     <div className={s.root}>
       <div className={s.head}>
