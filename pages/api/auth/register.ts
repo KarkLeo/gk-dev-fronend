@@ -22,7 +22,7 @@ export default async (req: NextApiRequest, res: NextApiResponse<any>) => {
     email: data.email,
     password: data.password,
   })
-  if (!user) return res.status(401).json({ error: 'Email is already exists' })
+  if (!user) return res.status(401).json({ error: 'EMAIL_ALREADY_EXISTS' })
 
   const profile = await privateServices.updateUser(
     {
@@ -33,7 +33,7 @@ export default async (req: NextApiRequest, res: NextApiResponse<any>) => {
     },
     user.register.jwt
   )
-  if (!profile) return res.status(400).json({ error: 'Some error' })
+  if (!profile) return res.status(400).json({ error: 'SOME_ERROR' })
 
   const body: UserAuthResponse = {
     jwt: user.register.jwt,

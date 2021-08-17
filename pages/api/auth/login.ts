@@ -19,7 +19,8 @@ export default async (req: NextApiRequest, res: NextApiResponse<any>) => {
     email: data.email,
     password: data.password,
   })
-  if (!user) return res.status(401).json({ error: 'Email or password is bad' })
+  if (!user)
+    return res.status(401).json({ error: 'EMAIL_OR_PASSWORD_IS_INCORRECT' })
 
   const profile = await privateServices.profileUser(
     {
@@ -27,7 +28,7 @@ export default async (req: NextApiRequest, res: NextApiResponse<any>) => {
     },
     user.login.jwt
   )
-  if (!profile) return res.status(400).json({ error: 'Some error' })
+  if (!profile) return res.status(400).json({ error: 'SOME_ERROR' })
 
   const body: UserAuthResponse = {
     jwt: user.login.jwt,
