@@ -2,6 +2,7 @@ import * as actions from './actions'
 
 export interface AuthState {
   isAuth: boolean
+  isTested: boolean
   userID: string | null
 }
 

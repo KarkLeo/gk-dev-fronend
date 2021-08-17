@@ -14,6 +14,11 @@ export const authReducer = (
         isAuth: true,
         userID: action.userID,
       }
+    case 'AUTH/COMPLETED_TEST':
+      return {
+        ...state,
+        isTested: true,
+      }
     default:
       return state
   }

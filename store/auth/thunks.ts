@@ -1,15 +1,11 @@
 import { AppThunk } from '../types'
-import {
-  UserAuthResponse,
-  UserLogin,
-  UserMe,
-  UserRegister,
-} from 'services/public'
+import { UserAuthResponse, UserLogin, UserRegister } from 'services/public'
 import { publicServices } from 'services'
-import { removeJwt, setJwt } from 'common/jwtService'
-import { setAuthAction } from './actions'
-import { closeModalAction } from '../modal'
+import { removeJwt, setJwt, getJwt } from 'common/jwtService'
+import { cleanAuthAction, completedTestAction, setAuthAction } from './actions'
+import { closeModalAction, ERROR_CODE, setErrorModalAction } from '../modal'
 import { setProfileAction } from '../profile'
+import { getIsTestedSelector } from './selectors'
 
 export const appAuthThunk =
   (auth: UserAuthResponse): AppThunk =>
@@ -22,9 +18,24 @@ export const appAuthThunk =
         last_name: auth.user.last_name,
         phone_number: auth.user.phone_number,
         email: auth.user.email,
+        delivery_info: auth.user.delivery_info,
       })
     )
     dispatch(closeModalAction())
+  }
+
+export const appAuthErrorThunk =
+  (e: any): AppThunk =>
+  (dispatch) => {
+    const error = e?.response?.data?.error
+    if (error && ERROR_CODE.includes(error)) {
+      dispatch(setErrorModalAction(error))
+    } else {
+      dispatch(setErrorModalAction('SOME_ERROR'))
+    }
+    dispatch(cleanAuthAction())
+    dispatch(completedTestAction())
+    removeJwt()
   }
 
 export const registerThunk =
@@ -34,7 +45,7 @@ export const registerThunk =
       const res = await publicServices.register(user)
       dispatch(appAuthThunk(res))
     } catch (e) {
-      console.log(e)
+      dispatch(appAuthErrorThunk(e))
     }
   }
 
@@ -45,18 +56,24 @@ export const loginThunk =
       const res = await publicServices.login(user)
       dispatch(appAuthThunk(res))
     } catch (e) {
-      console.log(e)
+      dispatch(appAuthErrorThunk(e))
     }
   }
 
-export const meThunk =
-  (user: UserMe): AppThunk =>
-  async (dispatch) => {
-    try {
-      const res = await publicServices.me(user)
+export const meThunk = (): AppThunk => async (dispatch, getState) => {
+  try {
+    const token = getJwt()
+    const isTesting = getIsTestedSelector(getState())
+    if (token && !isTesting) {
+      const res = await publicServices.me({
+        jwt: token,
+      })
       dispatch(appAuthThunk(res))
-    } catch (e) {
-      removeJwt()
-      console.log(e)
+    } else if (!token && !isTesting) {
+      dispatch(cleanAuthAction())
     }
+    dispatch(completedTestAction())
+  } catch (e) {
+    dispatch(appAuthErrorThunk(e))
   }
+}

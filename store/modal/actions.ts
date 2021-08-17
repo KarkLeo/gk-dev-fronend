@@ -1,3 +1,5 @@
+import { AuthErrorsType } from './types'
+
 export const openLoginModalAction = () => ({
   type: 'MODAL/OPEN_LOGIN' as const,
 })
@@ -8,4 +10,9 @@ export const openRegisterModalAction = () => ({
 
 export const closeModalAction = () => ({
   type: 'MODAL/CLOSE' as const,
+})
+
+export const setErrorModalAction = (error: AuthErrorsType) => ({
+  type: 'MODAL/SET_ERROR' as const,
+  error,
 })
