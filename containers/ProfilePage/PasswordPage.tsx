@@ -2,7 +2,7 @@ import Layout from 'components/Layout'
 import React from 'react'
 import { MetaData } from 'services/static'
 import ProfileLayout from './components/ProfileLayout/ProfileLayout'
-import { EditPasswordForm } from 'components/Forms/EditProfileForm/EditPasswordForm'
+import { EditPasswordForm } from 'components/Forms/EditPasswordForm/EditPasswordForm'
 
 interface PasswordPageProps {
   meta: MetaData

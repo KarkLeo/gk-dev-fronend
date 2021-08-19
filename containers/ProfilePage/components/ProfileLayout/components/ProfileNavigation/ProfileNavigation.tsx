@@ -1,21 +1,26 @@
 import Link from 'next/link'
-import React from 'react'
+import React, { useCallback } from 'react'
 import { useTranslation } from 'next-i18next'
 import s from './ProfileNavigation.module.css'
 import { useRouter } from 'next/router'
 import classNames from 'classnames'
 import {
-  CONTACT_PAGE_URL,
   PROFILE_ADDRESS_PAGE_URL,
   PROFILE_ORDERS_PAGE_URL,
   PROFILE_PAGE_URL,
   PROFILE_PASSWORD_PAGE_URL,
 } from 'route'
 import { Button } from 'components/Controllers'
+import { useDispatch } from 'react-redux'
+import { logoutThunk } from 'store/auth'
 
 const ProfileNavigation: React.FC = () => {
   const { t } = useTranslation('common')
   const router = useRouter()
+
+  const dispatch = useDispatch()
+
+  const logoutHandler = useCallback(() => dispatch(logoutThunk()), [dispatch])
   return (
     <ul className={s.list}>
       <li className={s.item}>
@@ -63,7 +68,7 @@ const ProfileNavigation: React.FC = () => {
         </Link>
       </li>
       <li className={s.item}>
-        <Button>Logout</Button>
+        <Button onClick={logoutHandler}>Logout</Button>
       </li>
     </ul>
   )

@@ -1,4 +1,4 @@
-import { EditProfileForm } from 'components/Forms/EditPasswordForm/EditProfileForm'
+import { EditProfileForm } from 'components/Forms/EditProfileForm/EditProfileForm'
 import Layout from 'components/Layout'
 import React from 'react'
 import { MetaData } from 'services/static'
