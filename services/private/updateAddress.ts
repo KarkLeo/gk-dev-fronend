@@ -1,8 +1,8 @@
 import { gql } from '@apollo/client'
 import { graphql } from '../apollo-client'
-import { UserAddressResponse } from '../public'
+import { UserAddressResponse, UserAddressEdit } from '../public'
 
-export interface UpdateUserData {
+export interface UpdateUserAddressData {
   updateUser: {
     user: {
       id: string
@@ -15,33 +15,15 @@ export interface UpdateUserData {
   }
 }
 
-export interface UpdateUserVars {
+export interface UpdateUserAddressVars {
+  address: UserAddressEdit[]
   id: string
-  first_name?: string
-  last_name?: string
-  phone_number?: string
-  email?: string
 }
 
-const UPDATE_USER = gql`
-  mutation (
-    $id: ID!
-    $first_name: String
-    $last_name: String
-    $phone_number: String
-    $email: String
-  ) {
+const UPDATE_USER_ADDRESS = gql`
+  mutation ($id: ID!, $address: [editComponentUserDeliveryInfoInput]) {
     updateUser(
-      input: {
-        where: { id: $id }
-        data: {
-          first_name: $first_name
-          last_name: $last_name
-          phone_number: $phone_number
-          email: $email
-          username: $email
-        }
-      }
+      input: { where: { id: $id }, data: { delivery_info: $address } }
     ) {
       user {
         id
@@ -64,13 +46,16 @@ const UPDATE_USER = gql`
   }
 `
 
-export const updateUser = async (
-  variables: UpdateUserVars,
+export const updateUserAddress = async (
+  variables: UpdateUserAddressVars,
   jwt: string
-): Promise<UpdateUserData | undefined> => {
+): Promise<UpdateUserAddressData | undefined> => {
   try {
-    const res = await graphql.mutate<UpdateUserData, UpdateUserVars>({
-      mutation: UPDATE_USER,
+    const res = await graphql.mutate<
+      UpdateUserAddressData,
+      UpdateUserAddressVars
+    >({
+      mutation: UPDATE_USER_ADDRESS,
       context: {
         headers: {
           Authorization: `Bearer ${jwt}`,

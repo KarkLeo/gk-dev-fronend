@@ -28,7 +28,7 @@ const PROFILE_USER = gql`
       delivery_info {
         id
         address
-        firs_name
+        first_name
         last_name
         phone_number
         is_novaposhta

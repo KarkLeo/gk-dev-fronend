@@ -1,3 +1,5 @@
+import { UserAddressResponse } from './address.types'
+
 export interface UserProfile {
   first_name: string
   last_name: string
@@ -11,23 +13,19 @@ export interface UserPassword {
   confirmPassword: string
 }
 
-export interface UserAddress {
-  first_name: string
-  last_name: string
-  phone_number: string
-  is_novaposhta: boolean
-  city: string
-  novaposhta_number: string
-  address: string
+export interface UserProfileResponse {
+  user: {
+    id: string
+    first_name: string
+    last_name: string
+    phone_number: string
+    email: string
+    delivery_info: UserAddressResponse[] | null
+  }
 }
 
-export interface UserAddressResponse {
-  id: string
-  first_name: string
-  last_name: string
-  phone_number: string
-  is_novaposhta: boolean
-  city: string | null
-  novaposhta_number: string | null
-  address: string | null
+export interface UserUpdateRequest {
+  jwt: string
+  userID: string
+  data: UserProfile
 }
