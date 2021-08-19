@@ -5,4 +5,5 @@ export const initialState: ProfileState = {
   last_name: '',
   phone_number: '',
   email: '',
+  delivery_info: null,
 }

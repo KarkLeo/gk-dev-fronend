@@ -1,5 +1,10 @@
 import { AppThunk } from '../types'
-import { UserAuthResponse, UserLogin, UserRegister } from 'services/public'
+import {
+  UserAuthResponse,
+  UserLogin,
+  UserProfileResponse,
+  UserRegister,
+} from 'services/public'
 import { publicServices } from 'services'
 import { removeJwt, setJwt, getJwt } from 'common/jwtService'
 import { cleanAuthAction, completedTestAction, setAuthAction } from './actions'
@@ -8,9 +13,9 @@ import { setProfileAction } from '../profile'
 import { getIsTestedSelector } from './selectors'
 
 export const appAuthThunk =
-  (auth: UserAuthResponse): AppThunk =>
+  (auth: UserAuthResponse | UserProfileResponse): AppThunk =>
   (dispatch) => {
-    setJwt(auth.jwt)
+    'jwt' in auth && setJwt(auth['jwt'] as string)
     dispatch(setAuthAction(auth.user.id))
     dispatch(
       setProfileAction({
@@ -76,4 +81,10 @@ export const meThunk = (): AppThunk => async (dispatch, getState) => {
   } catch (e) {
     dispatch(appAuthErrorThunk(e))
   }
+}
+
+export const logoutThunk = (): AppThunk => (dispatch) => {
+  dispatch(cleanAuthAction())
+  dispatch(completedTestAction())
+  removeJwt()
 }

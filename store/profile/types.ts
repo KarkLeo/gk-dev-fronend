@@ -1,5 +1,5 @@
 import * as actions from './actions'
-import { UserAddressResponse } from '../../services/public'
+import { UserAddressResponse } from 'services/public'
 
 export interface ProfileState {
   first_name: string

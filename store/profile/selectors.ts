@@ -1,5 +1,5 @@
 import { AppState } from '../types'
-import { UserProfile } from '../../services/public'
+import { UserAddressResponse, UserProfile } from '../../services/public'
 
 export const getProfileInitialsSelector = (state: AppState): string | null => {
   const isAuth = state.auth.isAuth
@@ -17,3 +17,9 @@ export const getInitProfileFormSelector = (state: AppState): UserProfile => ({
   email: state.profile.email,
   phone_number: state.profile.phone_number,
 })
+
+export const getProfileAddressSelector = (
+  state: AppState
+): UserAddressResponse[] | null => state.profile.delivery_info
+
+export const getProfileEmailSelector = (state: AppState) => state.profile.email
