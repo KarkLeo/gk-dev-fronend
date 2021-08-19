@@ -1,4 +1,4 @@
-import { UserAddress } from '../../services/public'
+import { UserAddress } from 'services/public'
 import {
   addressValidateWithParam,
   nameValidate,

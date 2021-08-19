@@ -14,7 +14,7 @@ export const nameValidate = (str: string): ValidateType =>
         validator.isAlpha(str, 'ru-RU') ||
         validator.isAlpha(str, 'en-US')
       )
-    ? 'Имя должно содержать только буквы'
+    ? 'Имя должно содержать только буквы на одном языке'
     : false
 
 export const passwordValidate = (str: string): ValidateType =>
