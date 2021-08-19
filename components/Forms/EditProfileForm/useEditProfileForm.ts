@@ -2,7 +2,7 @@ import { useDispatch, useSelector } from 'react-redux'
 import { useCallback, useEffect, useMemo, useState } from 'react'
 import { UserProfile } from 'services/public'
 import { getModalErrorSelector, setErrorModalAction } from 'store/modal'
-import { getInitProfileFormSelector } from 'store/profile'
+import { getInitProfileFormSelector, updateProfileThunk } from 'store/profile'
 import {
   checkProfileForm,
   createProfileValidateObject,
@@ -63,7 +63,7 @@ const useEditProfileForm = () => {
   )
 
   const send = useCallback(() => {
-    console.log(data)
+    dispatch(updateProfileThunk(data))
   }, [data, dispatch])
 
   const cancel = useCallback(() => {

@@ -9,6 +9,7 @@ import {
   initPasswordError,
   PasswordValidateObject,
 } from 'common/validators/password'
+import { updatePasswordThunk } from 'store/profile'
 
 const useEditPasswordForm = () => {
   const dispatch = useDispatch()
@@ -62,7 +63,7 @@ const useEditPasswordForm = () => {
   )
 
   const send = useCallback(() => {
-    console.log(data)
+    dispatch(updatePasswordThunk(data))
   }, [data, dispatch])
 
   const cancel = useCallback(() => {

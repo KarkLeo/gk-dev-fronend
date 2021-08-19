@@ -1,7 +1,5 @@
-import { useDispatch, useSelector } from 'react-redux'
 import { useCallback, useEffect, useMemo, useState } from 'react'
 import { UserAddress } from 'services/public'
-import { getModalErrorSelector, setErrorModalAction } from 'store/modal'
 import {
   AddressValidateObject,
   checkAddressForm,
@@ -10,23 +8,22 @@ import {
   initAddressError,
 } from 'common/validators/address'
 
-const useAddressForm = () => {
-  const dispatch = useDispatch()
-
+const useAddressForm = (
+  initAddress?: UserAddress,
+  onSubmit?: (data: UserAddress) => void,
+  onCancel?: () => void
+) => {
   //===== create local state =====
 
-  const [data, setData] = useState(initAddressData)
+  const [data, setData] = useState(initAddress || initAddressData)
   const [error, setError] = useState(initAddressError)
-
-  //===== get error =====
-  const errorForm = useSelector(getModalErrorSelector)
 
   useEffect(
     () => () => {
-      setData(initAddressData)
+      setData(initAddress || initAddressData)
       setError(initAddressError)
     },
-    [setData, setError]
+    [setData, setError, initAddress]
   )
 
   //===== form checking =====
@@ -47,11 +44,9 @@ const useAddressForm = () => {
   )
 
   const focus = useCallback(
-    (key: keyof UserAddress) => () => {
-      dispatch(setErrorModalAction(null))
-      setError((prevError) => ({ ...prevError, [key]: false }))
-    },
-    [setError, dispatch]
+    (key: keyof UserAddress) => () =>
+      setError((prevError) => ({ ...prevError, [key]: false })),
+    [setError]
   )
 
   const blur = useCallback(
@@ -68,18 +63,17 @@ const useAddressForm = () => {
   }, [setData])
 
   const send = useCallback(() => {
-    console.log(data)
-  }, [data, dispatch])
+    onSubmit && onSubmit(data)
+  }, [data, onSubmit])
 
   const cancel = useCallback(() => {
-    console.log('cancel')
-  }, [dispatch])
+    onCancel && onCancel()
+  }, [onCancel])
 
   return {
     data,
     error,
     isError: !checkForm,
-    errorForm,
     handlers: {
       change,
       focus,
