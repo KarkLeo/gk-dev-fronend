@@ -1,6 +1,7 @@
 import { gql } from '@apollo/client'
 import { ProductDetail } from './types/'
 import { graphql } from '../'
+import { PRODUCT_CART_QUERY } from './query'
 
 export interface ProductData {
   products: ProductDetail[]
@@ -14,34 +15,12 @@ export interface ProductVar {
 const GET_PRODUCT = gql`
   query ($slug: String!, $lang: String!) {
     products(where: { slug: $slug }, locale: $lang) {
-      id
-      name
-      slug
-      category {
-        slug
-      }
-      vendor_code
+      ${PRODUCT_CART_QUERY}
       description
-      price
-      old_price
-      wholesale_price
       box_width
       box_length
       box_height
       weights
-      photos {
-        url
-        formats
-      }
-      locale
-      localizations {
-        locale
-        slug
-        name
-        category {
-          slug
-        }
-      }
     }
   }
 `

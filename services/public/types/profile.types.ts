@@ -1,4 +1,4 @@
-import { UserAddressResponse } from './address.types'
+import { UserResponseTypes } from '../../private/types'
 
 export interface UserProfile {
   first_name: string
@@ -14,14 +14,7 @@ export interface UserPassword {
 }
 
 export interface UserProfileResponse {
-  user: {
-    id: string
-    first_name: string
-    last_name: string
-    phone_number: string
-    email: string
-    delivery_info: UserAddressResponse[] | null
-  }
+  user: UserResponseTypes
 }
 
 export interface UserUpdateRequest {

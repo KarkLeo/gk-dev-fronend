@@ -14,3 +14,13 @@ export const getFavoriteProductsCountSelector = createSelector(
   getFavoriteRecordSelector,
   (record): number => Object.values(record).length
 )
+
+export const getFavoriteProductsCodesSelector = createSelector(
+  getFavoriteRecordSelector,
+  (record): string[] => Object.keys(record)
+)
+
+export const getFavoriteProductsId = createSelector(
+  getFavoriteProductsSelector,
+  (products): string[] => products.map((i) => i.id)
+)

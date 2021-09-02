@@ -10,3 +10,6 @@ export const cleanAuthAction = () => ({
 export const completedTestAction = () => ({
   type: 'AUTH/COMPLETED_TEST' as const,
 })
+export const resetTestAction = () => ({
+  type: 'AUTH/RESET_TEST' as const,
+})

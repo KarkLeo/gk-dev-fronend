@@ -7,8 +7,8 @@ import { useTranslation } from 'next-i18next'
 import createProductLinkFromLocale from 'common/utils/createProductLinkFromLocale'
 import { PRODUCT_PAGE_URL } from 'route'
 import { useDispatch } from 'react-redux'
-import { removeFavoriteProductAction } from 'store/favorite'
 import EmptyPhoto from '../../../EmptyPhoto/EmptyPhoto'
+import { removeFavoriteProductThunk } from 'store/favorite/thunks'
 
 interface ProductItemProps {
   product: ProductCardType
@@ -24,7 +24,7 @@ const ProductItem: React.FC<ProductItemProps> = ({ product }) => {
   )
 
   const removeHandler = useCallback(
-    () => dispatch(removeFavoriteProductAction(product.slug)),
+    () => dispatch(removeFavoriteProductThunk(product.vendor_code)),
     [dispatch, product]
   )
 

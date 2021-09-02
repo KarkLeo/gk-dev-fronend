@@ -19,12 +19,13 @@ interface ProductItemProps {
 const ProductItem: React.FC<ProductItemProps> = ({ product, count }) => {
   const dispatch = useDispatch()
   const setCountHandler = useCallback(
-    (value: number) => dispatch(setCartProductCountAction(product.slug, value)),
+    (value: number) =>
+      dispatch(setCartProductCountAction(product.vendor_code, value)),
     [dispatch, product]
   )
 
   const removeHandler = useCallback(
-    () => dispatch(removeCartProductAction(product.slug)),
+    () => dispatch(removeCartProductAction(product.vendor_code)),
     [dispatch, product]
   )
 
@@ -36,42 +37,57 @@ const ProductItem: React.FC<ProductItemProps> = ({ product, count }) => {
 
   return (
     <div className={s.root}>
-      <Link
-        href={
-          link
-            ? {
-                pathname: PRODUCT_PAGE_URL,
-                query: link.query,
-              }
-            : ''
-        }
-      >
-        <a className={s.card}>
-          {product.photos.length ? (
-            <img
-              src={product.photos[0].formats.thumbnail.url}
-              alt={link?.name || product.name}
-              className={s.card__image}
-            />
-          ) : (
-            <EmptyPhoto />
-          )}
-          <div className={s.cart__content}>
-            <h3 className={s.card__title}>{link?.name || product.name}</h3>
-            <div className={s.priceGroup}>
-              <Counter value={count} onChange={setCountHandler} min={1} />
-              <div className={s.price}>
-                {count > 1 && (
-                  <span className={s.price__init}>{product.price} грн</span>
-                )}
-                <span className={s.price__total}>
-                  {product.price * count} грн
-                </span>
-              </div>
+      <div className={s.card}>
+        <Link
+          href={
+            link
+              ? {
+                  pathname: PRODUCT_PAGE_URL,
+                  query: link.query,
+                }
+              : ''
+          }
+        >
+          <a className={s.card__imageLink}>
+            {product.photos.length ? (
+              <img
+                src={product.photos[0].formats.thumbnail.url}
+                alt={link?.name || product.name}
+                className={s.card__image}
+              />
+            ) : (
+              <EmptyPhoto className={s.card__image} />
+            )}
+          </a>
+        </Link>
+        <div className={s.cart__content}>
+          <Link
+            href={
+              link
+                ? {
+                    pathname: PRODUCT_PAGE_URL,
+                    query: link.query,
+                  }
+                : ''
+            }
+          >
+            <a className={s.card__titleLink}>
+              <h3 className={s.card__title}>{link?.name || product.name}</h3>
+            </a>
+          </Link>
+          <div className={s.priceGroup}>
+            <Counter value={count} onChange={setCountHandler} min={1} />
+            <div className={s.price}>
+              {count > 1 && (
+                <span className={s.price__init}>{product.price} грн</span>
+              )}
+              <span className={s.price__total}>
+                {product.price * count} грн
+              </span>
             </div>
           </div>
-        </a>
-      </Link>
+        </div>
+      </div>
       <button className={s.button} onClick={removeHandler}>
         <Icon iconId='close' className={s.button__icon} />
       </button>

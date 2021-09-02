@@ -6,15 +6,22 @@ import {
   UserRegister,
 } from 'services/public'
 import { publicServices } from 'services'
-import { removeJwt, setJwt, getJwt } from 'common/jwtService'
+import { getJwt, removeJwt, setJwt } from 'common/jwtService'
 import { cleanAuthAction, completedTestAction, setAuthAction } from './actions'
 import { closeModalAction, ERROR_CODE, setErrorModalAction } from '../modal'
 import { setProfileAction } from '../profile'
 import { getIsTestedSelector } from './selectors'
+import {
+  addFavoriteProductsAction,
+  cleanFavoriteAction,
+  getFavoriteProductsCodesSelector,
+  sendFavoriteThunk,
+} from '../favorite'
+import { cleanCartAction } from '../cart'
 
 export const appAuthThunk =
   (auth: UserAuthResponse | UserProfileResponse): AppThunk =>
-  (dispatch) => {
+  (dispatch, getState) => {
     'jwt' in auth && setJwt(auth['jwt'] as string)
     dispatch(setAuthAction(auth.user.id))
     dispatch(
@@ -24,9 +31,21 @@ export const appAuthThunk =
         phone_number: auth.user.phone_number,
         email: auth.user.email,
         delivery_info: auth.user.delivery_info,
+        orders: auth.user.orders,
       })
     )
     dispatch(closeModalAction())
+    const favorite = getFavoriteProductsCodesSelector(getState())
+
+    dispatch(addFavoriteProductsAction(auth.user.favorites))
+    const isNew: boolean = favorite.length
+      ? favorite.reduce(
+          (res, code) =>
+            auth.user.favorites.every((i) => i.vendor_code !== code) || res,
+          false as boolean
+        )
+      : false
+    if (isNew) dispatch(sendFavoriteThunk())
   }
 
 export const appAuthErrorThunk =
@@ -86,5 +105,7 @@ export const meThunk = (): AppThunk => async (dispatch, getState) => {
 export const logoutThunk = (): AppThunk => (dispatch) => {
   dispatch(cleanAuthAction())
   dispatch(completedTestAction())
+  dispatch(cleanFavoriteAction())
+  dispatch(cleanCartAction())
   removeJwt()
 }

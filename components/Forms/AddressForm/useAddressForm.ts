@@ -7,24 +7,19 @@ import {
   initAddressData,
   initAddressError,
 } from 'common/validators/address'
+import { AddressFormProps } from './AddressForm'
 
-const useAddressForm = (
-  initAddress?: UserAddress,
-  onSubmit?: (data: UserAddress) => void,
-  onCancel?: () => void
-) => {
+const useAddressForm = (props: AddressFormProps) => {
+  const { initAddress, autoForm, onSubmit, onError, onCancel } = props
   //===== create local state =====
 
   const [data, setData] = useState(initAddress || initAddressData)
   const [error, setError] = useState(initAddressError)
 
-  useEffect(
-    () => () => {
-      setData(initAddress || initAddressData)
-      setError(initAddressError)
-    },
-    [setData, setError, initAddress]
-  )
+  useEffect(() => {
+    setData(initAddress || initAddressData)
+    setError(initAddressError)
+  }, [setData, setError, initAddress])
 
   //===== form checking =====
 
@@ -69,6 +64,16 @@ const useAddressForm = (
   const cancel = useCallback(() => {
     onCancel && onCancel()
   }, [onCancel])
+
+  //===== Auto form =====
+
+  useEffect(() => {
+    if (autoForm && onSubmit) onSubmit(data)
+  }, [autoForm, onSubmit, data])
+
+  useEffect(() => {
+    if (autoForm && onError) onError(!checkForm)
+  }, [autoForm, onError, checkForm])
 
   return {
     data,

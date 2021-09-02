@@ -1,16 +1,10 @@
 import { gql } from '@apollo/client'
 import { graphql } from '../apollo-client'
-import { UserAddressResponse } from '../public'
+import { USER_QUERY } from './query'
+import { UserResponseTypes } from './types'
 
 export interface ProfileUserData {
-  user: {
-    id: string
-    first_name: string
-    last_name: string
-    email: string
-    phone_number: string
-    delivery_info: UserAddressResponse[] | null
-  }
+  user: UserResponseTypes
 }
 
 export interface ProfileUserVars {
@@ -20,21 +14,7 @@ export interface ProfileUserVars {
 const PROFILE_USER = gql`
   query ($id: ID!) {
     user(id: $id) {
-      id
-      first_name
-      last_name
-      email
-      phone_number
-      delivery_info {
-        id
-        address
-        first_name
-        last_name
-        phone_number
-        is_novaposhta
-        city
-        novaposhta_number
-      }
+      ${USER_QUERY}
     }
   }
 `

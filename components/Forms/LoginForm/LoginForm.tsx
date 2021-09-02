@@ -4,8 +4,12 @@ import ReCaptcha from '../../ReCature/ReCature'
 import useLoginForm from './useLoginForm'
 import s from '../FormStyle.module.css'
 
-export const LoginForm = () => {
-  const { data, error, isError, errorForm, handlers } = useLoginForm()
+interface LoginFormProps {
+  toRegister: () => void
+}
+
+export const LoginForm: React.FC<LoginFormProps> = ({ toRegister }) => {
+  const { data, error, isError, errorForm, handlers } = useLoginForm(toRegister)
 
   return (
     <div className={s.root}>
@@ -38,7 +42,7 @@ export const LoginForm = () => {
         </Button>
         <Button onClick={handlers.toRegister}>Register</Button>
       </div>
-      <ReCaptcha onChange={handlers.reCaptcha} />
+      <ReCaptcha key={errorForm} onChange={handlers.reCaptcha} />
     </div>
   )
 }

@@ -1,17 +1,11 @@
 import { gql } from '@apollo/client'
 import { graphql } from '../apollo-client'
-import { UserAddressResponse } from '../public'
+import { USER_QUERY } from './query'
+import { UserResponseTypes } from './types'
 
 export interface UpdateUserPasswordData {
   updateUser: {
-    user: {
-      id: string
-      first_name: string
-      last_name: string
-      phone_number: string
-      email: string
-      delivery_info: UserAddressResponse[] | null
-    }
+    user: UserResponseTypes
   }
 }
 
@@ -24,21 +18,7 @@ const UPDATE_USER_PASSWORD = gql`
   mutation ($id: ID!, $password: String) {
     updateUser(input: { where: { id: $id }, data: { password: $password } }) {
       user {
-        id
-        first_name
-        last_name
-        phone_number
-        email
-        delivery_info {
-          id
-          address
-          first_name
-          last_name
-          phone_number
-          is_novaposhta
-          city
-          novaposhta_number
-        }
+        ${USER_QUERY}
       }
     }
   }

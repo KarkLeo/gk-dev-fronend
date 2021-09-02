@@ -5,16 +5,17 @@ import { GetStaticProps } from 'next'
 import usePrivateRoute from 'common/hooks/usePrivateRoute'
 import { staticServices } from 'services'
 import { MetaData } from 'services/static'
-import ProfilePage from 'containers/ProfilePage'
+import CheckoutPage from '../containers/CheckoutPage'
+import useCheckoutRoute from '../common/hooks/useCheckoutRoute'
 
-interface ProfileProps {
+interface CheckoutProps {
   meta: MetaData
 }
 
-const Profile: React.FC<ProfileProps> = ({ meta }) => {
-  const loading = usePrivateRoute()
+const Checkout: React.FC<CheckoutProps> = ({ meta }) => {
+  useCheckoutRoute()
 
-  return loading ? <h1>loading ...</h1> : <ProfilePage meta={meta} />
+  return <CheckoutPage meta={meta} />
 }
 
 //===== fetching data =====
@@ -36,4 +37,4 @@ export const getStaticProps: GetStaticProps = async ({ locale }) => {
   }
 }
 
-export default Profile
+export default Checkout

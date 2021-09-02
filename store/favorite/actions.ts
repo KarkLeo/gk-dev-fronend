@@ -1,13 +1,18 @@
-import { ProductCardType } from '../../services/static'
+import { ProductCardType } from 'services/static'
 
 export const addFavoriteProductAction = (product: ProductCardType) => ({
   type: 'FAVORITE/ADD_FAVORITE_PRODUCT' as const,
   product,
 })
 
-export const removeFavoriteProductAction = (slug: string) => ({
+export const addFavoriteProductsAction = (products: ProductCardType[]) => ({
+  type: 'FAVORITE/ADD_FAVORITE_PRODUCTS' as const,
+  products,
+})
+
+export const removeFavoriteProductAction = (code: string) => ({
   type: 'FAVORITE/REMOVE_FAVORITE_PRODUCT' as const,
-  slug,
+  code,
 })
 
 export const cleanFavoriteAction = () => ({

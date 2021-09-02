@@ -1,4 +1,5 @@
 import { ProductCardType } from 'services/static'
+import { OrderCartProductResponse } from '../../services/public/types/orders.types'
 
 export interface ProductLinkType {
   name: string
@@ -14,7 +15,7 @@ export interface ProductLinkType {
  * @param lang
  */
 const createProductLinkFromLocale = (
-  product: ProductCardType,
+  product: ProductCardType | OrderCartProductResponse,
   lang: string
 ): ProductLinkType | null => {
   if (product.locale === lang)

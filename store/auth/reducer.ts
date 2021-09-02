@@ -19,6 +19,8 @@ export const authReducer = (
         ...state,
         isTested: true,
       }
+    case 'AUTH/RESET_TEST':
+      return { ...state, isTested: false }
     default:
       return state
   }

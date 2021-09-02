@@ -15,6 +15,8 @@ export const profileReducer = (
         last_name: '',
         email: '',
         phone_number: '',
+        delivery_info: null,
+        orders: [],
       }
     default:
       return state

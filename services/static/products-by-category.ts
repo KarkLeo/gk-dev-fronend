@@ -1,6 +1,7 @@
 import { gql } from '@apollo/client'
 import { graphql } from '../'
 import { ProductCardType } from './types'
+import { PRODUCT_CART_QUERY } from './query'
 
 //===== PRODUCTS BY CATEGORY =====
 
@@ -24,29 +25,7 @@ const GET_PRODUCTS_BY_CATEGORY = gql`
       limit: $limit
       start: $start
     ) {
-      id
-      slug
-      name
-      category {
-        slug
-      }
-      vendor_code
-      price
-      old_price
-      wholesale_price
-      photos {
-        url
-        formats
-      }
-      locale
-      localizations {
-        locale
-        slug
-        name
-        category {
-          slug
-        }
-      }
+      ${PRODUCT_CART_QUERY}
     }
   }
 `

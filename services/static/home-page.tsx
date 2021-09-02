@@ -1,6 +1,7 @@
 import { gql } from '@apollo/client'
 import { graphql } from '../'
 import { HomePageContent, HomePageSlider } from './types'
+import { PRODUCT_CART_QUERY } from './query'
 
 export interface HomePageData {
   homePage: {
@@ -31,29 +32,7 @@ const GET_HOME_PAGE = gql`
           id
           title
           products {
-            id
-            slug
-            category {
-              slug
-            }
-            name
-            vendor_code
-            price
-            old_price
-            wholesale_price
-            photos {
-              url
-              formats
-            }
-            locale
-            localizations {
-              locale
-              slug
-              name
-              category {
-                slug
-              }
-            }
+            ${PRODUCT_CART_QUERY}
           }
         }
         ... on ComponentHomePageInfoBlock {

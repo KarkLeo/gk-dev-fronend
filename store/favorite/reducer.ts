@@ -9,10 +9,21 @@ export const favoriteReducer = (
     case 'FAVORITE/ADD_FAVORITE_PRODUCT':
       return {
         ...state,
-        products: { ...state.products, [action.product.slug]: action.product },
+        products: {
+          ...state.products,
+          [action.product.vendor_code]: action.product,
+        },
+      }
+    case 'FAVORITE/ADD_FAVORITE_PRODUCTS':
+      return {
+        ...state,
+        products: action.products.reduce(
+          (res, i) => ({ ...res, [i.vendor_code]: i }),
+          state.products
+        ),
       }
     case 'FAVORITE/REMOVE_FAVORITE_PRODUCT': {
-      const { [action.slug]: _, ...products } = state.products
+      const { [action.code]: _, ...products } = state.products
       return { ...state, products: products }
     }
     case 'FAVORITE/CLEAN_FAVORITE':

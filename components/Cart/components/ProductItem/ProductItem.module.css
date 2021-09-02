@@ -13,6 +13,10 @@
   gap: var(--spacing-3);
 }
 
+.card__imageLink {
+  display: block;
+}
+
 .card__image {
   --image-size: 6rem;
 
@@ -21,6 +25,10 @@
 
   object-fit: cover;
   object-position: center;
+}
+
+.card__titleLink {
+  display: block;
 }
 
 .card__title {

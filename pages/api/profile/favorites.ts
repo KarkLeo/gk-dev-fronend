@@ -1,19 +1,17 @@
 import { NextApiRequest, NextApiResponse } from 'next'
 import {
-  UserAddressUpdateRequest,
-  UserAuthResponse,
-  UserMe,
+  UserFavoritesUpdateRequest,
   UserProfileResponse,
 } from 'services/public'
 import { privateServices } from 'services'
 
 export default async (req: NextApiRequest, res: NextApiResponse<any>) => {
-  const { jwt, userID, address } = req.body as UserAddressUpdateRequest
+  const { jwt, userID, favorites } = req.body as UserFavoritesUpdateRequest
 
-  const user = await privateServices.updateUserAddress(
+  const user = await privateServices.updateUserFavorites(
     {
       id: userID,
-      address,
+      favorites,
     },
     jwt
   )

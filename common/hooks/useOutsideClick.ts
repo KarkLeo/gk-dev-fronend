@@ -2,7 +2,7 @@ import React, { useEffect } from 'react'
 
 type UseOutsideClickT = (
   root: React.RefObject<HTMLDivElement>,
-  callback: () => void
+  callback?: () => void
 ) => void
 /**
  * Create outside click callback
@@ -13,7 +13,7 @@ const useOutsideClick: UseOutsideClickT = (root, callback) => {
   useEffect(() => {
     const handleClickOutside = (event: Event) => {
       if (root.current && !root.current.contains(event.target as Node)) {
-        callback()
+        callback && callback()
       }
     }
 

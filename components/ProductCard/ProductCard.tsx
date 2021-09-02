@@ -6,9 +6,11 @@ import Link from 'next/link'
 import { PRODUCT_PAGE_URL } from 'route'
 import Icon from 'components/Icon'
 import { useDispatch, useSelector } from 'react-redux'
-import { addFavoriteProductAction } from '../../store/favorite'
-import { getFavoriteRecordSelector } from '../../store/favorite/selectors'
-import { addCartProductAction } from '../../store/cart'
+import {
+  addFavoriteProductThunk,
+  getFavoriteRecordSelector,
+} from 'store/favorite'
+import { addCartProductAction } from 'store/cart'
 
 interface ProductCardProps {
   data: ProductCardType
@@ -18,7 +20,7 @@ const ProductCard: React.FC<ProductCardProps> = ({ data }) => {
   const dispatch = useDispatch()
 
   const addToFavoriteHandler = useCallback(
-    () => dispatch(addFavoriteProductAction(data)),
+    () => dispatch(addFavoriteProductThunk(data)),
     [dispatch]
   )
 
@@ -29,7 +31,10 @@ const ProductCard: React.FC<ProductCardProps> = ({ data }) => {
 
   const record = useSelector(getFavoriteRecordSelector)
 
-  const isFavorite = useMemo(() => Boolean(record[data.slug]), [record, data])
+  const isFavorite = useMemo(
+    () => Boolean(record[data.vendor_code]),
+    [record, data]
+  )
 
   return (
     <div className={s.wrap}>

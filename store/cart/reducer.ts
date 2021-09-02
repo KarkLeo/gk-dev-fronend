@@ -11,16 +11,16 @@ export const cartReducer = (
         ...state,
         products: {
           ...state.products,
-          [action.product.slug]: {
+          [action.product.vendor_code]: {
             product: action.product,
-            count: state.products[action.product.slug]
-              ? state.products[action.product.slug].count + 1
+            count: state.products[action.product.vendor_code]
+              ? state.products[action.product.vendor_code].count + 1
               : 1,
           },
         },
       }
     case 'CART/REMOVE_CART_PRODUCT': {
-      const { [action.slug]: _, ...products } = state.products
+      const { [action.vendor_code]: _, ...products } = state.products
       return { ...state, products: products }
     }
     case 'CART/SET_COUNT_CART_PRODUCT':
@@ -28,14 +28,42 @@ export const cartReducer = (
         ...state,
         products: {
           ...state.products,
-          [action.slug]: {
-            ...state.products[action.slug],
+          [action.vendor_code]: {
+            ...state.products[action.vendor_code],
             count: action.count,
           },
         },
       }
     case 'CART/CLEAN_CART':
-      return { products: {} }
+      return {
+        products: {},
+        deliveryInfo: {
+          addressID: null,
+          newAddress: null,
+        },
+        description: '',
+      }
+    case 'CART/CHANGE_ORDER_ADDRESS_ID':
+      return {
+        ...state,
+        deliveryInfo: {
+          ...state.deliveryInfo,
+          addressID: action.addressID,
+        },
+      }
+    case 'CART/SET_NEW_ORDER_ADDRESS':
+      return {
+        ...state,
+        deliveryInfo: {
+          ...state.deliveryInfo,
+          newAddress: action.address,
+        },
+      }
+    case 'CART/SET_ORDER_DESCRIPTION':
+      return {
+        ...state,
+        description: action.description,
+      }
     default:
       return state
   }

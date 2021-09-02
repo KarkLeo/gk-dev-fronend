@@ -4,22 +4,16 @@ import useAddressForm from './useAddressForm'
 import s from '../FormStyle.module.css'
 import { UserAddress } from 'services/public'
 
-interface AddressFormProps {
+export interface AddressFormProps {
   initAddress?: UserAddress
   onSubmit?: (data: UserAddress) => void
   onCancel?: () => void
+  autoForm?: boolean
+  onError?: (isError: boolean) => void
 }
 
-export const AddressForm: React.FC<AddressFormProps> = ({
-  initAddress,
-  onCancel,
-  onSubmit,
-}) => {
-  const { data, error, isError, handlers } = useAddressForm(
-    initAddress,
-    onSubmit,
-    onCancel
-  )
+export const AddressForm: React.FC<AddressFormProps> = (props) => {
+  const { data, error, isError, handlers } = useAddressForm(props)
 
   return (
     <div className={s.root}>
@@ -95,12 +89,14 @@ export const AddressForm: React.FC<AddressFormProps> = ({
           />
         )}
       </div>
-      <div className={s.controls}>
-        <Button onClick={handlers.send} disabled={isError}>
-          Send
-        </Button>
-        <Button onClick={handlers.cancel}>Login</Button>
-      </div>
+      {!props.autoForm && (
+        <div className={s.controls}>
+          <Button onClick={handlers.send} disabled={isError}>
+            Send
+          </Button>
+          <Button onClick={handlers.cancel}>Cancel</Button>
+        </div>
+      )}
     </div>
   )
 }

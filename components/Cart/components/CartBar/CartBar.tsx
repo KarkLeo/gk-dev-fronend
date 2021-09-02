@@ -1,3 +1,4 @@
+import Link from 'next/link'
 import React, { useRef } from 'react'
 import useOutsideClick from 'common/hooks/useOutsideClick'
 import ProductItem from '../ProductItem/ProductItem'
@@ -7,9 +8,10 @@ import {
   getCartProductsSelector,
   getTotalCartPriceSelector,
 } from 'store/cart/selectors'
+import { CHECKOUT_PAGE_URL } from 'route'
 
 interface CartBarProps {
-  outCLick: () => void
+  outCLick?: () => void
 }
 
 const CartBar: React.FC<CartBarProps> = ({ outCLick }) => {
@@ -31,6 +33,11 @@ const CartBar: React.FC<CartBarProps> = ({ outCLick }) => {
           ))
         : 'Ваша корзина пуста'}
       {total > 0 && <div className={s.total}>{total}</div>}
+      {products.length > 0 && (
+        <Link href={CHECKOUT_PAGE_URL}>
+          <a className={s.total}>Checkout</a>
+        </Link>
+      )}
     </div>
   )
 }

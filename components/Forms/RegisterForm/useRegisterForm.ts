@@ -15,7 +15,7 @@ import {
   setErrorModalAction,
 } from 'store/modal'
 
-const useRegisterForm = () => {
+const useRegisterForm = (toLogin: () => void) => {
   const dispatch = useDispatch()
 
   //===== create local state =====
@@ -77,9 +77,9 @@ const useRegisterForm = () => {
     dispatch(registerThunk(data))
   }, [data, dispatch])
 
-  const toLogin = useCallback(() => {
-    dispatch(openLoginModalAction())
-  }, [dispatch])
+  const toLoginHandler = useCallback(() => {
+    toLogin()
+  }, [toLogin])
 
   return {
     data,
@@ -92,7 +92,7 @@ const useRegisterForm = () => {
       blur,
       reCaptcha,
       send,
-      toLogin,
+      toLogin: toLoginHandler,
     },
   }
 }
