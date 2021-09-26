@@ -18,6 +18,7 @@ interface ImageSliderProps {
 const ImageSlider: React.FC<ImageSliderProps> = ({ data }) => {
   const [thumbsSwiper, setThumbsSwiper] = useState<any | null>(null)
   const isDesktop = useMediaQuery(desktopOnly)
+
   return (
     <div className={s.root}>
       <div className={s.thumbSlide}>
@@ -51,7 +52,10 @@ const ImageSlider: React.FC<ImageSliderProps> = ({ data }) => {
             {data.map((i) => (
               <SwiperSlide key={i.url}>
                 <div className={s.image}>
-                  <img src={i.formats.medium.url} alt='' />
+                  <img
+                    src={i.formats?.medium?.url || i.formats?.small?.url}
+                    alt=''
+                  />
                 </div>
               </SwiperSlide>
             ))}
