@@ -44,7 +44,13 @@ const Slider: React.FC<SliderProps> = ({ slides }) => {
               </div>
 
               <Image
-                src={i.image ? i.image.formats.large.url : ''}
+                src={
+                  i.image
+                    ? i.image.formats?.large?.url ||
+                      i.image.formats?.medium?.url ||
+                      i.image.formats?.small?.url
+                    : ''
+                }
                 alt={i.title}
                 layout='fill'
                 className={s.slide__image}
