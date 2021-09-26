@@ -10,6 +10,7 @@ import nextI18NextConfig from 'next-i18next.config.js'
 import { useStore } from 'store/store'
 import { Provider } from 'react-redux'
 import { Sprite } from 'components/Icon'
+import React from 'react'
 
 function MyApp({ Component, pageProps }: AppProps) {
   const store = useStore(pageProps.initialReduxState)
