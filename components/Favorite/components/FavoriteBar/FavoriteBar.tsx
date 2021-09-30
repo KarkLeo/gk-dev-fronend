@@ -6,12 +6,12 @@ import { useSelector } from 'react-redux'
 import { getFavoriteProductsSelector } from 'store/favorite/selectors'
 
 interface FavoriteBarProps {
-  outCLick: () => void
+  clickOutside: () => void
 }
 
-const FavoriteBar: React.FC<FavoriteBarProps> = ({ outCLick }) => {
+const FavoriteBar: React.FC<FavoriteBarProps> = ({ clickOutside }) => {
   const rootBarRef = useRef(null)
-  useOutsideClick(rootBarRef, outCLick)
+  useOutsideClick(rootBarRef, clickOutside)
 
   const products = useSelector(getFavoriteProductsSelector)
   return (

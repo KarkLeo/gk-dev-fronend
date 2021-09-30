@@ -3,6 +3,7 @@ import { Button, TextField } from '../../Controllers'
 import ReCaptcha from '../../ReCature/ReCature'
 import useLoginForm from './useLoginForm'
 import s from '../FormStyle.module.css'
+import { useTranslation } from 'next-i18next'
 
 interface LoginFormProps {
   toRegister: () => void
@@ -10,6 +11,7 @@ interface LoginFormProps {
 
 export const LoginForm: React.FC<LoginFormProps> = ({ toRegister }) => {
   const { data, error, isError, errorForm, handlers } = useLoginForm(toRegister)
+  const { t } = useTranslation('common')
 
   return (
     <div className={s.root}>
@@ -18,29 +20,35 @@ export const LoginForm: React.FC<LoginFormProps> = ({ toRegister }) => {
           value={data.email}
           onChange={handlers.change('email')}
           type='email'
-          label={'Email'}
+          label={t('forms.fields.email')}
           onFocus={handlers.focus('email')}
           onBlur={handlers.blur('email')}
           error={Boolean(error.email)}
-          errorMessage={error.email || ''}
+          errorMessage={
+            error.email ? t(('forms.errors.' + error.email) as any) : ''
+          }
         />
         <TextField
           value={data.password}
           onChange={handlers.change('password')}
           type='password'
-          label={'Password'}
+          label={t('forms.fields.password')}
           onFocus={handlers.focus('password')}
           onBlur={handlers.blur('password')}
           error={Boolean(error.password)}
-          errorMessage={error.password || ''}
+          errorMessage={
+            error.password ? t(('forms.errors.' + error.password) as any) : ''
+          }
         />
       </div>
       {errorForm && <p>{errorForm}</p>}
       <div className={s.controls}>
         <Button onClick={handlers.send} disabled={isError}>
-          Send
+          {t('forms.buttons.send')}
         </Button>
-        <Button onClick={handlers.toRegister}>Register</Button>
+        <Button onClick={handlers.toRegister}>
+          {t('forms.buttons.register')}
+        </Button>
       </div>
       <ReCaptcha key={errorForm} onChange={handlers.reCaptcha} />
     </div>

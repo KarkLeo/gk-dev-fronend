@@ -6,7 +6,6 @@ import {
   getInitProfileAddressSelector,
   getProfileAddressSelector,
 } from '../profile'
-import { bool } from 'prop-types'
 
 export const getCartRecordSelector = (state: AppState) => state.cart.products
 

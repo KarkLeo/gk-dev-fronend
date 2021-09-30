@@ -1,30 +1,42 @@
 import { ValidateType } from './types'
 import validator from 'validator'
 
+//===== Constants from i18n =====
+const NOT_EMPTY = 'not_empty'
+const FROM_3_TO_12 = 'from_3_to_12'
+const FROM_6_TO_20 = 'from_6_to_20'
+const FROM_5_TO_64 = 'from_5_to_64'
+const ONE_LANGUAGE_NAME = 'one_language_name'
+const PASSWORD_RULE = 'password_rule'
+const PASSWORD_MISMATCH = 'password_mismatch'
+const INVALID_EMAIL = 'invalid_email'
+const INVALID_PHONE_NUMBER = 'invalid_phone_number'
+const INVALID_NUMBER = 'invalid_number'
+
 export const nameValidate = (str: string): ValidateType =>
   validator.isEmpty(str)
-    ? 'Поле не должно быть пустым'
+    ? NOT_EMPTY
     : !validator.isLength(str, {
         min: 3,
         max: 12,
       })
-    ? 'Поле должно быть от 3 до 12 символов'
+    ? FROM_3_TO_12
     : !(
         validator.isAlpha(str, 'uk-UA') ||
         validator.isAlpha(str, 'ru-RU') ||
         validator.isAlpha(str, 'en-US')
       )
-    ? 'Имя должно содержать только буквы на одном языке'
+    ? ONE_LANGUAGE_NAME
     : false
 
 export const passwordValidate = (str: string): ValidateType =>
   validator.isEmpty(str)
-    ? 'Поле не может быть пустым'
+    ? NOT_EMPTY
     : !validator.isLength(str, {
         min: 6,
         max: 20,
       })
-    ? 'Поле должно быть от 6 до 20 символов'
+    ? FROM_6_TO_20
     : !validator.isStrongPassword(str, {
         minLength: 6,
         minLowercase: 1,
@@ -39,17 +51,17 @@ export const passwordValidate = (str: string): ValidateType =>
         pointsForContainingNumber: 10,
         pointsForContainingSymbol: 10,
       })
-    ? 'Пароль должен быть денее 6 символов, при этом минимум 1 большая буква, 1 маленькая, 1 цифра и символ'
+    ? PASSWORD_RULE
     : false
 
 export const passwordSimpleValidate = (str: string): ValidateType =>
   validator.isEmpty(str)
-    ? 'Поле не может быть пустым'
+    ? NOT_EMPTY
     : !validator.isLength(str, {
         min: 6,
         max: 20,
       })
-    ? 'Поле должно быть от 6 до 20 символов'
+    ? FROM_6_TO_20
     : false
 
 export const confirmPasswordValidate = (
@@ -57,36 +69,36 @@ export const confirmPasswordValidate = (
   password: string
 ): ValidateType =>
   validator.isEmpty(str)
-    ? 'Поле не может быть пустым'
+    ? NOT_EMPTY
     : str !== password
-    ? 'пароли не совпадают'
+    ? PASSWORD_MISMATCH
     : false
 
 export const emailValidate = (str: string): ValidateType =>
   validator.isEmpty(str)
-    ? 'Поле не должно быть пустым'
+    ? NOT_EMPTY
     : !validator.isEmail(str)
-    ? 'некорректный емаил'
+    ? INVALID_EMAIL
     : false
 
 export const phoneValidate = (str: string): ValidateType =>
   validator.isEmpty(str)
-    ? 'Поле не должно быть пустым'
+    ? NOT_EMPTY
     : !validator.isMobilePhone(str)
-    ? 'некорректный телефон'
+    ? INVALID_PHONE_NUMBER
     : false
 
 export const reCaptureValidate = (str: string): ValidateType =>
-  validator.isEmpty(str) ? 'Поле не должно быть пустым' : false
+  validator.isEmpty(str) ? NOT_EMPTY : false
 
 export const addressValidate = (str: string): ValidateType =>
   validator.isEmpty(str)
-    ? 'Поле не должно быть пустым'
+    ? NOT_EMPTY
     : !validator.isLength(str, {
         min: 5,
         max: 64,
       })
-    ? 'Поле должно быть от 5 до 64 символов'
+    ? FROM_5_TO_64
     : false
 
 export const addressValidateWithParam = (
@@ -96,9 +108,9 @@ export const addressValidateWithParam = (
 
 export const numberValidate = (str: string): ValidateType =>
   validator.isEmpty(str)
-    ? 'Поле не должно быть пустым'
+    ? NOT_EMPTY
     : !validator.isInt(str, { min: 1 })
-    ? 'некорректный номер'
+    ? INVALID_NUMBER
     : false
 
 export const numberValidateWithParam = (

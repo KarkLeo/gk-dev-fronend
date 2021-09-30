@@ -6,6 +6,4 @@ module.exports = {
     locales: ['ru', 'uk', 'en'],
   },
   localePath: path.resolve('./locales'),
-  serializeConfig: false,
-  strictMode: false,
 }

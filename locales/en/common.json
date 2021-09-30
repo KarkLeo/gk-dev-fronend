@@ -15,5 +15,40 @@
   "productPage": {
     "art": "art.",
     "back": "back"
+  },
+  "forms": {
+    "fields": {
+      "email": "E-mail",
+      "password": "Password",
+      "old_password": "Old password",
+      "new_password": "New password",
+      "phone_number": "Phone number",
+      "first_name": "Name",
+      "last_name": "Last name",
+      "confirm_password": "Repeat password",
+      "city": "City",
+      "novaposhta_number": "New post office",
+      "is_novaposhta": "Sending by new mail",
+      "address": "Address"
+    },
+    "buttons": {
+      "send": "Send",
+      "register": "Register",
+      "login": "Login",
+      "save": "Save",
+      "cancel": "Cancel"
+    },
+    "errors": {
+      "not_empty": "The field must not be empty",
+      "from_3_to_12": "The field must be between 3 and 12 characters",
+      "from_6_to_20": "The field must be between 6 and 20 characters",
+      "from_5_to_64": "The field must be between 5 and 64 characters",
+      "one_language_name": "The name must contain only letters in one language",
+      "password_rule": "Password must be less than 6 characters, with at least 1 capital letter, 1 small letter, 1 number and a symbol",
+      "password_mismatch": "Passwords do not match",
+      "invalid_email": "Invalid email",
+      "invalid_phone_number": "Invalid phone number",
+      "invalid_number": "Invalid number"
+    }
   }
 }

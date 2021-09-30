@@ -21,7 +21,7 @@ const Favorite: React.FC<FavoriteProps> = ({ iconClassName }) => {
   return (
     <div className={s.root}>
       <FavoriteIcon className={iconClassName} onClick={openHandler} />
-      {isOpen && <FavoriteBar outCLick={closeHandler} />}
+      {isOpen && <FavoriteBar clickOutside={closeHandler} />}
     </div>
   )
 }
