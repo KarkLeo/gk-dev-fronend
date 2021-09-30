@@ -2,6 +2,7 @@ import Icon from 'components/Icon'
 import React from 'react'
 import { UserAddressResponse } from 'services/public'
 import s from './AddressSelectItem.module.css'
+import { useTranslation } from 'next-i18next'
 
 interface AddressSelectItemProps {
   data: UserAddressResponse
@@ -14,6 +15,8 @@ const AddressSelectItem: React.FC<AddressSelectItemProps> = ({
   select,
   onChange,
 }) => {
+  const { t } = useTranslation('common')
+
   return (
     <label className={s.root}>
       <input
@@ -34,7 +37,9 @@ const AddressSelectItem: React.FC<AddressSelectItemProps> = ({
             <>
               <Icon iconId='novaposhta' className={s.icon} />
               <p>{data.city}</p>
-              <p>Номер отделения: {data.novaposhta_number}</p>
+              <p>
+                {t('forms.fields.novaposhta_number')}: {data.novaposhta_number}
+              </p>
             </>
           )}
           {!data.is_novaposhta && <p>{data.address}</p>}

@@ -9,6 +9,7 @@ import {
   getTotalCartPriceSelector,
 } from 'store/cart/selectors'
 import { CHECKOUT_PAGE_URL } from 'route'
+import { useTranslation } from 'next-i18next'
 
 interface CartBarProps {
   outCLick?: () => void
@@ -16,6 +17,7 @@ interface CartBarProps {
 
 const CartBar: React.FC<CartBarProps> = ({ outCLick }) => {
   const rootBarRef = useRef(null)
+  const { t } = useTranslation('common')
 
   useOutsideClick(rootBarRef, outCLick)
 
@@ -31,11 +33,16 @@ const CartBar: React.FC<CartBarProps> = ({ outCLick }) => {
               count={i.count}
             />
           ))
-        : 'Ваша корзина пуста'}
-      {total > 0 && <div className={s.total}>{total}</div>}
+        : t('cart.empty')}
+      {total > 0 && (
+        <div className={s.total}>
+          <span>{t('cart.total_cost')}: </span>
+          {total} {t('units.hrn')}
+        </div>
+      )}
       {products.length > 0 && (
         <Link href={CHECKOUT_PAGE_URL}>
-          <a className={s.total}>Checkout</a>
+          <a className={s.total}>{t('cart.checkout')}</a>
         </Link>
       )}
     </div>

@@ -6,6 +6,7 @@ import usePrivateRoute from 'common/hooks/usePrivateRoute'
 import { staticServices } from 'services'
 import { MetaData } from 'services/static'
 import AddressPage from 'containers/ProfilePage/AddressPage'
+import { useTranslation } from 'next-i18next'
 
 interface ProfileAddressProps {
   meta: MetaData
@@ -13,8 +14,9 @@ interface ProfileAddressProps {
 
 const ProfileAddress: React.FC<ProfileAddressProps> = ({ meta }) => {
   const loading = usePrivateRoute()
+  const { t } = useTranslation('common')
 
-  return loading ? <h1>loading ...</h1> : <AddressPage meta={meta} />
+  return loading ? <h1>{t('profile.loading')}</h1> : <AddressPage meta={meta} />
 }
 
 //===== fetching data =====

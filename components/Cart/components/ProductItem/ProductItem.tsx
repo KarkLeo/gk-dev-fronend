@@ -18,6 +18,7 @@ interface ProductItemProps {
 
 const ProductItem: React.FC<ProductItemProps> = ({ product, count }) => {
   const dispatch = useDispatch()
+
   const setCountHandler = useCallback(
     (value: number) =>
       dispatch(setCartProductCountAction(product.vendor_code, value)),
@@ -29,7 +30,7 @@ const ProductItem: React.FC<ProductItemProps> = ({ product, count }) => {
     [dispatch, product]
   )
 
-  const { i18n } = useTranslation()
+  const { t, i18n } = useTranslation()
   const link = useMemo(
     () => createProductLinkFromLocale(product, i18n.language),
     [product, i18n]
@@ -79,10 +80,12 @@ const ProductItem: React.FC<ProductItemProps> = ({ product, count }) => {
             <Counter value={count} onChange={setCountHandler} min={1} />
             <div className={s.price}>
               {count > 1 && (
-                <span className={s.price__init}>{product.price} грн</span>
+                <span className={s.price__init}>
+                  {product.price} {t('units.hrn')}
+                </span>
               )}
               <span className={s.price__total}>
-                {product.price * count} грн
+                {product.price * count} {t('units.hrn')}
               </span>
             </div>
           </div>

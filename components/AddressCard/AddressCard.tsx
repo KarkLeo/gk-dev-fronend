@@ -3,6 +3,7 @@ import React, { useCallback, useState } from 'react'
 import { UserAddress, UserAddressResponse } from 'services/public'
 import s from './AddressCard.module.css'
 import { AddressForm } from '../Forms/AddressForm/AddressForm'
+import { useTranslation } from 'next-i18next'
 
 interface AddressCardProps {
   data: UserAddressResponse
@@ -16,6 +17,7 @@ const AddressCard: React.FC<AddressCardProps> = ({
   onEdit,
 }) => {
   const [edit, setEdit] = useState(false)
+  const { t } = useTranslation('common')
 
   const cancelHandler = useCallback(() => setEdit(false), [setEdit])
   const editHandler = useCallback(
@@ -57,15 +59,22 @@ const AddressCard: React.FC<AddressCardProps> = ({
               <>
                 <Icon iconId='novaposhta' className={s.icon} />
                 <p>{data.city}</p>
-                <p>Номер отделения: {data.novaposhta_number}</p>
+                <p>
+                  {t('forms.fields.novaposhta_number')}:{' '}
+                  {data.novaposhta_number}
+                </p>
               </>
             )}
             {!data.is_novaposhta && <p>{data.address}</p>}
           </div>
           <div className={s.row}>
-            <button onClick={() => setEdit(true)}>edit</button>
+            <button onClick={() => setEdit(true)}>
+              {t('profile.buttons.edit')}
+            </button>
             {onDelete && (
-              <button onClick={() => onDelete(data.id)}>delete</button>
+              <button onClick={() => onDelete(data.id)}>
+                {t('profile.buttons.delete')}
+              </button>
             )}
           </div>
         </div>

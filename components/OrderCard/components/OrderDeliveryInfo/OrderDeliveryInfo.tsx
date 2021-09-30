@@ -2,12 +2,15 @@ import Icon from 'components/Icon'
 import React from 'react'
 import { UserAddressResponse } from 'services/public'
 import s from './OrderDeliveryInfo.module.css'
+import { useTranslation } from 'next-i18next'
 
 interface OrderDeliveryInfoProps {
   data: UserAddressResponse
 }
 
 const AddressCard: React.FC<OrderDeliveryInfoProps> = ({ data }) => {
+  const { t } = useTranslation('common')
+
   return (
     <div className={s.root}>
       <div>
@@ -20,7 +23,9 @@ const AddressCard: React.FC<OrderDeliveryInfoProps> = ({ data }) => {
             <>
               <Icon iconId='novaposhta' className={s.icon} />
               <span>{data.city}</span>
-              <span>Номер отделения: {data.novaposhta_number}</span>
+              <span>
+                {t('forms.fields.novaposhta_number')}: {data.novaposhta_number}
+              </span>
             </>
           )}
           {!data.is_novaposhta && <span>{data.address}</span>}

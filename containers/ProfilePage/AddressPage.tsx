@@ -12,6 +12,7 @@ import {
 } from 'store/profile'
 import AddressCard from 'components/AddressCard/AddressCard'
 import { UserAddress } from 'services/public'
+import { useTranslation } from 'next-i18next'
 
 interface AddressPageProps {
   meta: MetaData
@@ -20,6 +21,7 @@ interface AddressPageProps {
 const AddressPage: React.FC<AddressPageProps> = ({ meta }) => {
   const dispatch = useDispatch()
   const address = useSelector(getProfileAddressSelector)
+  const { t } = useTranslation('common')
 
   const onDeleteHandler = useCallback(
     (id: string) => dispatch(deleteProfileAddressThunk(id)),
@@ -40,7 +42,7 @@ const AddressPage: React.FC<AddressPageProps> = ({ meta }) => {
   return (
     <Layout meta={meta}>
       <ProfileLayout>
-        <h1>Edit Address</h1>
+        <h1>{t('profile.titles.address')}</h1>
         {address &&
           address.map((i) => (
             <AddressCard

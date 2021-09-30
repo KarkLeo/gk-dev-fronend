@@ -11,6 +11,7 @@ import {
   getFavoriteRecordSelector,
 } from 'store/favorite'
 import { addCartProductAction } from 'store/cart'
+import { useTranslation } from 'next-i18next'
 
 interface ProductCardProps {
   data: ProductCardType
@@ -18,6 +19,7 @@ interface ProductCardProps {
 
 const ProductCard: React.FC<ProductCardProps> = ({ data }) => {
   const dispatch = useDispatch()
+  const { t } = useTranslation('common')
 
   const addToFavoriteHandler = useCallback(
     () => dispatch(addFavoriteProductThunk(data)),
@@ -69,11 +71,17 @@ const ProductCard: React.FC<ProductCardProps> = ({ data }) => {
             <span className={s.price_other}>2,7 €</span>
             <span className={s.price_other}>239 ₽</span>
           </div>
-          <span className={s.code}>{data.vendor_code}</span>
+          <span className={s.code}>
+            {t('productPage.art')} {data.vendor_code}
+          </span>
           <div className={s.price__wrap}>
-            <span className={s.price}>{data.price}</span>
+            <span className={s.price}>
+              {data.price} {t('units.hrn')}
+            </span>
             {data.old_price && data.old_price > data.price ? (
-              <span className={s.price_old}>{data.old_price}</span>
+              <span className={s.price_old}>
+                {data.old_price} {t('units.hrn')}
+              </span>
             ) : null}
           </div>
           <div className={s.buttonsWrap}>
@@ -84,7 +92,7 @@ const ProductCard: React.FC<ProductCardProps> = ({ data }) => {
               />
             </button>
             <button className={s.button} onClick={addToCartHandler}>
-              Купить
+              {t('cart.add')}
             </button>
           </div>
         </div>

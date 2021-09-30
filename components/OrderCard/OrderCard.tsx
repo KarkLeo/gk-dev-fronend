@@ -11,7 +11,7 @@ interface OrderCardProps {
 
 const OrderCard: React.FC<OrderCardProps> = ({ data }) => {
   const date = new Date(data.date)
-  const { i18n } = useTranslation()
+  const { t, i18n } = useTranslation()
   const localDate = new Intl.DateTimeFormat(i18n.language, {
     formatMatcher: 'best fit',
     year: 'numeric',
@@ -36,15 +36,17 @@ const OrderCard: React.FC<OrderCardProps> = ({ data }) => {
         <div className={s.info}>
           <div className={s.cost}>
             <p className={s.cost__item}>
-              <span className={s.cost__label}>total_cost:</span>
+              <span className={s.cost__label}>{t('cart.total_cost')}:</span>
               <span className={s.cost__value}>{data.total_cost}</span>
             </p>
             <p className={s.cost__item}>
-              <span className={s.cost__label}>discount:</span>
+              <span className={s.cost__label}>{t('cart.discount')}:</span>
               <span className={s.cost__value}>{data.discount}</span>
             </p>
             <p className={s.cost__item}>
-              <span className={s.cost__label}>discounted_cost:</span>
+              <span className={s.cost__label}>
+                {t('cart.discounted_cost')}:
+              </span>
               <span className={s.cost__value}>{data.discounted_cost}</span>
             </p>
           </div>

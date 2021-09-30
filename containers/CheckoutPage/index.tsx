@@ -38,8 +38,12 @@ const CheckoutPage: React.FC<CheckoutPageProps> = ({ meta }) => {
                   count={i.count}
                 />
               ))
-            : 'Ваша корзина пуста'}
-          {total > 0 && <div className={s.total}>{total}</div>}
+            : t('cart.empty')}
+          {total > 0 && (
+            <div className={s.total}>
+              {t('cart.total_cost')}: {total} {t('units.hrn')}
+            </div>
+          )}
         </div>
         <div>{isAuth ? <AddressSelect /> : <CheckoutAuth />}</div>
       </div>

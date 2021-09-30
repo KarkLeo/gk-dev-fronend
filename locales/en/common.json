@@ -1,10 +1,14 @@
 {
-  "title": "Page title",
-  "button": "Page button",
   "languages": {
     "ru": "Russian",
     "uk": "Ukrainian",
     "en": "English"
+  },
+  "units": {
+    "hrn": "hrn",
+    "mm": "mm",
+    "cm": "cm",
+    "g": "g"
   },
   "contactPage": {
     "name": "Contacts"
@@ -32,7 +36,7 @@
       "address": "Address"
     },
     "buttons": {
-      "send": "Send",
+      "send": "Ok",
       "register": "Register",
       "login": "Login",
       "save": "Save",
@@ -49,6 +53,44 @@
       "invalid_email": "Invalid email",
       "invalid_phone_number": "Invalid phone number",
       "invalid_number": "Invalid number"
+    }
+  },
+  "favorite": {
+    "empty": "Your wishlist is empty"
+  },
+  "cart": {
+    "add": "Buy",
+    "empty": "Your cart is empty",
+    "total_cost": "Amount",
+    "discount": "Discount",
+    "discounted_cost": "Discount amount",
+    "checkout": "Checkout"
+  },
+  "checkout": {
+    "title": "Checkout",
+    "delivery": "Delivery information",
+    "comment": "Order comment",
+    "new_address": "New address",
+    "confirm": "Confirm"
+  },
+  "profile": {
+    "login": "Login",
+    "register": "Register",
+    "profile": "Profile",
+    "address": "Addresses",
+    "orders": "Orders",
+    "password": "Password",
+    "loading": "Loading...",
+    "buttons": {
+      "logout": "Log out",
+      "edit": "Edit",
+      "delete": "Delete"
+    },
+    "titles": {
+      "profile": "Edit profile",
+      "address": "Edit addresses",
+      "orders": "Order information",
+      "password": "Change password"
     }
   }
 }

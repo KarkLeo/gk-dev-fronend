@@ -15,16 +15,16 @@ import {
 } from '../../store/cart'
 import { UserAddress } from 'services/public'
 import { checkoutThunk } from '../../store/cart/thunks'
+import { useTranslation } from 'next-i18next'
 
 const AddressSelect: React.FC = () => {
   const dispatch = useDispatch()
+  const { t } = useTranslation('common')
 
   const address = useSelector(getProfileAddressSelector)
   const addressID = useSelector(getOrderAddressIDSelector)
   const initAddress = useSelector(getInitOrderAddressSelector)
   const description = useSelector(getOrderDescriptionSelector)
-
-  console.log(initAddress)
 
   const [newAddressError, setNewAddressError] = useState(false)
 
@@ -66,7 +66,7 @@ const AddressSelect: React.FC = () => {
           checked={addressID === null}
           onChange={() => changeAddressIDHandler(null)}
         />
-        New address
+        {t('checkout.new_address')}{' '}
       </label>
       {addressID === null && (
         <AddressForm
@@ -77,6 +77,7 @@ const AddressSelect: React.FC = () => {
         />
       )}
       <div>
+        {t('checkout.comment')}:
         <textarea
           value={description}
           onChange={(e) => {
@@ -88,7 +89,7 @@ const AddressSelect: React.FC = () => {
         disabled={addressID === null && newAddressError}
         onClick={sentOrderHandler}
       >
-        Подтвердить
+        {t('checkout.confirm')}
       </button>
     </div>
   )

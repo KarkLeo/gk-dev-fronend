@@ -30,7 +30,7 @@ const ProfileNavigation: React.FC = () => {
               [s.link_active]: router.pathname === PROFILE_PAGE_URL,
             })}
           >
-            Profile
+            {t('profile.profile')}
           </a>
         </Link>
       </li>
@@ -41,7 +41,7 @@ const ProfileNavigation: React.FC = () => {
               [s.link_active]: router.pathname === PROFILE_ADDRESS_PAGE_URL,
             })}
           >
-            Address
+            {t('profile.address')}
           </a>
         </Link>
       </li>
@@ -52,7 +52,7 @@ const ProfileNavigation: React.FC = () => {
               [s.link_active]: router.pathname === PROFILE_ORDERS_PAGE_URL,
             })}
           >
-            Orders
+            {t('profile.orders')}
           </a>
         </Link>
       </li>
@@ -63,12 +63,12 @@ const ProfileNavigation: React.FC = () => {
               [s.link_active]: router.pathname === PROFILE_PASSWORD_PAGE_URL,
             })}
           >
-            Password
+            {t('profile.password')}
           </a>
         </Link>
       </li>
       <li className={s.item}>
-        <Button onClick={logoutHandler}>Logout</Button>
+        <Button onClick={logoutHandler}>{t('profile.buttons.logout')}</Button>
       </li>
     </ul>
   )
