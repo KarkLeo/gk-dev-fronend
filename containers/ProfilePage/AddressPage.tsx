@@ -13,6 +13,7 @@ import {
 import AddressCard from 'components/AddressCard/AddressCard'
 import { UserAddress } from 'services/public'
 import { useTranslation } from 'next-i18next'
+import ProfileTitle from './components/ProfileLayout/components/ProfileTitle/ProfileTitle'
 
 interface AddressPageProps {
   meta: MetaData
@@ -42,7 +43,7 @@ const AddressPage: React.FC<AddressPageProps> = ({ meta }) => {
   return (
     <Layout meta={meta}>
       <ProfileLayout>
-        <h1>{t('profile.titles.address')}</h1>
+        <ProfileTitle>{t('profile.titles.address')}</ProfileTitle>
         {address &&
           address.map((i) => (
             <AddressCard

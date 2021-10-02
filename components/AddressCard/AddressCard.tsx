@@ -4,6 +4,7 @@ import { UserAddress, UserAddressResponse } from 'services/public'
 import s from './AddressCard.module.css'
 import { AddressForm } from '../Forms/AddressForm/AddressForm'
 import { useTranslation } from 'next-i18next'
+import { Button } from '../Controllers'
 
 interface AddressCardProps {
   data: UserAddressResponse
@@ -47,34 +48,34 @@ const AddressCard: React.FC<AddressCardProps> = ({
           }}
         />
       ) : (
-        <div>
-          <div className={s.row}>
-            <h3>
+        <div className={s.body}>
+          <div className={s.content}>
+            <h3 className={s.name}>
               {data.first_name} {data.last_name}
             </h3>
-            <p>{data.phone_number}</p>
+            <p className={s.phone}>{data.phone_number}</p>
+            <div className={s.address}>
+              {data.is_novaposhta && (
+                <>
+                  <Icon iconId='novaposhta' className={s.icon} />
+                  <p className={s.text}>{data.city}</p>
+                  <p className={s.text}>
+                    {t('forms.fields.novaposhta_number')}:{' '}
+                    {data.novaposhta_number}
+                  </p>
+                </>
+              )}
+              {!data.is_novaposhta && <p className={s.text}>{data.address}</p>}
+            </div>
           </div>
-          <div className={s.row}>
-            {data.is_novaposhta && (
-              <>
-                <Icon iconId='novaposhta' className={s.icon} />
-                <p>{data.city}</p>
-                <p>
-                  {t('forms.fields.novaposhta_number')}:{' '}
-                  {data.novaposhta_number}
-                </p>
-              </>
-            )}
-            {!data.is_novaposhta && <p>{data.address}</p>}
-          </div>
-          <div className={s.row}>
-            <button onClick={() => setEdit(true)}>
+          <div className={s.buttons}>
+            <Button onClick={() => setEdit(true)} small>
               {t('profile.buttons.edit')}
-            </button>
+            </Button>
             {onDelete && (
-              <button onClick={() => onDelete(data.id)}>
+              <Button onClick={() => onDelete(data.id)} small>
                 {t('profile.buttons.delete')}
-              </button>
+              </Button>
             )}
           </div>
         </div>

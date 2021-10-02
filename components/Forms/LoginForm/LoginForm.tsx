@@ -43,7 +43,7 @@ export const LoginForm: React.FC<LoginFormProps> = ({ toRegister }) => {
       </div>
       {errorForm && <p>{errorForm}</p>}
       <div className={s.controls}>
-        <Button onClick={handlers.send} disabled={isError}>
+        <Button onClick={handlers.send} disabled={isError} primary>
           {t('forms.buttons.send')}
         </Button>
         <Button onClick={handlers.toRegister}>

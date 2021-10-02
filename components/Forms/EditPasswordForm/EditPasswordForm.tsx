@@ -11,20 +11,6 @@ export const EditPasswordForm = () => {
     <div className={s.root}>
       <div className={s.grid}>
         <TextField
-          value={data.oldPassword}
-          onChange={handlers.change('oldPassword')}
-          type='password'
-          label={t('forms.fields.old_password')}
-          onFocus={handlers.focus('oldPassword')}
-          onBlur={handlers.blur('oldPassword')}
-          error={Boolean(error.oldPassword)}
-          errorMessage={
-            error.oldPassword
-              ? t(('forms.errors.' + error.oldPassword) as any)
-              : ''
-          }
-        />
-        <TextField
           value={data.password}
           onChange={handlers.change('password')}
           type='password'
@@ -50,10 +36,24 @@ export const EditPasswordForm = () => {
               : ''
           }
         />
+        <TextField
+          value={data.oldPassword}
+          onChange={handlers.change('oldPassword')}
+          type='password'
+          label={t('forms.fields.old_password')}
+          onFocus={handlers.focus('oldPassword')}
+          onBlur={handlers.blur('oldPassword')}
+          error={Boolean(error.oldPassword)}
+          errorMessage={
+            error.oldPassword
+              ? t(('forms.errors.' + error.oldPassword) as any)
+              : ''
+          }
+        />
       </div>
       {errorForm && <p>{errorForm}</p>}
       <div className={s.controls}>
-        <Button onClick={handlers.send} disabled={isError}>
+        <Button onClick={handlers.send} disabled={isError} primary>
           {t('forms.buttons.send')}
         </Button>
         <Button onClick={handlers.cancel}>{t('forms.buttons.cancel')}</Button>

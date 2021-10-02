@@ -17,9 +17,12 @@
 }
 
 .body {
-  width: 40rem;
-  max-width: 100%;
+  display: flex;
+  flex-direction: column;
+  max-width: 32rem;
+  width: 100%;
   height: min-content;
+  max-height: calc(100vh - 2 * var(--spacing-3));
   padding: var(--spacing-3);
 
   background-color: var(--c-main-white);
@@ -29,7 +32,7 @@
   display: flex;
   justify-content: space-between;
   align-items: flex-start;
-  gap: var(--spacing-2);
+  gap: var(--spacing-3);
   margin-bottom: var(--spacing-4);
 }
 
@@ -63,6 +66,7 @@
 .content {
   overflow-y: auto;
   min-height: 10rem;
-  padding: var(--spacing-4);
+  max-height: 100%;
+  padding: var(--spacing-3);
   box-sizing: border-box;
 }

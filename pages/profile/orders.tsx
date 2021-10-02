@@ -6,7 +6,7 @@ import usePrivateRoute from '../../common/hooks/usePrivateRoute'
 import OrderPage from '../../containers/ProfilePage/OrdersPage'
 import { MetaData } from '../../services/static'
 import { staticServices } from '../../services'
-import { useTranslation } from 'next-i18next'
+import Loading from '../../components/Loading/Loading'
 
 interface ProfileOrdersProps {
   meta: MetaData
@@ -14,9 +14,8 @@ interface ProfileOrdersProps {
 
 const ProfileOrders: React.FC<ProfileOrdersProps> = ({ meta }) => {
   const loading = usePrivateRoute()
-  const { t } = useTranslation('common')
 
-  return loading ? <h1>{t('profile.loading')}</h1> : <OrderPage meta={meta} />
+  return loading ? <Loading /> : <OrderPage meta={meta} />
 }
 
 //===== fetching data =====

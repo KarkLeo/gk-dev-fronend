@@ -12,7 +12,7 @@ interface OrderCartItemProps {
 }
 
 const OrderCartItem: React.FC<OrderCartItemProps> = ({ data }) => {
-  const { i18n } = useTranslation()
+  const { t, i18n } = useTranslation()
   const link = useMemo(
     () => createProductLinkFromLocale(data.product, i18n.language),
     [data.product, i18n]
@@ -42,13 +42,15 @@ const OrderCartItem: React.FC<OrderCartItemProps> = ({ data }) => {
         <div className={s.content}>
           <h3 className={s.title}>{link?.name || data.product.name}</h3>
           <div className={s.options}>
-            <p className={s.count}>{data.count}</p>
+            <p className={s.count}>{data.count} &#215;</p>
             <div className={s.price}>
               {data.count > 1 && (
-                <span className={s.price__init}>{data.current_price} грн</span>
+                <span className={s.price__init}>
+                  {data.current_price} {t('units.hrn')}
+                </span>
               )}
               <span className={s.price__total}>
-                {data.count * data.current_price} грн
+                {data.count * data.current_price} {t('units.hrn')}
               </span>
             </div>
           </div>

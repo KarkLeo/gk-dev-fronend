@@ -94,7 +94,7 @@ export const RegisterForm: React.FC<RegisterFormProps> = ({ toLogin }) => {
       </div>
       {errorForm && <p>{errorForm}</p>}
       <div className={s.controls}>
-        <Button onClick={handlers.send} disabled={isError}>
+        <Button onClick={handlers.send} disabled={isError} primary>
           {t('forms.buttons.send')}
         </Button>
         <Button onClick={handlers.toLogin}> {t('forms.buttons.login')}</Button>

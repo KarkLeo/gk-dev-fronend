@@ -4,6 +4,7 @@ import React from 'react'
 import { MetaData } from 'services/static'
 import ProfileLayout from './components/ProfileLayout/ProfileLayout'
 import { useTranslation } from 'next-i18next'
+import ProfileTitle from './components/ProfileLayout/components/ProfileTitle/ProfileTitle'
 
 interface ProfilePageProps {
   meta: MetaData
@@ -15,7 +16,7 @@ const ProfilePage: React.FC<ProfilePageProps> = ({ meta }) => {
   return (
     <Layout meta={meta}>
       <ProfileLayout>
-        <h1>{t('profile.titles.profile')}</h1>
+        <ProfileTitle>{t('profile.titles.profile')}</ProfileTitle>
         <EditProfileForm />
       </ProfileLayout>
     </Layout>

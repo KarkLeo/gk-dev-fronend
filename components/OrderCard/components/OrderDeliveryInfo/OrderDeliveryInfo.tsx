@@ -17,7 +17,7 @@ const AddressCard: React.FC<OrderDeliveryInfoProps> = ({ data }) => {
         <h3 className={s.name}>
           {data.first_name} {data.last_name}
         </h3>
-        <span>{data.phone_number}</span>
+        <span className={s.phone}>{data.phone_number}</span>
         <div className={s.address}>
           {data.is_novaposhta && (
             <>

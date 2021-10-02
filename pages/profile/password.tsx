@@ -6,7 +6,7 @@ import usePrivateRoute from '../../common/hooks/usePrivateRoute'
 import { staticServices } from '../../services'
 import { MetaData } from '../../services/static'
 import PasswordPage from '../../containers/ProfilePage/PasswordPage'
-import { useTranslation } from 'next-i18next'
+import Loading from '../../components/Loading/Loading'
 
 interface ProfilePasswordProps {
   meta: MetaData
@@ -14,13 +14,8 @@ interface ProfilePasswordProps {
 
 const ProfilePassword: React.FC<ProfilePasswordProps> = ({ meta }) => {
   const loading = usePrivateRoute()
-  const { t } = useTranslation('common')
 
-  return loading ? (
-    <h1>{t('profile.loading')}</h1>
-  ) : (
-    <PasswordPage meta={meta} />
-  )
+  return loading ? <Loading /> : <PasswordPage meta={meta} />
 }
 
 //===== fetching data =====

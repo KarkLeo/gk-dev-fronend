@@ -1,5 +1,5 @@
 import React from 'react'
-import { Button, TextField } from '../../Controllers'
+import { Button, Checkbox, TextField } from 'components/Controllers'
 import useAddressForm from './useAddressForm'
 import s from '../FormStyle.module.css'
 import { UserAddress } from 'services/public'
@@ -57,14 +57,11 @@ export const AddressForm: React.FC<AddressFormProps> = (props) => {
           }
         />
 
-        <label>
-          <input
-            type='checkbox'
-            checked={data.is_novaposhta}
-            onChange={handlers.isNovaposhta}
-          />
-          {t('forms.fields.is_novaposhta')}
-        </label>
+        <Checkbox
+          checked={data.is_novaposhta}
+          onChange={handlers.isNovaposhta}
+          label={t('forms.fields.is_novaposhta')}
+        />
 
         {data.is_novaposhta && (
           <TextField

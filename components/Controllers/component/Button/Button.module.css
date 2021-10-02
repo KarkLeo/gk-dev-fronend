@@ -1,4 +1,5 @@
 .button {
+  min-width: 8rem;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -29,4 +30,21 @@
 .button:disabled {
   pointer-events: none;
   opacity: 0.4;
+}
+
+.button_primary {
+  color: var(--c-main-white);
+
+  background-color: var(--c-main-black);
+}
+.button_primary:hover {
+  color: var(--c-main-black);
+
+  background-color: transparent;
+}
+
+.button_small {
+  font-size: 1rem;
+
+  border-width: 1px;
 }

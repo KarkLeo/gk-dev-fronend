@@ -6,6 +6,7 @@ import { useSelector } from 'react-redux'
 import { getProfileOrdersSelector } from 'store/profile'
 import OrderCard from '../../components/OrderCard/OrderCard'
 import { useTranslation } from 'next-i18next'
+import ProfileTitle from './components/ProfileLayout/components/ProfileTitle/ProfileTitle'
 
 interface OrderPageProps {
   meta: MetaData
@@ -18,7 +19,7 @@ const OrderPage: React.FC<OrderPageProps> = ({ meta }) => {
   return (
     <Layout meta={meta}>
       <ProfileLayout>
-        <h1>{t('profile.titles.orders')}</h1>
+        <ProfileTitle>{t('profile.titles.orders')}</ProfileTitle>
         {orders && orders.map((i) => <OrderCard key={i.number} data={i} />)}
       </ProfileLayout>
     </Layout>

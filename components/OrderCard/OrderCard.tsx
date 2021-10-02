@@ -37,17 +37,23 @@ const OrderCard: React.FC<OrderCardProps> = ({ data }) => {
           <div className={s.cost}>
             <p className={s.cost__item}>
               <span className={s.cost__label}>{t('cart.total_cost')}:</span>
-              <span className={s.cost__value}>{data.total_cost}</span>
+              <span className={s.cost__value}>
+                {data.total_cost} {t('units.hrn')}
+              </span>
             </p>
             <p className={s.cost__item}>
               <span className={s.cost__label}>{t('cart.discount')}:</span>
-              <span className={s.cost__value}>{data.discount}</span>
+              <span className={s.cost__value}>
+                {data.discount} {t('units.hrn')}
+              </span>
             </p>
             <p className={s.cost__item}>
               <span className={s.cost__label}>
                 {t('cart.discounted_cost')}:
               </span>
-              <span className={s.cost__value}>{data.discounted_cost}</span>
+              <span className={s.cost__value}>
+                {data.discounted_cost} {t('units.hrn')}
+              </span>
             </p>
           </div>
           <OrderDeliveryInfo data={data.delivery_info} />
