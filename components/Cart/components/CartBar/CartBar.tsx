@@ -42,7 +42,7 @@ const CartBar: React.FC<CartBarProps> = ({ outCLick }) => {
       )}
       {products.length > 0 && (
         <Link href={CHECKOUT_PAGE_URL}>
-          <a className={s.total}>{t('cart.checkout')}</a>
+          <a className={s.button}>{t('cart.checkout')}</a>
         </Link>
       )}
     </div>

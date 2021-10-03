@@ -1,0 +1,15 @@
+.root {
+}
+
+.title {
+  display: block;
+  margin: 0 0 var(--spacing-3);
+
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: var(--c-main-black);
+}
+
+.block {
+  margin: 0 0 var(--spacing-4);
+}

@@ -1,0 +1,23 @@
+.field {
+  display: block;
+  width: 100%;
+  min-height: 5rem;
+  padding: calc(var(--spacing-2) + 1px);
+  box-sizing: border-box;
+
+  font-family: var(--font-main);
+  font-size: 1rem;
+  font-weight: 400;
+  color: var(--c-main-black);
+
+  border: 1px solid var(--c-main-black);
+  border-radius: 0;
+  outline: none;
+  resize: none;
+}
+
+.field:focus {
+  padding: var(--spacing-2);
+
+  border-width: 2px;
+}

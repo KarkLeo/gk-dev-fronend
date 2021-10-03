@@ -3,15 +3,11 @@ import Layout from 'components/Layout'
 import { MetaData } from 'services/static'
 import s from './CheckoutPage.module.css'
 import { useTranslation } from 'next-i18next'
-import ProductItem from '../../components/Cart/components/ProductItem/ProductItem'
 import { useSelector } from 'react-redux'
-import {
-  getCartProductsSelector,
-  getTotalCartPriceSelector,
-} from '../../store/cart/selectors'
-import AddressSelect from '../../components/AddressSelect'
+import CheckoutForm from 'components/CheckoutForm'
 import { getIsAuthSelector } from '../../store/auth'
 import CheckoutAuth from './components/CheckoutAuth/CheckoutAuth'
+import CheckoutCart from './components/CheckoutCart/CheckoutCart'
 
 interface CheckoutPageProps {
   meta: MetaData
@@ -20,32 +16,15 @@ interface CheckoutPageProps {
 const CheckoutPage: React.FC<CheckoutPageProps> = ({ meta }) => {
   const { t } = useTranslation('common')
 
-  const products = useSelector(getCartProductsSelector)
-
-  const total = useSelector(getTotalCartPriceSelector)
-
   const isAuth = useSelector(getIsAuthSelector)
   return (
     <Layout meta={meta}>
-      <h1>Checkout page</h1>
+      <h1>{t('checkout.title')}</h1>
       <div className={s.grid}>
         <div>
-          {products.length
-            ? products.map((i) => (
-                <ProductItem
-                  key={i.product.slug}
-                  product={i.product}
-                  count={i.count}
-                />
-              ))
-            : t('cart.empty')}
-          {total > 0 && (
-            <div className={s.total}>
-              {t('cart.total_cost')}: {total} {t('units.hrn')}
-            </div>
-          )}
+          <CheckoutCart />
         </div>
-        <div>{isAuth ? <AddressSelect /> : <CheckoutAuth />}</div>
+        <div>{isAuth ? <CheckoutForm /> : <CheckoutAuth />}</div>
       </div>
     </Layout>
   )

@@ -1,0 +1,25 @@
+.root {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-4);
+}
+
+.products {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  gap: var(--spacing-4);
+}
+
+.total {
+  margin-top: var(--spacing-3);
+  padding: var(--spacing-3) var(--spacing-2) var(--spacing-1);
+
+  font-size: 1.6rem;
+  font-weight: 700;
+  line-height: 1.2;
+  color: var(--c-main-black);
+  text-align: right;
+
+  border-top: 1px solid var(--c-main-black);
+}
