@@ -3,6 +3,7 @@ import React from 'react'
 import { UserAddressResponse } from 'services/public'
 import s from './AddressSelectItem.module.css'
 import { useTranslation } from 'next-i18next'
+import classNames from 'classnames'
 
 interface AddressSelectItemProps {
   data: UserAddressResponse
@@ -18,32 +19,31 @@ const AddressSelectItem: React.FC<AddressSelectItemProps> = ({
   const { t } = useTranslation('common')
 
   return (
-    <label className={s.root}>
+    <label
+      className={classNames(s.root, { [s.root_active]: select === data.id })}
+    >
       <input
+        className={s.input}
         type='radio'
         name='AddressSelectItem'
         checked={select === data.id}
         onChange={() => onChange(data.id)}
       />
-      <div>
-        <div className={s.row}>
-          <h3>
-            {data.first_name} {data.last_name}
-          </h3>
-          <p>{data.phone_number}</p>
-        </div>
-        <div className={s.row}>
-          {data.is_novaposhta && (
-            <>
-              <Icon iconId='novaposhta' className={s.icon} />
-              <p>{data.city}</p>
-              <p>
-                {t('forms.fields.novaposhta_number')}: {data.novaposhta_number}
-              </p>
-            </>
-          )}
-          {!data.is_novaposhta && <p>{data.address}</p>}
-        </div>
+      <h3 className={s.name}>
+        {data.first_name} {data.last_name}
+      </h3>
+      <p className={s.phone}>{data.phone_number}</p>
+      <div className={s.address}>
+        {data.is_novaposhta && (
+          <>
+            <Icon iconId='novaposhta' className={s.icon} />
+            <p className={s.text}>{data.city}</p>
+            <p className={s.text}>
+              {t('forms.fields.novaposhta_number')}: {data.novaposhta_number}
+            </p>
+          </>
+        )}
+        {!data.is_novaposhta && <p className={s.text}>{data.address}</p>}
       </div>
     </label>
   )
