@@ -19,7 +19,7 @@ const MobileHeader: React.FC<HeaderProps> = ({ meta, localesParams }) => {
         <div className={s.grid}>
           <div className={s.grid__item}>
             <MenuButton open={state} onClick={() => setState(!state)} />
-            <MenuBar open={state}>
+            <MenuBar open={state} onClose={() => setState(false)}>
               <PhoneList
                 list_of_numbers={meta.contactSetting.list_of_numbers}
               />

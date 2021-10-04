@@ -17,8 +17,7 @@
   background-color: var(--c-main-black);
 }
 
-.root::after {
-  content: '';
+.overlay {
   position: absolute;
   top: 0;
   left: 100%;

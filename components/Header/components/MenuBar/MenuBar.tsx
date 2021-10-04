@@ -6,9 +6,10 @@ import { lockScroll, unlockScroll } from '../../../../common/utils/scroll-lock'
 
 interface MenuBarProps {
   open: boolean
+  onClose: () => void
 }
 
-const MenuBar: React.FC<MenuBarProps> = ({ open, children }) => {
+const MenuBar: React.FC<MenuBarProps> = ({ open, children, onClose }) => {
   useEffect(() => {
     if (open) lockScroll()
     else unlockScroll()
@@ -21,7 +22,10 @@ const MenuBar: React.FC<MenuBarProps> = ({ open, children }) => {
       classNames={{ ...animate }}
       unmountOnExit
     >
-      <div className={s.root}>{children}</div>
+      <div className={s.root}>
+        {children}
+        <div className={s.overlay} onClick={onClose} />
+      </div>
     </CSSTransition>
   )
 }
