@@ -1,5 +1,8 @@
 import React from 'react'
 import s from './Price.module.css'
+import { useSelector } from 'react-redux'
+import { getCurrencySelector } from 'store/currency'
+import { useTranslation } from 'next-i18next'
 
 interface PriceProps {
   price: number
@@ -8,16 +11,35 @@ interface PriceProps {
 }
 
 const Price: React.FC<PriceProps> = ({ price, old_price, wholesale_price }) => {
+  const { t } = useTranslation('common')
+  const currency = useSelector(getCurrencySelector)
+
   return (
     <div className={s.root}>
-      <span className={s.price}>{price}</span>
+      <span className={s.price}>
+        {price} {t('units.hrn')}
+      </span>
       {old_price && old_price > price ? (
-        <span className={s.price_old}>{old_price}</span>
+        <span className={s.price_old}>
+          {old_price} {t('units.hrn')}
+        </span>
       ) : null}
       <div className={s.price__list}>
-        <span className={s.price_other}>3,1 $</span>
-        <span className={s.price_other}>2,7 €</span>
-        <span className={s.price_other}>239 ₽</span>
+        {currency.USD && (
+          <span className={s.price_other}>
+            {(price / currency.USD).toFixed(2)} $
+          </span>
+        )}
+        {currency.EUR && (
+          <span className={s.price_other}>
+            {(price / currency.EUR).toFixed(2)} €
+          </span>
+        )}
+        {currency.RUR && (
+          <span className={s.price_other}>
+            {(price / currency.RUR).toFixed(2)} ₽
+          </span>
+        )}
       </div>
     </div>
   )

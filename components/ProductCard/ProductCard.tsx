@@ -12,6 +12,7 @@ import {
 } from 'store/favorite'
 import { addCartProductAction } from 'store/cart'
 import { useTranslation } from 'next-i18next'
+import { getCurrencySelector } from 'store/currency'
 
 interface ProductCardProps {
   data: ProductCardType
@@ -20,6 +21,7 @@ interface ProductCardProps {
 const ProductCard: React.FC<ProductCardProps> = ({ data }) => {
   const dispatch = useDispatch()
   const { t } = useTranslation('common')
+  const currency = useSelector(getCurrencySelector)
 
   const addToFavoriteHandler = useCallback(
     () => dispatch(addFavoriteProductThunk(data)),
@@ -67,9 +69,21 @@ const ProductCard: React.FC<ProductCardProps> = ({ data }) => {
         </Link>
         <div className={s.grid}>
           <div className={s.price__list}>
-            <span className={s.price_other}>3,1 $</span>
-            <span className={s.price_other}>2,7 €</span>
-            <span className={s.price_other}>239 ₽</span>
+            {currency.USD && (
+              <span className={s.price_other}>
+                {(data.price / currency.USD).toFixed(2)} $
+              </span>
+            )}
+            {currency.EUR && (
+              <span className={s.price_other}>
+                {(data.price / currency.EUR).toFixed(2)} €
+              </span>
+            )}
+            {currency.RUR && (
+              <span className={s.price_other}>
+                {(data.price / currency.RUR).toFixed(2)} ₽
+              </span>
+            )}
           </div>
           <span className={s.code}>
             {t('productPage.art')} {data.vendor_code}

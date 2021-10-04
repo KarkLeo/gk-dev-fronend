@@ -2,7 +2,7 @@ import { NextApiRequest, NextApiResponse } from 'next'
 import { privateServices } from 'services'
 import { OrderRequest } from 'services/public/types/orders.types'
 import { createNumber } from 'common/utils/createNumber'
-import { UserAuthResponse } from '../../../services/public'
+import { UserAuthResponse } from 'services/public'
 
 export default async (req: NextApiRequest, res: NextApiResponse<any>) => {
   const { jwt, userID, delivery_info, description, cart_items } =
@@ -52,26 +52,6 @@ export default async (req: NextApiRequest, res: NextApiResponse<any>) => {
   const discount: number = 0
   const discountedCost: number = totalCost - discount
 
-  console.log('>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>')
-  console.log({
-    number,
-    date,
-    userID,
-    address: {
-      ...delivery_info,
-      novaposhta_number:
-        delivery_info.novaposhta_number === ''
-          ? null
-          : parseInt(delivery_info.novaposhta_number),
-    },
-    cart,
-    totalCost,
-    discount,
-    discountedCost,
-    description,
-  })
-  console.log('>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>')
-  console.log('>>>> order crate request')
   const order = await privateServices.createOrder(
     {
       number,
@@ -92,10 +72,6 @@ export default async (req: NextApiRequest, res: NextApiResponse<any>) => {
     },
     jwt
   )
-  console.log('>>>> order crate request end')
-  console.log('---------------------------------')
-  console.log(order)
-  console.log('---------------------------------')
 
   if (!order) return res.status(400).json({ error: 'SOME_ERROR' })
 

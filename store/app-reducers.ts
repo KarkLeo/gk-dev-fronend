@@ -4,6 +4,7 @@ import { modalReducer } from './modal'
 import { profileReducer } from './profile'
 import { favoriteReducer } from './favorite'
 import { cartReducer } from './cart'
+import { currencyReducer } from './currency'
 
 const appReducers = combineReducers({
   auth: authReducer,
@@ -11,6 +12,7 @@ const appReducers = combineReducers({
   profile: profileReducer,
   favorite: favoriteReducer,
   cart: cartReducer,
+  currency: currencyReducer,
 })
 
 export default appReducers

@@ -10,6 +10,7 @@ interface CategoryPageProps {
   localesParams: DefaultLocalesParams
   totalProduct: number
   products: ProductCardType[]
+  title: string | null
 }
 
 const CategoryPage: React.FC<CategoryPageProps> = ({
@@ -17,10 +18,11 @@ const CategoryPage: React.FC<CategoryPageProps> = ({
   localesParams,
   totalProduct,
   products,
+  title,
 }) => {
   return (
     <Layout meta={meta} localesParams={localesParams}>
-      <h1>Имя категории</h1>
+      {title && <h1>{title}</h1>}
       <ProductGrid data={products} />
       <PagePagination total={totalProduct} />
     </Layout>

@@ -1,7 +1,7 @@
 import { NextApiRequest, NextApiResponse } from 'next'
 import { UserProfileResponse, UserUpdateRequest } from 'services/public'
 import { privateServices } from 'services'
-import { checkProfileFields } from '../../../common/validators/profile'
+import { checkProfileFields } from 'common/validators/profile'
 
 export default async (req: NextApiRequest, res: NextApiResponse<any>) => {
   const { jwt, userID, data } = req.body as UserUpdateRequest

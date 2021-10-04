@@ -5,8 +5,9 @@ import { DefaultLocalesParams } from 'common/utils/locales-params'
 import Header from 'components/Header'
 import Footer from 'components/Footer'
 import Slider from '../Slider/Slider'
-import useAuth from '../../../../common/hooks/useAuth'
+import useAuth from 'common/hooks/useAuth'
 import Head from 'next/head'
+import useFetchCurrency from 'common/hooks/useFetchCurrency'
 
 interface HomeLayoutProps {
   meta: MetaData
@@ -21,6 +22,7 @@ const HomeLayout: React.FC<HomeLayoutProps> = ({
   children,
 }) => {
   useAuth()
+  useFetchCurrency()
 
   return (
     <div className={s.root}>

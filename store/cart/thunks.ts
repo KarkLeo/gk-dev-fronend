@@ -1,17 +1,14 @@
 import { AppThunk } from '../types'
 import { appAuthErrorThunk, appAuthThunk, getUserIDSelector } from '../auth'
-import {
-  createProfileAddressThunk,
-  getProfileAddressSelector,
-} from '../profile'
-import { getJwt } from '../../common/jwtService'
+import { createProfileAddressThunk } from '../profile'
+import { getJwt } from 'common/jwtService'
 import {
   getOrderCartSelector,
   getOrderDeliverAddressSelector,
   getOrderDescriptionSelector,
   isNewOrderAddressSelector,
 } from './selectors'
-import { publicServices } from '../../services'
+import { publicServices } from 'services'
 import { cleanCartAction } from './actions'
 
 export const checkoutThunk = (): AppThunk => async (dispatch, getState) => {
@@ -23,8 +20,6 @@ export const checkoutThunk = (): AppThunk => async (dispatch, getState) => {
     const description = getOrderDescriptionSelector(getState())
 
     const isNewAddress = isNewOrderAddressSelector(getState())
-
-    console.log('checkoutThunk')
 
     if (userID && token && delivery_info && cart_items) {
       const res = await publicServices.orders({
