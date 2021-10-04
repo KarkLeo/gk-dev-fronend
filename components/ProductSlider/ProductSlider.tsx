@@ -22,7 +22,7 @@ const ProductSlider: React.FC<ProductSliderProps> = ({ products }) => {
     <div className={s.root}>
       <Swiper
         speed={1000}
-        spaceBetween={tab && mobile ? 24 : 32}
+        spaceBetween={tab && mobile ? 24 : 64}
         loop={true}
         pagination={{
           clickable: true,
