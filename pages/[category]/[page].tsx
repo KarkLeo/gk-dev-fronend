@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useMemo } from 'react'
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
 import nextI18NextConfig from 'next-i18next.config'
 import { pathServices, staticServices } from 'services'
@@ -15,8 +15,19 @@ const Category: React.FC<CategoryProps> = ({
   totalProduct,
   products,
 }) => {
+  const title = useMemo(
+    () =>
+      meta.productCategories.find((i) =>
+        Object.values(localesParams).reduce(
+          (res, locale) => res || locale.category === i.slug,
+          false as boolean
+        )
+      )?.name || null,
+    [localesParams, meta]
+  )
   return (
     <CategoryPage
+      title={title}
       meta={meta}
       localesParams={localesParams}
       totalProduct={totalProduct}
