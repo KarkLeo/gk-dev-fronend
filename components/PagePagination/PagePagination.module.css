@@ -23,6 +23,15 @@
 
   font-size: 1.2rem;
 }
+.root :global(.rc-pagination-item) a {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 2.6rem;
+  width: 2.6rem;
+  margin-right: 0;
+  padding: 0;
+}
 .root :global(.rc-pagination-prev),
 .root :global(.rc-pagination-next) {
   display: none;
