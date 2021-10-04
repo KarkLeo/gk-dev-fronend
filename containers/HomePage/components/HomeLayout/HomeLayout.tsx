@@ -6,7 +6,6 @@ import Header from 'components/Header'
 import Footer from 'components/Footer'
 import Slider from '../Slider/Slider'
 import useAuth from 'common/hooks/useAuth'
-import Head from 'next/head'
 import useFetchCurrency from 'common/hooks/useFetchCurrency'
 
 interface HomeLayoutProps {
@@ -26,10 +25,6 @@ const HomeLayout: React.FC<HomeLayoutProps> = ({
 
   return (
     <div className={s.root}>
-      <Head>
-        <title>Golden Key</title>
-        <meta name='googlebot' content='noindex' />
-      </Head>
       <div className={s.head}>
         <Header meta={meta} localesParams={localesParams} />
         <Slider slides={slides} />
