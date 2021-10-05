@@ -58,7 +58,6 @@ const Slider: React.FC<SliderProps> = ({ slides }) => {
                 className={s.slide__image}
               />
 
-              <h1>TEst</h1>
             </div>
           </SwiperSlide>
         ))}
