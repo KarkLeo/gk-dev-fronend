@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useCallback } from 'react'
 import s from './ProductPage.module.css'
 import Layout from 'components/Layout'
 import { MetaData, ProductDetail } from 'services/static'
@@ -11,6 +11,8 @@ import ImageSlider from './components/ImageSlider/ImageSlider'
 import BackButton from './components/BackButton/BackButton'
 import ProductCarousel from '../HomePage/components/ProductCarousel/ProductCarousel'
 import EmptyPhoto from '../../components/EmptyPhoto/EmptyPhoto'
+import { addCartProductAction } from '../../store/cart'
+import { useDispatch } from 'react-redux'
 
 interface CategoryPageProps {
   meta: MetaData
@@ -23,6 +25,13 @@ const ProductPage: React.FC<CategoryPageProps> = ({
   localesParams,
   product,
 }) => {
+  const dispatch = useDispatch()
+
+  const addToCartHandler = useCallback(
+    () => dispatch(addCartProductAction(product)),
+    [dispatch, product]
+  )
+
   return (
     <Layout meta={meta} localesParams={localesParams}>
       <BackButton slug={product.category.slug} />
@@ -43,7 +52,7 @@ const ProductPage: React.FC<CategoryPageProps> = ({
             old_price={product.old_price}
             wholesale_price={product.wholesale_price}
           />
-          <CartButton />
+          <CartButton addToCard={addToCartHandler} />
           <Description text={product.description} />
         </div>
       </div>
