@@ -57,7 +57,6 @@ const Slider: React.FC<SliderProps> = ({ slides }) => {
                 layout='fill'
                 className={s.slide__image}
               />
-
             </div>
           </SwiperSlide>
         ))}
