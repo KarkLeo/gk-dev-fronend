@@ -36,12 +36,14 @@ const Slider: React.FC<SliderProps> = ({ slides }) => {
         {slides.map((i) => (
           <SwiperSlide key={i.id}>
             <div className={s.slide}>
-              <div className={s.slide__content} data-swiper-parallax='-600'>
-                <div className={s.slide__contentBody}>
-                  <h3 className={s.slide__title}>{i.title}</h3>
-                  <p className={s.slide__text}>{i.description}</p>
+              {(i.title || i.description) && (
+                <div className={s.slide__content} data-swiper-parallax='-600'>
+                  <div className={s.slide__contentBody}>
+                    <h3 className={s.slide__title}>{i.title}</h3>
+                    <p className={s.slide__text}>{i.description}</p>
+                  </div>
                 </div>
-              </div>
+              )}
 
               <Image
                 src={
