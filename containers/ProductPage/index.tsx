@@ -9,10 +9,10 @@ import CartButton from './components/CartButton/CartButton'
 import Description from './components/Description/Description'
 import ImageSlider from './components/ImageSlider/ImageSlider'
 import BackButton from './components/BackButton/BackButton'
-import ProductCarousel from '../HomePage/components/ProductCarousel/ProductCarousel'
-import EmptyPhoto from '../../components/EmptyPhoto/EmptyPhoto'
-import { addCartProductAction } from '../../store/cart'
+import EmptyPhoto from 'components/EmptyPhoto/EmptyPhoto'
+import { addCartProductAction } from 'store/cart'
 import { useDispatch } from 'react-redux'
+// import ProductCarousel from '../HomePage/components/ProductCarousel/ProductCarousel'
 
 interface CategoryPageProps {
   meta: MetaData
