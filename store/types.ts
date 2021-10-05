@@ -10,3 +10,7 @@ export type AppThunk<R = void> = ThunkAction<
   undefined,
   Action
 >
+
+interface Ttest {
+  e: number
+}
