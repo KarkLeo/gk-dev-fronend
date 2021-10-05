@@ -22,16 +22,16 @@ const ContactPage: React.FC<ContactPageProps> = ({ meta, mapSettings }) => {
       <h1>{t('pagesTitle.contactPage')}</h1>
       <div className={s.grid}>
         <div>
-          <AddressList data={meta.contactSetting.list_of_addresses} />
+          {/*<AddressList data={meta.contactSetting.list_of_addresses} />*/}
           <PhoneList data={meta.contactSetting.list_of_numbers} />
           <EmailList data={meta.contactSetting.list_of_emails} />
           <SocialList data={meta.contactSetting.list_of_links} />
         </div>
         <div>
-          <MapView
-            mapSettings={mapSettings}
-            data={meta.contactSetting.list_of_addresses}
-          />
+          {/*<MapView*/}
+          {/*  mapSettings={mapSettings}*/}
+          {/*  data={meta.contactSetting.list_of_addresses}*/}
+          {/*/>*/}
         </div>
       </div>
     </Layout>
