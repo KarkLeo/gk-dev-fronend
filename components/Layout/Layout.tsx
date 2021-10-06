@@ -22,6 +22,10 @@ const Layout: React.FC<LayoutProps> = ({ meta, localesParams, children }) => {
       <Header meta={meta} localesParams={localesParams} />
       <Head>
         <title>Golden Key</title>
+        <meta
+          name='google-site-verification'
+          content='F-eRNi-vBG4lMC0Sq44d8FqvBpyoHLaYN2H7vUXd5Zw'
+        />
       </Head>
       <main className={s.body}>
         <div className={s.content}>{children}</div>

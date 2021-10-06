@@ -19,6 +19,10 @@ export default function Home({ meta, pageData }: HomePageProps) {
       <Head>
         <title>Golden Key</title>
         <link rel='icon' href='/favicon.ico' />
+        <meta
+          name='google-site-verification'
+          content='F-eRNi-vBG4lMC0Sq44d8FqvBpyoHLaYN2H7vUXd5Zw'
+        />
       </Head>
       {pageData.homePage.content.map((i) => (
         <ContentReducer key={i.id} data={i} />
