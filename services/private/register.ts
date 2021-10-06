@@ -33,6 +33,7 @@ export const registerUser = async (
     const res = await graphql.mutate<RegisterUserData, RegisterUserVars>({
       mutation: REGISTER_USER,
       variables,
+      fetchPolicy: 'no-cache',
     })
     return res.data ?? undefined
   } catch (e) {

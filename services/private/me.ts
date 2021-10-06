@@ -30,6 +30,7 @@ export const meUser = async (
           Authorization: `Bearer ${jwt}`,
         },
       },
+      fetchPolicy: 'no-cache',
     })
     return res.data ?? undefined
   } catch (e) {

@@ -42,6 +42,7 @@ export const updateUserFavorites = async (
         },
       },
       variables,
+      fetchPolicy: 'no-cache',
     })
     return res.data || undefined
   } catch (e) {

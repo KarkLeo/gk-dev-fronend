@@ -32,6 +32,7 @@ export const profileUser = async (
           Authorization: `Bearer ${jwt}`,
         },
       },
+      fetchPolicy: 'no-cache',
     })
     return res.data ?? undefined
   } catch (e) {

@@ -43,6 +43,7 @@ export const updateUserAddress = async (
         },
       },
       variables,
+      fetchPolicy: 'no-cache',
     })
     return res.data || undefined
   } catch (e) {
