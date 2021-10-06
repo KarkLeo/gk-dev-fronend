@@ -18,7 +18,6 @@ export default function Home({ meta, pageData }: HomePageProps) {
     <HomeLayout meta={meta} slides={pageData.homePage.slider}>
       <Head>
         <title>Golden Key</title>
-        <meta name='googlebot' content='noindex' />
         <link rel='icon' href='/favicon.ico' />
       </Head>
       {pageData.homePage.content.map((i) => (

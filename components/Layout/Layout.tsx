@@ -22,7 +22,6 @@ const Layout: React.FC<LayoutProps> = ({ meta, localesParams, children }) => {
       <Header meta={meta} localesParams={localesParams} />
       <Head>
         <title>Golden Key</title>
-        <meta name='googlebot' content='noindex' />
       </Head>
       <main className={s.body}>
         <div className={s.content}>{children}</div>
