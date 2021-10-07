@@ -1,38 +1,40 @@
 import { gql } from '@apollo/client'
 import { graphql } from '../apollo-client'
 
-export interface ProductPriceByIDData {
+export interface ProductsPriceByCodeData {
   products: {
     id: string
+    vendor_code: string
     price: number
     wholesale_price: number | null
   }[]
 }
 
-export interface ProductPriceByIDVars {
+export interface ProductsPriceByCodeVars {
   products: string[]
 }
 
-const GET_PRODUCT_PRICE_FROM_ID = gql`
-  query ($products: [ID!]) {
-    products(where: { id_in: $products }) {
+const GET_PRODUCTS_PRICE_FROM_CODE = gql`
+  query ($products: [String!]) {
+    products(where: { vendor_code_in: $products }) {
       id
+      vendor_code
       price
       wholesale_price
     }
   }
 `
 
-export const getProductPriceByID = async (
-  variables: ProductPriceByIDVars,
+export const getProductsPriceByCode = async (
+  variables: ProductsPriceByCodeVars,
   jwt: string
-): Promise<ProductPriceByIDData | undefined> => {
+): Promise<ProductsPriceByCodeData | undefined> => {
   try {
     const res = await graphql.mutate<
-      ProductPriceByIDData,
-      ProductPriceByIDVars
+      ProductsPriceByCodeData,
+      ProductsPriceByCodeVars
     >({
-      mutation: GET_PRODUCT_PRICE_FROM_ID,
+      mutation: GET_PRODUCTS_PRICE_FROM_CODE,
       context: {
         headers: {
           Authorization: `Bearer ${jwt}`,

@@ -30,7 +30,7 @@ export const getOrderCartSelector = createSelector(
   getCartProductsSelector,
   (items) =>
     items.map((i) => ({
-      product: i.product.id,
+      product: i.product.vendor_code,
       count: i.count,
     }))
 )

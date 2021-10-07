@@ -30,7 +30,7 @@ export default async (req: NextApiRequest, res: NextApiResponse<any>) => {
 
   //===== Get products data =====
 
-  const productsData = await privateServices.getProductPriceByID(
+  const productsData = await privateServices.getProductsPriceByCode(
     {
       products: cart_items.map((i) => i.product),
     },
@@ -42,7 +42,9 @@ export default async (req: NextApiRequest, res: NextApiResponse<any>) => {
 
   const cart = productsData.products.map((i) => ({
     product: i.id,
-    count: cart_items.find((cartItem) => cartItem.product === i.id)?.count || 1,
+    count:
+      cart_items.find((cartItem) => cartItem.product === i.vendor_code)
+        ?.count || 1,
     current_price: i.price,
   }))
   const totalCost: number = cart.reduce(
