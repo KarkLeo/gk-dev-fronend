@@ -33,7 +33,11 @@
       "city": "City",
       "novaposhta_number": "New post office",
       "is_novaposhta": "Sending by new mail",
-      "address": "Address"
+      "address": "Address",
+      "post_code": "Post code",
+      "dispatch": "Dispatch",
+      "ukr_post": "Ukrposhta",
+      "new_post": "Neva poshta"
     },
     "buttons": {
       "send": "Ok",

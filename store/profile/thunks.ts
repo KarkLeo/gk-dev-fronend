@@ -26,6 +26,7 @@ export const deleteProfileAddressThunk =
               novaposhta_number: i.novaposhta_number,
               address: i.address,
               city: i.city,
+              post_code: i.post_code,
             })),
         })
         dispatch(appAuthThunk(res))
@@ -58,6 +59,7 @@ export const editProfileAddressThunk =
                       : parseInt(data.novaposhta_number),
                   address: data.address,
                   city: data.city,
+                  post_code: data.post_code,
                 }
               : {
                   first_name: i.first_name,
@@ -67,6 +69,7 @@ export const editProfileAddressThunk =
                   novaposhta_number: i.novaposhta_number,
                   address: i.address,
                   city: i.city,
+                  post_code: i.post_code,
                 }
           ),
         })
@@ -98,6 +101,7 @@ export const createProfileAddressThunk =
               novaposhta_number: i.novaposhta_number,
               address: i.address,
               city: i.city,
+              post_code: i.post_code,
             })),
             {
               first_name: data.first_name,
@@ -110,6 +114,7 @@ export const createProfileAddressThunk =
                   : parseInt(data.novaposhta_number),
               address: data.address,
               city: data.city,
+              post_code: data.post_code,
             },
           ],
         })

@@ -6,6 +6,7 @@ export interface UserAddress {
   city: string
   novaposhta_number: string
   address: string
+  post_code: string
 }
 
 export interface UserAddressEdit {
@@ -16,6 +17,7 @@ export interface UserAddressEdit {
   city: string | null
   novaposhta_number: number | null
   address: string | null
+  post_code: string | null
 }
 
 export interface UserAddressResponse {
@@ -27,6 +29,7 @@ export interface UserAddressResponse {
   city: string | null
   novaposhta_number: number | null
   address: string | null
+  post_code: string | null
 }
 
 export interface UserAddressUpdateRequest {

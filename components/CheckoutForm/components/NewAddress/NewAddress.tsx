@@ -39,7 +39,7 @@ const NewAddress: React.FC<NewAddressProps> = ({
           checked={addressID === null}
           onChange={() => changeAddressID(null)}
         />
-        {t('checkout.new_address')}
+        {addressID !== null && t('checkout.new_address')}
       </label>
       {addressID === null && (
         <AddressForm

@@ -1,5 +1,5 @@
 import React from 'react'
-import { Button, Checkbox, TextField } from 'components/Controllers'
+import { Button, TextField, TextSwitcher } from 'components/Controllers'
 import useAddressForm from './useAddressForm'
 import s from '../FormStyle.module.css'
 import { UserAddress } from 'services/public'
@@ -56,11 +56,12 @@ export const AddressForm: React.FC<AddressFormProps> = (props) => {
               : ''
           }
         />
-
-        <Checkbox
+        <TextSwitcher
           checked={data.is_novaposhta}
           onChange={handlers.isNovaposhta}
-          label={t('forms.fields.is_novaposhta')}
+          title={t('forms.fields.dispatch')}
+          negative={t('forms.fields.ukr_post')}
+          positive={t('forms.fields.new_post')}
         />
 
         {data.is_novaposhta && (
@@ -87,6 +88,21 @@ export const AddressForm: React.FC<AddressFormProps> = (props) => {
             errorMessage={
               error.novaposhta_number
                 ? t(('forms.errors.' + error.novaposhta_number) as any)
+                : ''
+            }
+          />
+        )}
+        {!data.is_novaposhta && (
+          <TextField
+            value={data.post_code}
+            onChange={handlers.change('post_code')}
+            label={t('forms.fields.post_code')}
+            onFocus={handlers.focus('post_code')}
+            onBlur={handlers.blur('post_code')}
+            error={Boolean(error.post_code)}
+            errorMessage={
+              error.post_code
+                ? t(('forms.errors.' + error.post_code) as any)
                 : ''
             }
           />

@@ -1,0 +1,37 @@
+.root {
+  display: flex;
+  gap: var(--spacing-2);
+  margin: var(--spacing-3) 0;
+  padding: var(--spacing-2) 0;
+}
+
+.checkbox {
+  display: none;
+}
+
+.title {
+}
+.title::after {
+  content: ':';
+}
+
+.label {
+  font-weight: 600;
+
+  opacity: 0.8;
+  cursor: pointer;
+  user-select: none;
+}
+
+.label_active {
+  text-decoration: underline;
+
+  opacity: 1;
+  pointer-events: none;
+}
+
+@media screen and (min-width: 768px) {
+  .root {
+    grid-column: span 2;
+  }
+}

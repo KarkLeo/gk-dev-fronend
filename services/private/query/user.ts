@@ -9,6 +9,7 @@ export const DELIVERY_QUERY = `
   is_novaposhta
   city
   novaposhta_number
+  post_code
 `
 
 export const ORDER_QUERY = `

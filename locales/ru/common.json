@@ -32,8 +32,12 @@
       "confirm_password": "Повторить пароль",
       "city": "Город",
       "novaposhta_number": "Отделение новой почты",
-      "is_novaposhta": "Отправка новой почтой",
-      "address": "Адресс"
+      "is_novaposhta": " новой почтой",
+      "address": "Адресс",
+      "post_code": "Почтовый индекс",
+      "dispatch": "Отправка",
+      "ukr_post": "Укрпочта",
+      "new_post": "Новая почта"
     },
     "buttons": {
       "send": "Ок",

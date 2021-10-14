@@ -33,7 +33,11 @@
       "city": "Місто",
       "novaposhta_number": "Відділення Нової пошти",
       "is_novaposhta": "Відправка Новою поштою",
-      "address": "Адреса"
+      "address": "Адреса",
+      "post_code": "Поштовий індекс",
+      "dispatch": "Відправлення",
+      "ukr_post": "Укрпошта",
+      "new_post": "Нова пошта"
     },
     "buttons": {
       "send": "Ок",

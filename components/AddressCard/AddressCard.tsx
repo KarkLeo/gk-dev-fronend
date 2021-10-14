@@ -45,6 +45,7 @@ const AddressCard: React.FC<AddressCardProps> = ({
             novaposhta_number: data.novaposhta_number
               ? data.novaposhta_number.toString()
               : '',
+            post_code: data.post_code || '',
           }}
         />
       ) : (
@@ -65,7 +66,11 @@ const AddressCard: React.FC<AddressCardProps> = ({
                   </p>
                 </>
               )}
-              {!data.is_novaposhta && <p className={s.text}>{data.address}</p>}
+              {!data.is_novaposhta && (
+                <p className={s.text}>
+                  {data.post_code} {data.address}
+                </p>
+              )}
             </div>
           </div>
           <div className={s.buttons}>

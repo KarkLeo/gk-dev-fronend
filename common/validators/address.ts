@@ -16,6 +16,7 @@ export const initAddressData: UserAddress = {
   city: '',
   novaposhta_number: '',
   address: '',
+  post_code: '',
 } as const
 
 export const initAddressError: Record<keyof UserAddress, false | string> = {
@@ -26,6 +27,7 @@ export const initAddressError: Record<keyof UserAddress, false | string> = {
   address: false,
   is_novaposhta: false,
   novaposhta_number: false,
+  post_code: false,
 } as const
 
 //===== validate object =====
@@ -46,6 +48,7 @@ export const createAddressValidateObject = (
   novaposhta_number: () =>
     numberValidateWithParam(data.novaposhta_number, data.is_novaposhta),
   address: () => addressValidateWithParam(data.address, !data.is_novaposhta),
+  post_code: () => numberValidateWithParam(data.post_code, !data.is_novaposhta),
 })
 
 //===== checking functions =====
