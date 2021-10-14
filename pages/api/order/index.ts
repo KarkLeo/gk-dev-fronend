@@ -46,6 +46,7 @@ export default async (req: NextApiRequest, res: NextApiResponse<any>) => {
       cart_items.find((cartItem) => cartItem.product === i.vendor_code)
         ?.count || 1,
     current_price: i.price,
+    vendor_code: i.vendor_code,
   }))
   const totalCost: number = cart.reduce(
     (res, i) => res + i.count * i.current_price,

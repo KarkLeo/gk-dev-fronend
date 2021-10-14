@@ -1,7 +1,6 @@
 import { gql } from '@apollo/client'
 import { UserAddressEdit } from '../public'
 import { graphql } from '../apollo-client'
-import { TestOrderNumberData, TestOrderNumberVars } from './testOrderNumber'
 
 export interface CreateOrderData {
   createOrder: {
@@ -18,6 +17,7 @@ export interface CreateOrderVars {
     product: string
     count: number
     current_price: number
+    vendor_code: string
   }[]
   totalCost: number
   discount: number
