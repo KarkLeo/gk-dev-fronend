@@ -9,11 +9,7 @@ import {
   initLoginError,
   LoginValidateObject,
 } from 'common/validators/login'
-import {
-  getModalErrorSelector,
-  openRegisterModalAction,
-  setErrorModalAction,
-} from 'store/modal'
+import { getModalErrorSelector, setErrorModalAction } from 'store/modal'
 
 const useLoginForm = (toRegister: () => void) => {
   const dispatch = useDispatch()

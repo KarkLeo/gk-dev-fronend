@@ -9,11 +9,7 @@ import {
 } from 'common/validators/register'
 import { UserRegister } from 'services/public'
 import { registerThunk } from 'store/auth/'
-import {
-  getModalErrorSelector,
-  openLoginModalAction,
-  setErrorModalAction,
-} from 'store/modal'
+import { getModalErrorSelector, setErrorModalAction } from 'store/modal'
 
 const useRegisterForm = (toLogin: () => void) => {
   const dispatch = useDispatch()

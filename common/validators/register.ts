@@ -3,7 +3,7 @@ import {
   confirmPasswordValidate,
   emailValidate,
   nameValidate,
-  passwordValidate,
+  passwordSimpleValidate,
   phoneValidate,
   reCaptureValidate,
 } from './fields'
@@ -43,7 +43,7 @@ export const createRegisterValidateObject = (
   first_name: () => nameValidate(data.first_name),
   last_name: () => nameValidate(data.last_name),
   email: () => emailValidate(data.email),
-  password: () => passwordValidate(data.password),
+  password: () => passwordSimpleValidate(data.password),
   confirmPassword: () =>
     confirmPasswordValidate(data.confirmPassword, data.password),
   phone_number: () => phoneValidate(data.phone_number),
