@@ -31,6 +31,7 @@ export const getInitProfileAddressSelector = (
   novaposhta_number: '',
   city: '',
   address: '',
+  post_code: '',
 })
 
 export const getProfileAddressSelector = (

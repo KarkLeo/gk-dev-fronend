@@ -75,6 +75,7 @@ export const getOrderDeliverAddressSelector = createSelector(
             address: res.address || '',
             city: res.city || '',
             novaposhta_number: res.novaposhta_number?.toString() || '',
+            post_code: res.post_code || '',
           }
         : null
     }
