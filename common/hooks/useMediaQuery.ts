@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react'
+import { queryBreakpoints } from '../../styles/mediaQuery'
 
 type UseMediaQueryT = (query: string) => boolean
 /**
@@ -22,3 +23,24 @@ const useMediaQuery: UseMediaQueryT = (query) => {
 }
 
 export default useMediaQuery
+
+export const useMediaBreakpoints = () => {
+  const [match, changeMatch] = useState(queryBreakpoints[0][0])
+
+  useEffect(() => {
+    const checkQuery = () => {
+      const breakpoint = queryBreakpoints
+        .slice()
+        .reverse()
+        .find((i) => window.matchMedia(i[1]).matches)
+      changeMatch(breakpoint ? breakpoint[0] : 'test')
+    }
+    checkQuery()
+    window.addEventListener('resize', checkQuery)
+    return () => {
+      window.removeEventListener('resize', checkQuery)
+    }
+  }, [changeMatch])
+
+  return match
+}

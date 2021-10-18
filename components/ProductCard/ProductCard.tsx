@@ -68,46 +68,50 @@ const ProductCard: React.FC<ProductCardProps> = ({ data }) => {
           </a>
         </Link>
         <div className={s.grid}>
-          <div className={s.price__list}>
-            {currency.USD && (
-              <span className={s.price_other}>
-                {(data.price / currency.USD).toFixed(2)} $
-              </span>
-            )}
-            {currency.EUR && (
-              <span className={s.price_other}>
-                {(data.price / currency.EUR).toFixed(2)} €
-              </span>
-            )}
-            {currency.RUR && (
-              <span className={s.price_other}>
-                {(data.price / currency.RUR).toFixed(2)} ₽
-              </span>
-            )}
-          </div>
-          <span className={s.code}>
-            {t('productPage.art')} {data.vendor_code}
-          </span>
-          <div className={s.price__wrap}>
-            <span className={s.price}>
-              {data.price} {t('units.hrn')}
+          <div className={s.grid__row}>
+            <div className={s.price__list}>
+              {currency.USD && (
+                <span className={s.price_other}>
+                  {(data.price / currency.USD).toFixed(2)} $
+                </span>
+              )}
+              {currency.EUR && (
+                <span className={s.price_other}>
+                  {(data.price / currency.EUR).toFixed(2)} €
+                </span>
+              )}
+              {currency.RUR && (
+                <span className={s.price_other}>
+                  {(data.price / currency.RUR).toFixed(2)} ₽
+                </span>
+              )}
+            </div>
+            <span className={s.code}>
+              {t('productPage.art')} {data.vendor_code}
             </span>
-            {data.old_price && data.old_price > data.price ? (
-              <span className={s.price_old}>
-                {data.old_price} {t('units.hrn')}
-              </span>
-            ) : null}
           </div>
-          <div className={s.buttonsWrap}>
-            <button className={s.buttonIcon} onClick={addToFavoriteHandler}>
-              <Icon
-                iconId={isFavorite ? 'favorite_filled' : 'favorite'}
-                className={s.buttonIcon__icon}
-              />
-            </button>
-            <button className={s.button} onClick={addToCartHandler}>
-              {t('cart.add')}
-            </button>
+          <div className={s.grid__row}>
+            <div className={s.price__wrap}>
+              <span className={s.price}>
+                {data.price} {t('units.hrn')}
+              </span>
+              {data.old_price && data.old_price > data.price ? (
+                <span className={s.price_old}>
+                  {data.old_price} {t('units.hrn')}
+                </span>
+              ) : null}
+            </div>
+            <div className={s.buttonsWrap}>
+              <button className={s.buttonIcon} onClick={addToFavoriteHandler}>
+                <Icon
+                  iconId={isFavorite ? 'favorite_filled' : 'favorite'}
+                  className={s.buttonIcon__icon}
+                />
+              </button>
+              <button className={s.button} onClick={addToCartHandler}>
+                {t('cart.add')}
+              </button>
+            </div>
           </div>
         </div>
       </div>

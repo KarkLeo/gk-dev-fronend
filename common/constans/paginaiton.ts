@@ -1,1 +1,1 @@
-export const PRODUCTS_PER_PAGE = 8 as const
+export const PRODUCTS_PER_PAGE = 24 as const

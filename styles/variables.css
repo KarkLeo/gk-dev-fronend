@@ -25,16 +25,7 @@
   --shadow: 0 0.25rem 0.5rem 2px rgba(0, 0, 0, 0.1);
 }
 
-@media screen and (min-width: 768px) {
-  :root {
-    /*==== layout ====*/
-    --max-width: 62rem;
-    --layout-aside: 2rem;
-    --layout-gap: 1.5rem;
-  }
-}
-
-@media screen and (min-width: 1280px) {
+@media screen and (min-width: 1200px) {
   :root {
     /*==== layout ====*/
     --max-width: 90rem;
