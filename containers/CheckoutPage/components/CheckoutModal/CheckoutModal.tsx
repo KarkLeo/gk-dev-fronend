@@ -1,4 +1,4 @@
-import React, { useCallback } from 'react'
+import React, { useCallback, useEffect } from 'react'
 import { Button } from 'components/Controllers'
 import { useDispatch, useSelector } from 'react-redux'
 import { cleanCartAction, getOrderModalSelector } from 'store/cart'
@@ -15,6 +15,13 @@ const CheckoutModal: React.FC = () => {
   const modalCloseHandler = useCallback(
     () => dispatch(cleanCartAction()),
     [dispatch]
+  )
+
+  useEffect(
+    () => () => {
+      modalCloseHandler()
+    },
+    [modalCloseHandler]
   )
 
   return modal ? (
