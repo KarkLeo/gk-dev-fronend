@@ -7,4 +7,5 @@ export const initialState: CartState = {
     newAddress: null,
   },
   description: '',
+  modal: null,
 }

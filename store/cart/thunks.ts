@@ -9,7 +9,7 @@ import {
   isNewOrderAddressSelector,
 } from './selectors'
 import { publicServices } from 'services'
-import { cleanCartAction } from './actions'
+import { cleanCartAction, setOrderModalAction } from './actions'
 
 export const checkoutThunk = (): AppThunk => async (dispatch, getState) => {
   try {
@@ -31,7 +31,15 @@ export const checkoutThunk = (): AppThunk => async (dispatch, getState) => {
       })
       dispatch(appAuthThunk(res))
       if (isNewAddress) dispatch(createProfileAddressThunk(delivery_info))
-      dispatch(cleanCartAction())
+      const ordersCount = res.user.orders.length
+      if (ordersCount)
+        dispatch(
+          setOrderModalAction(
+            res.user.orders[ordersCount - 1].number,
+            res.user.orders[ordersCount - 1].discounted_cost
+          )
+        )
+      else dispatch(cleanCartAction())
     }
   } catch (e) {
     dispatch(appAuthErrorThunk(e))

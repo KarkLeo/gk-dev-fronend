@@ -75,7 +75,13 @@
     "delivery": "Delivery information",
     "comment": "Order comment",
     "new_address": "New address",
-    "confirm": "Confirm"
+    "confirm": "Confirm",
+    "modal": {
+      "title": "Order created successfully",
+      "number": "Order number",
+      "cost": "Order amount",
+      "description": "The manager will contact you to confirm the order"
+    }
   },
   "profile": {
     "login": "Login",

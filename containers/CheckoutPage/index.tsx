@@ -8,6 +8,7 @@ import CheckoutForm from 'components/CheckoutForm'
 import { getIsAuthSelector } from '../../store/auth'
 import CheckoutAuth from './components/CheckoutAuth/CheckoutAuth'
 import CheckoutCart from './components/CheckoutCart/CheckoutCart'
+import CheckoutModal from './components/CheckoutModal/CheckoutModal'
 
 interface CheckoutPageProps {
   meta: MetaData
@@ -26,6 +27,7 @@ const CheckoutPage: React.FC<CheckoutPageProps> = ({ meta }) => {
         </div>
         <div>{isAuth ? <CheckoutForm /> : <CheckoutAuth />}</div>
       </div>
+      <CheckoutModal />
     </Layout>
   )
 }

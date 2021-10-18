@@ -42,6 +42,7 @@ export const cartReducer = (
           newAddress: null,
         },
         description: '',
+        modal: null,
       }
     case 'CART/CHANGE_ORDER_ADDRESS_ID':
       return {
@@ -64,6 +65,8 @@ export const cartReducer = (
         ...state,
         description: action.description,
       }
+    case 'CART/SET_ORDER_MODAL':
+      return { ...state, modal: action.modal }
     default:
       return state
   }

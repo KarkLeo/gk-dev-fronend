@@ -1,11 +1,12 @@
 import { AppState } from '../types'
 import { createSelector } from 'reselect'
 import { ProductCardType } from 'services/static'
-import { UserAddress } from '../../services/public'
+import { UserAddress } from 'services/public'
 import {
   getInitProfileAddressSelector,
   getProfileAddressSelector,
 } from '../profile'
+import { OrderModalType } from './types'
 
 export const getCartRecordSelector = (state: AppState) => state.cart.products
 
@@ -34,6 +35,9 @@ export const getOrderCartSelector = createSelector(
       count: i.count,
     }))
 )
+
+export const getOrderModalSelector = (state: AppState): null | OrderModalType =>
+  state.cart.modal
 
 //===== Order data =====
 

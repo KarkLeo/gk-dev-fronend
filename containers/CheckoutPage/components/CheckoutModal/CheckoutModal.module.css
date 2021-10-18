@@ -1,0 +1,23 @@
+.info {
+  margin: 0 0 0.5em;
+
+  font-size: 1.4rem;
+}
+
+.info__value {
+  font-weight: 600;
+}
+
+.description {
+  margin: 1rem 0;
+
+  font-size: 1.2rem;
+  font-style: italic;
+  text-align: center;
+}
+
+.controllers {
+  margin: 2rem 0 0;
+  display: flex;
+  justify-content: center;
+}

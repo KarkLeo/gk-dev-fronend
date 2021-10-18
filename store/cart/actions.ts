@@ -42,3 +42,10 @@ export const setOrderDescriptionAction = (description: string) => ({
   type: 'CART/SET_ORDER_DESCRIPTION' as const,
   description,
 })
+
+//===== modal =====
+
+export const setOrderModalAction = (number: string, cost: number) => ({
+  type: 'CART/SET_ORDER_MODAL' as const,
+  modal: { number, cost },
+})
