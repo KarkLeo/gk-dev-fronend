@@ -18,7 +18,11 @@
   },
   "productPage": {
     "art": "арт.",
-    "back": "назад"
+    "back": "назад",
+    "box_length": "Довжина",
+    "box_width": "Ширина",
+    "box_height": "Висота",
+    "weights": "Вага"
   },
   "forms": {
     "fields": {

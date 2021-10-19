@@ -1,4 +1,4 @@
-import React, { useCallback } from 'react'
+import React, { useCallback, useMemo } from 'react'
 import s from './ProductPage.module.css'
 import Layout from 'components/Layout'
 import { MetaData, ProductDetail } from 'services/static'
@@ -11,7 +11,14 @@ import ImageSlider from './components/ImageSlider/ImageSlider'
 import BackButton from './components/BackButton/BackButton'
 import EmptyPhoto from 'components/EmptyPhoto/EmptyPhoto'
 import { addCartProductAction } from 'store/cart'
-import { useDispatch } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
+import {
+  addFavoriteProductThunk,
+  getFavoriteRecordSelector,
+} from 'store/favorite'
+import Icon from 'components/Icon'
+import Specifications from './components/Specifications/Specifications'
+
 // import ProductCarousel from '../HomePage/components/ProductCarousel/ProductCarousel'
 
 interface CategoryPageProps {
@@ -32,6 +39,18 @@ const ProductPage: React.FC<CategoryPageProps> = ({
     [dispatch, product]
   )
 
+  const addToFavoriteHandler = useCallback(
+    () => dispatch(addFavoriteProductThunk(product)),
+    [dispatch, product]
+  )
+
+  const record = useSelector(getFavoriteRecordSelector)
+
+  const isFavorite = useMemo(
+    () => Boolean(record[product.vendor_code]),
+    [record, product]
+  )
+
   return (
     <Layout meta={meta} localesParams={localesParams}>
       <BackButton slug={product.category.slug} />
@@ -47,12 +66,28 @@ const ProductPage: React.FC<CategoryPageProps> = ({
           <Title title={product.name} vendor_code={product.vendor_code} />
         </div>
         <div className={s.grid__content}>
-          <Price
-            price={product.price}
-            old_price={product.old_price}
-            wholesale_price={product.wholesale_price}
+          <div className={s.controllers}>
+            <Price
+              price={product.price}
+              old_price={product.old_price}
+              wholesale_price={product.wholesale_price}
+            />
+            <div className={s.buttons}>
+              <button className={s.buttonIcon} onClick={addToFavoriteHandler}>
+                <Icon
+                  iconId={isFavorite ? 'favorite_filled' : 'favorite'}
+                  className={s.buttonIcon__icon}
+                />
+              </button>
+              <CartButton addToCard={addToCartHandler} />
+            </div>
+          </div>
+          <Specifications
+            box_length={product.box_length}
+            box_width={product.box_width}
+            box_height={product.box_height}
+            weights={product.weights}
           />
-          <CartButton addToCard={addToCartHandler} />
           <Description text={product.description} />
         </div>
       </div>

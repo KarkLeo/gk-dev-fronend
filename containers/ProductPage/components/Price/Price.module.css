@@ -31,7 +31,6 @@
 
 .price__list {
   justify-self: start;
-  align-self: end;
   display: flex;
   align-items: center;
 }

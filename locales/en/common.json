@@ -18,7 +18,11 @@
   },
   "productPage": {
     "art": "art.",
-    "back": "back"
+    "back": "back",
+    "box_length": "Length",
+    "box_width": "Width",
+    "box_height": "Height",
+    "weights": "Weight"
   },
   "forms": {
     "fields": {

@@ -1,0 +1,13 @@
+.root {
+  margin: var(--spacing-4) 0 0;
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-2);
+}
+
+.options {
+  margin: 0;
+
+  font-size: 1.2rem;
+  font-weight: 300;
+}

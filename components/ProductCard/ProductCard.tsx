@@ -25,7 +25,7 @@ const ProductCard: React.FC<ProductCardProps> = ({ data }) => {
 
   const addToFavoriteHandler = useCallback(
     () => dispatch(addFavoriteProductThunk(data)),
-    [dispatch]
+    [dispatch, data]
   )
 
   const addToCartHandler = useCallback(
