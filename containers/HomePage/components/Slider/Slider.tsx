@@ -28,10 +28,14 @@ const Slider: React.FC<SliderProps> = ({ slides }) => {
         }}
         loop={true}
         navigation={true}
-        autoplay={{
-          delay: 3000,
-          disableOnInteraction: false,
-        }}
+        autoplay={
+          slides.length > 1
+            ? {
+                delay: 3000,
+                disableOnInteraction: false,
+              }
+            : false
+        }
       >
         {slides.map((i) => (
           <SwiperSlide key={i.id}>
