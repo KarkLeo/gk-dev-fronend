@@ -15,6 +15,11 @@ export interface UserLogin {
   reCapture: string
 }
 
+export interface UserEmail {
+  email: string
+  reCapture: string
+}
+
 export interface UserMe {
   jwt: string
 }
