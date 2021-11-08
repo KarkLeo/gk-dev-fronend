@@ -117,3 +117,5 @@ export const numberValidateWithParam = (
   str: string,
   param: boolean
 ): ValidateType => param && numberValidate(str)
+
+export const simpleValidate = (str: string): ValidateType => false
