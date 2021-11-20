@@ -4,12 +4,13 @@ import Icon from '../../../Icon'
 import s from './ProductItem.module.css'
 import Counter from 'components/Counter/Counter'
 import { ProductCardType } from 'services/static'
-import { useDispatch } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 import { removeCartProductAction, setCartProductCountAction } from 'store/cart'
 import { useTranslation } from 'next-i18next'
 import createProductLinkFromLocale from 'common/utils/createProductLinkFromLocale'
 import { PRODUCT_PAGE_URL } from 'route'
 import EmptyPhoto from '../../../EmptyPhoto/EmptyPhoto'
+import { getIsWholesalerSelector } from 'store/auth'
 
 interface ProductItemProps {
   product: ProductCardType
@@ -17,7 +18,15 @@ interface ProductItemProps {
 }
 
 const ProductItem: React.FC<ProductItemProps> = ({ product, count }) => {
+  const { price, wholesale_price } = product
+
   const dispatch = useDispatch()
+  const isWholesaler = useSelector(getIsWholesalerSelector)
+
+  const currentPrice = useMemo(
+    (): number => (isWholesaler ? wholesale_price || price : price),
+    [price, wholesale_price, isWholesaler]
+  )
 
   const setCountHandler = useCallback(
     (value: number) =>
@@ -81,11 +90,11 @@ const ProductItem: React.FC<ProductItemProps> = ({ product, count }) => {
             <div className={s.price}>
               {count > 1 && (
                 <span className={s.price__init}>
-                  {product.price} {t('units.hrn')}
+                  {currentPrice} {t('units.hrn')}
                 </span>
               )}
               <span className={s.price__total}>
-                {product.price * count} {t('units.hrn')}
+                {currentPrice * count} {t('units.hrn')}
               </span>
             </div>
           </div>

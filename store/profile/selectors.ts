@@ -1,9 +1,5 @@
 import { AppState } from '../types'
-import {
-  UserAddress,
-  UserAddressResponse,
-  UserProfile,
-} from '../../services/public'
+import { UserAddress, UserAddressResponse, UserProfile } from 'services/public'
 
 export const getProfileInitialsSelector = (state: AppState): string | null => {
   const isAuth = state.auth.isAuth

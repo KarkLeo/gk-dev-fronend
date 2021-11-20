@@ -23,7 +23,7 @@ export const appAuthThunk =
   (auth: UserAuthResponse | UserProfileResponse): AppThunk =>
   (dispatch, getState) => {
     'jwt' in auth && setJwt(auth['jwt'] as string)
-    dispatch(setAuthAction(auth.user.id))
+    dispatch(setAuthAction(auth.user.id, auth.user.is_wholesaler))
     dispatch(
       setProfileAction({
         first_name: auth.user.first_name,

@@ -1,5 +1,7 @@
 import React from 'react'
+
 import ProfileNavigation from './components/ProfileNavigation/ProfileNavigation'
+import WholesalerLabel from './components/WholesalerLabel/WholesalerLabel'
 import s from './ProfileLayout.module.css'
 
 const ProfileLayout: React.FC = ({ children }) => {
@@ -8,7 +10,10 @@ const ProfileLayout: React.FC = ({ children }) => {
       <div className={s.bar}>
         <ProfileNavigation />
       </div>
-      <div className={s.content}>{children}</div>
+      <div className={s.content}>
+        <WholesalerLabel />
+        {children}
+      </div>
     </div>
   )
 }

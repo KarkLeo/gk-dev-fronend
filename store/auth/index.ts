@@ -1,6 +1,6 @@
+export * from './selectors'
 export * from './types'
 export * from './state'
 export * from './reducer'
 export * from './actions'
 export * from './thunks'
-export * from './selectors'

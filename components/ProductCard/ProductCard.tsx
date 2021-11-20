@@ -13,15 +13,24 @@ import {
 import { addCartProductAction } from 'store/cart'
 import { useTranslation } from 'next-i18next'
 import { getCurrencySelector } from 'store/currency'
+import { getIsWholesalerSelector } from 'store/auth'
 
 interface ProductCardProps {
   data: ProductCardType
 }
 
 const ProductCard: React.FC<ProductCardProps> = ({ data }) => {
+  const { price, wholesale_price } = data
+
   const dispatch = useDispatch()
   const { t } = useTranslation('common')
   const currency = useSelector(getCurrencySelector)
+  const isWholesaler = useSelector(getIsWholesalerSelector)
+
+  const currentPrice = useMemo(
+    (): number => (isWholesaler ? wholesale_price || price : price),
+    [price, wholesale_price, isWholesaler]
+  )
 
   const addToFavoriteHandler = useCallback(
     () => dispatch(addFavoriteProductThunk(data)),
@@ -72,17 +81,17 @@ const ProductCard: React.FC<ProductCardProps> = ({ data }) => {
             <div className={s.price__list}>
               {currency.USD && (
                 <span className={s.price_other}>
-                  {(data.price / currency.USD).toFixed(2)} $
+                  {(currentPrice / currency.USD).toFixed(2)} $
                 </span>
               )}
               {currency.EUR && (
                 <span className={s.price_other}>
-                  {(data.price / currency.EUR).toFixed(2)} €
+                  {(currentPrice / currency.EUR).toFixed(2)} €
                 </span>
               )}
               {currency.RUR && (
                 <span className={s.price_other}>
-                  {(data.price / currency.RUR).toFixed(2)} ₽
+                  {(currentPrice / currency.RUR).toFixed(2)} ₽
                 </span>
               )}
             </div>
@@ -93,9 +102,11 @@ const ProductCard: React.FC<ProductCardProps> = ({ data }) => {
           <div className={s.grid__row}>
             <div className={s.price__wrap}>
               <span className={s.price}>
-                {data.price} {t('units.hrn')}
+                {currentPrice} {t('units.hrn')}
               </span>
-              {data.old_price && data.old_price > data.price ? (
+              {data.old_price &&
+              !isWholesaler &&
+              data.old_price > currentPrice ? (
                 <span className={s.price_old}>
                   {data.old_price} {t('units.hrn')}
                 </span>

@@ -47,4 +47,5 @@ export const USER_QUERY = `
   orders (sort: "date:DESC") {
     ${ORDER_QUERY}
   }
+  is_wholesaler
 `

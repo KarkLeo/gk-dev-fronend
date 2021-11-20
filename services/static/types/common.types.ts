@@ -23,7 +23,7 @@ export interface ProductCardType {
   vendor_code: string
   price: number
   old_price: number | null
-  wholesale_price: number
+  wholesale_price: number | null
   photos: DefaultStrapiImage[]
   locale: string
   localizations: {

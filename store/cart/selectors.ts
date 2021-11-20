@@ -1,11 +1,12 @@
-import { AppState } from '../types'
+import { AppState } from 'store/types'
 import { createSelector } from 'reselect'
 import { ProductCardType } from 'services/static'
 import { UserAddress } from 'services/public'
 import {
   getInitProfileAddressSelector,
   getProfileAddressSelector,
-} from '../profile'
+} from 'store/profile'
+import { getIsWholesalerSelector } from 'store/auth'
 import { OrderModalType } from './types'
 
 export const getCartRecordSelector = (state: AppState) => state.cart.products
@@ -22,9 +23,18 @@ export const getCartProductsCountSelector = createSelector(
 )
 
 export const getTotalCartPriceSelector = createSelector(
+  getIsWholesalerSelector,
   getCartProductsSelector,
-  (products): number =>
-    products.reduce((res, i) => res + i.count * i.product.price, 0)
+  (isWholesaler, products): number =>
+    products.reduce(
+      (res, i) =>
+        res +
+        i.count *
+          (isWholesaler
+            ? i.product.wholesale_price || i.product.price
+            : i.product.price),
+      0
+    )
 )
 
 export const getOrderCartSelector = createSelector(

@@ -1,6 +1,10 @@
-export const setAuthAction = (userID: string) => ({
+export const setAuthAction = (
+  userID: string,
+  isWholesaler: boolean | null
+) => ({
   type: 'AUTH/SET_AUTH' as const,
   userID,
+  isWholesaler,
 })
 
 export const cleanAuthAction = () => ({

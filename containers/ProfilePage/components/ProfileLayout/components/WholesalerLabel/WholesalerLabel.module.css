@@ -1,0 +1,21 @@
+.root {
+  align-self: flex-start;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: max-content;
+  padding: 0.6em;
+  margin: 0 0 1em;
+  box-sizing: border-box;
+
+  font-family: var(--font-main);
+  font-size: 0.8rem;
+  font-weight: 600;
+  line-height: 1;
+  text-transform: uppercase;
+  letter-spacing: 0.001em;
+  color: var(--c-main-black);
+
+  border: 1px solid var(--c-main-black);
+  border-radius: 0;
+}

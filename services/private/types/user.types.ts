@@ -11,4 +11,5 @@ export interface UserResponseTypes {
   delivery_info: UserAddressResponse[] | null
   favorites: ProductCardType[]
   orders: OrderResponse[]
+  is_wholesaler: boolean | null
 }

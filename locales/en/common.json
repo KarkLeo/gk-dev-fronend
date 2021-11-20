@@ -105,6 +105,7 @@
       "address": "Edit addresses",
       "orders": "Order information",
       "password": "Change password"
-    }
+    },
+    "wholesaler": "Wholesale account"
   }
 }

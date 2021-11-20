@@ -7,12 +7,18 @@ export const authReducer = (
 ): AuthState => {
   switch (action.type) {
     case 'AUTH/CLEAN_AUTH':
-      return { ...state, isAuth: false, userID: null }
+      return {
+        ...state,
+        isAuth: false,
+        userID: null,
+        isWholesaler: false,
+      }
     case 'AUTH/SET_AUTH':
       return {
         ...state,
         isAuth: true,
         userID: action.userID,
+        isWholesaler: action.isWholesaler,
       }
     case 'AUTH/COMPLETED_TEST':
       return {
