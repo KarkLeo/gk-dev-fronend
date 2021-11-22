@@ -1,6 +1,7 @@
 import * as actions from './actions'
 import { ProductCardType } from 'services/static'
 import { UserAddress } from 'services/public'
+import { CartSettingsTypes } from 'services/private/types'
 
 export interface OrderModalType {
   number: string
@@ -15,6 +16,7 @@ export interface CartState {
   }
   description: string
   modal: null | OrderModalType
+  setting: CartSettingsTypes | null
 }
 
 type ActionsName = keyof typeof actions

@@ -6,6 +6,8 @@ export const cartReducer = (
   action: Action
 ): CartState => {
   switch (action.type) {
+    case 'CART/SET_SETTINGS':
+      return { ...state, setting: action.settings }
     case 'CART/ADD_CART_PRODUCT':
       return {
         ...state,
@@ -43,6 +45,7 @@ export const cartReducer = (
         },
         description: '',
         modal: null,
+        setting: null,
       }
     case 'CART/CHANGE_ORDER_ADDRESS_ID':
       return {

@@ -8,4 +8,5 @@ export const initialState: CartState = {
   },
   description: '',
   modal: null,
+  setting: null,
 }

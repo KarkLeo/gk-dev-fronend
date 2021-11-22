@@ -1,6 +1,7 @@
 import { gql } from '@apollo/client'
 import { UserAddressEdit } from '../public'
 import { graphql } from '../apollo-client'
+import { OrderCartInfo } from './types'
 
 export interface CreateOrderData {
   createOrder: {
@@ -8,20 +9,11 @@ export interface CreateOrderData {
   }
 }
 
-export interface CreateOrderVars {
+export interface CreateOrderVars extends OrderCartInfo {
   number: string
   date: string
   userID: string
   address: UserAddressEdit
-  cart: {
-    product: string
-    count: number
-    current_price: number
-    vendor_code: string
-  }[]
-  totalCost: number
-  discount: number
-  discountedCost: number
   description: string
 }
 

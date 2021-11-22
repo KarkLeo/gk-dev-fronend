@@ -9,7 +9,12 @@ import {
   isNewOrderAddressSelector,
 } from './selectors'
 import { publicServices } from 'services'
-import { cleanCartAction, setOrderModalAction } from './actions'
+import {
+  cleanCartAction,
+  setCartSettings,
+  setOrderModalAction,
+} from './actions'
+import prepareCartSettings from 'common/utils/prepareCartSettings'
 
 export const checkoutThunk = (): AppThunk => async (dispatch, getState) => {
   try {
@@ -43,5 +48,14 @@ export const checkoutThunk = (): AppThunk => async (dispatch, getState) => {
     }
   } catch (e) {
     dispatch(appAuthErrorThunk(e))
+  }
+}
+
+export const fetchCartSettingsThunk = (): AppThunk => async (dispatch) => {
+  try {
+    const res = await publicServices.cartSettings()
+    res && dispatch(setCartSettings(prepareCartSettings(res.cartSetting)))
+  } catch (e) {
+    console.log(e)
   }
 }

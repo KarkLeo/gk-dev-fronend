@@ -6,7 +6,7 @@ import { DefaultLocalesParams } from 'common/utils/locales-params'
 import Footer from 'components/Footer'
 import useAuth from 'common/hooks/useAuth'
 import Head from 'next/head'
-import useFetchCurrency from 'common/hooks/useFetchCurrency'
+import useDataWorker from 'common/hooks/useDataWorker'
 
 interface LayoutProps {
   meta: MetaData
@@ -15,7 +15,7 @@ interface LayoutProps {
 
 const Layout: React.FC<LayoutProps> = ({ meta, localesParams, children }) => {
   useAuth()
-  useFetchCurrency()
+  useDataWorker()
 
   return (
     <div className={s.root}>

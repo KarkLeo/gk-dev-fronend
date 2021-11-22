@@ -6,7 +6,7 @@ import Header from 'components/Header'
 import Footer from 'components/Footer'
 import Slider from '../Slider/Slider'
 import useAuth from 'common/hooks/useAuth'
-import useFetchCurrency from 'common/hooks/useFetchCurrency'
+import useDataWorker from 'common/hooks/useDataWorker'
 
 interface HomeLayoutProps {
   meta: MetaData
@@ -21,7 +21,7 @@ const HomeLayout: React.FC<HomeLayoutProps> = ({
   children,
 }) => {
   useAuth()
-  useFetchCurrency()
+  useDataWorker()
 
   return (
     <div className={s.root}>
