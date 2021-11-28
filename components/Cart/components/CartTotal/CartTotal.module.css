@@ -1,0 +1,29 @@
+.root {
+  margin: 0;
+  padding: var(--spacing-3) var(--spacing-2);
+
+  border-top: 1px solid var(--c-main-black);
+}
+
+.item {
+  margin: var(--spacing-1) 0;
+  padding: 0 0 var(--spacing-1);
+
+  font-size: 1.2rem;
+  font-weight: 600;
+  line-height: 1.2;
+  color: var(--c-main-black);
+  text-align: right;
+}
+.item_cost {
+  margin: var(--spacing-2) 0;
+
+  font-size: 1.6rem;
+}
+
+.message {
+  margin: var(--spacing-3) 0 0;
+
+  font-size: 0.8rem;
+  font-weight: 400;
+}

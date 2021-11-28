@@ -8,8 +8,14 @@ import {
 } from 'store/profile'
 import { getIsWholesalerSelector } from 'store/auth'
 import { OrderModalType } from './types'
+import calculateCost, {
+  getStandardTotal,
+  hasUseWholesalerPrice,
+} from 'common/utils/calculateСost'
 
 export const getCartRecordSelector = (state: AppState) => state.cart.products
+
+export const getCartSettingsSelector = (state: AppState) => state.cart.setting
 
 export const getCartProductsSelector = createSelector(
   getCartRecordSelector,
@@ -35,6 +41,25 @@ export const getTotalCartPriceSelector = createSelector(
             : i.product.price),
       0
     )
+)
+
+export const getCartFullInfoSelector = createSelector(
+  getCartRecordSelector,
+  getCartSettingsSelector,
+  getIsWholesalerSelector,
+  calculateCost
+)
+
+export const getStandardTotalSelector = createSelector(
+  getCartRecordSelector,
+  getStandardTotal
+)
+
+export const hasUseWholesalerPriceSelector = createSelector(
+  getStandardTotalSelector,
+  getCartSettingsSelector,
+  getIsWholesalerSelector,
+  hasUseWholesalerPrice
 )
 
 export const getOrderCartSelector = createSelector(

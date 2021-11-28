@@ -72,7 +72,9 @@
     "total_cost": "Сумма",
     "discount": "Скидка",
     "discounted_cost": "Сумма со скидкой",
-    "checkout": "Оформить заказ"
+    "checkout": "Оформить заказ",
+    "not_reached_wholesaler_limit": "Оптовые цены работают на заказ от $TOTAL$ грн.",
+    "used_customer_discount": "Вы получили скидку $VALUE$%, скидка действует на сумму от $TOTAL$ грн."
   },
   "checkout": {
     "title": "Оформление заказа",

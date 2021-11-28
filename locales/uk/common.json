@@ -72,7 +72,9 @@
     "total_cost": "Сума",
     "discount": "Знижка",
     "discounted_cost": "Сума зі знижкою",
-    "checkout": "Оформити замовлення"
+    "checkout": "Оформити замовлення",
+    "not_reached_wholesaler_limit": "Оптові ціни працюють на замовлення від $TOTAL$ грн.",
+    "used_customer_discount": "Ви отримали знижку $VALUE$%, знижка діє на суму від $TOTAL$ грн."
   },
   "checkout": {
     "title": "Оформлення замовлення",

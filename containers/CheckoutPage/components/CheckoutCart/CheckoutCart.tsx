@@ -1,10 +1,8 @@
 import React from 'react'
 import ProductItem from 'components/Cart/components/ProductItem/ProductItem'
+import CartTotal from 'components/Cart/components/CartTotal/CartTotal'
 import { useSelector } from 'react-redux'
-import {
-  getCartProductsSelector,
-  getTotalCartPriceSelector,
-} from 'store/cart/selectors'
+import { getCartProductsSelector } from 'store/cart/selectors'
 import { useTranslation } from 'next-i18next'
 import s from './CheckoutCart.module.css'
 
@@ -12,7 +10,6 @@ const CheckoutCart = () => {
   const { t } = useTranslation('common')
 
   const products = useSelector(getCartProductsSelector)
-  const total = useSelector(getTotalCartPriceSelector)
 
   return (
     <div className={s.root}>
@@ -27,12 +24,7 @@ const CheckoutCart = () => {
             ))
           : t('cart.empty')}
       </div>
-
-      {total > 0 && (
-        <div className={s.total}>
-          {t('cart.total_cost')}: {total} {t('units.hrn')}
-        </div>
-      )}
+      <CartTotal />
     </div>
   )
 }

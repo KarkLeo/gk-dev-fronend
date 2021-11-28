@@ -72,7 +72,9 @@
     "total_cost": "Amount",
     "discount": "Discount",
     "discounted_cost": "Discount amount",
-    "checkout": "Checkout"
+    "checkout": "Checkout",
+    "not_reached_wholesaler_limit": "Wholesale prices work on order from $TOTAL$ UAH",
+    "used_customer_discount": "You received a $VALUE$% discount, the discount is valid for the amount of $TOTAL$ UAH or more."
   },
   "checkout": {
     "title": "Checkout",

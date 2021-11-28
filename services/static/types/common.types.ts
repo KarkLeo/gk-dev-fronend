@@ -11,7 +11,7 @@ export interface DefaultStrapiButton {
   url: string
 }
 
-//===== Product cart =====
+//===== Product card =====
 
 export interface ProductCardType {
   id: string
