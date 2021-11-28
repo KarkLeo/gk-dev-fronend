@@ -1,9 +1,9 @@
 import { UserAddress } from 'services/public'
 import {
   addressValidateWithParam,
-  nameValidate,
+  nameValidateRequired,
   numberValidateWithParam,
-  phoneValidate,
+  phoneValidateRequired,
 } from './fields'
 
 //===== constants =====
@@ -40,9 +40,9 @@ export type AddressValidateObject = Record<
 export const createAddressValidateObject = (
   data: UserAddress
 ): AddressValidateObject => ({
-  first_name: () => nameValidate(data.first_name),
-  last_name: () => nameValidate(data.last_name),
-  phone_number: () => phoneValidate(data.phone_number),
+  first_name: () => nameValidateRequired(data.first_name),
+  last_name: () => nameValidateRequired(data.last_name),
+  phone_number: () => phoneValidateRequired(data.phone_number),
   is_novaposhta: () => false,
   city: () => addressValidateWithParam(data.city, data.is_novaposhta),
   novaposhta_number: () =>

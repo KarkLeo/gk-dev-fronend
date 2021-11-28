@@ -1,8 +1,4 @@
-import {
-  UserAddress,
-  UserAddressEdit,
-  UserAddressResponse,
-} from './address.types'
+import { UserAddress, UserAddressResponse } from './address.types'
 import { DefaultStrapiImage } from '../../static'
 
 export interface OrderCartProductResponse {

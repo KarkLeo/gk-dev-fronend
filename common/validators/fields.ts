@@ -13,7 +13,7 @@ const INVALID_EMAIL = 'invalid_email'
 const INVALID_PHONE_NUMBER = 'invalid_phone_number'
 const INVALID_NUMBER = 'invalid_number'
 
-export const nameValidate = (str: string): ValidateType =>
+export const nameValidateRequired = (str: string): ValidateType =>
   validator.isEmpty(str)
     ? NOT_EMPTY
     : !validator.isLength(str, {
@@ -29,7 +29,23 @@ export const nameValidate = (str: string): ValidateType =>
     ? ONE_LANGUAGE_NAME
     : false
 
-export const passwordValidate = (str: string): ValidateType =>
+export const nameValidate = (str: string): ValidateType =>
+  validator.isEmpty(str)
+    ? false
+    : !validator.isLength(str, {
+        min: 3,
+        max: 12,
+      })
+    ? FROM_3_TO_12
+    : !(
+        validator.isAlpha(str, 'uk-UA') ||
+        validator.isAlpha(str, 'ru-RU') ||
+        validator.isAlpha(str, 'en-US')
+      )
+    ? ONE_LANGUAGE_NAME
+    : false
+
+export const passwordValidateRequired = (str: string): ValidateType =>
   validator.isEmpty(str)
     ? NOT_EMPTY
     : !validator.isLength(str, {
@@ -54,7 +70,7 @@ export const passwordValidate = (str: string): ValidateType =>
     ? PASSWORD_RULE
     : false
 
-export const passwordSimpleValidate = (str: string): ValidateType =>
+export const passwordSimpleValidateRequired = (str: string): ValidateType =>
   validator.isEmpty(str)
     ? NOT_EMPTY
     : !validator.isLength(str, {
@@ -64,7 +80,7 @@ export const passwordSimpleValidate = (str: string): ValidateType =>
     ? FROM_6_TO_20
     : false
 
-export const confirmPasswordValidate = (
+export const confirmPasswordValidateRequired = (
   str: string,
   password: string
 ): ValidateType =>
@@ -74,26 +90,43 @@ export const confirmPasswordValidate = (
     ? PASSWORD_MISMATCH
     : false
 
-export const emailValidate = (str: string): ValidateType =>
+export const emailValidateRequired = (str: string): ValidateType =>
   validator.isEmpty(str)
     ? NOT_EMPTY
     : !validator.isEmail(str)
     ? INVALID_EMAIL
     : false
 
-export const phoneValidate = (str: string): ValidateType =>
+export const emailValidate = (str: string): ValidateType =>
+  validator.isEmpty(str)
+    ? false
+    : !validator.isEmail(str)
+    ? INVALID_EMAIL
+    : false
+
+export const phoneValidateRequired = (str: string): ValidateType =>
   validator.isEmpty(str)
     ? NOT_EMPTY
     : !validator.isMobilePhone(str)
     ? INVALID_PHONE_NUMBER
     : false
 
-export const reCaptureValidate = (str: string): ValidateType =>
+export const reCaptureValidateRequired = (str: string): ValidateType =>
   validator.isEmpty(str) ? NOT_EMPTY : false
+
+export const addressValidateRequired = (str: string): ValidateType =>
+  validator.isEmpty(str)
+    ? NOT_EMPTY
+    : !validator.isLength(str, {
+        min: 5,
+        max: 64,
+      })
+    ? FROM_5_TO_64
+    : false
 
 export const addressValidate = (str: string): ValidateType =>
   validator.isEmpty(str)
-    ? NOT_EMPTY
+    ? false
     : !validator.isLength(str, {
         min: 5,
         max: 64,
@@ -104,11 +137,18 @@ export const addressValidate = (str: string): ValidateType =>
 export const addressValidateWithParam = (
   str: string,
   param: boolean
-): ValidateType => param && addressValidate(str)
+): ValidateType => param && addressValidateRequired(str)
+
+export const numberValidateRequired = (str: string): ValidateType =>
+  validator.isEmpty(str)
+    ? NOT_EMPTY
+    : !validator.isInt(str, { min: 1 })
+    ? INVALID_NUMBER
+    : false
 
 export const numberValidate = (str: string): ValidateType =>
   validator.isEmpty(str)
-    ? NOT_EMPTY
+    ? false
     : !validator.isInt(str, { min: 1 })
     ? INVALID_NUMBER
     : false
@@ -116,6 +156,6 @@ export const numberValidate = (str: string): ValidateType =>
 export const numberValidateWithParam = (
   str: string,
   param: boolean
-): ValidateType => param && numberValidate(str)
+): ValidateType => param && numberValidateRequired(str)
 
 export const simpleValidate = (str: string): ValidateType => false

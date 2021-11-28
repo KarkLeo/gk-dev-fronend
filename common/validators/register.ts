@@ -1,11 +1,11 @@
 import { UserRegister } from 'services/public'
 import {
-  confirmPasswordValidate,
-  emailValidate,
-  nameValidate,
-  passwordSimpleValidate,
-  phoneValidate,
-  reCaptureValidate,
+  confirmPasswordValidateRequired,
+  emailValidateRequired,
+  nameValidateRequired,
+  passwordSimpleValidateRequired,
+  phoneValidateRequired,
+  reCaptureValidateRequired,
 } from './fields'
 
 //===== constants =====
@@ -40,14 +40,14 @@ export type RegisterValidateObject = Record<
 export const createRegisterValidateObject = (
   data: UserRegister
 ): RegisterValidateObject => ({
-  first_name: () => nameValidate(data.first_name),
-  last_name: () => nameValidate(data.last_name),
-  email: () => emailValidate(data.email),
-  password: () => passwordSimpleValidate(data.password),
+  first_name: () => nameValidateRequired(data.first_name),
+  last_name: () => nameValidateRequired(data.last_name),
+  email: () => emailValidateRequired(data.email),
+  password: () => passwordSimpleValidateRequired(data.password),
   confirmPassword: () =>
-    confirmPasswordValidate(data.confirmPassword, data.password),
-  phone_number: () => phoneValidate(data.phone_number),
-  reCapture: () => reCaptureValidate(data.reCapture),
+    confirmPasswordValidateRequired(data.confirmPassword, data.password),
+  phone_number: () => phoneValidateRequired(data.phone_number),
+  reCapture: () => reCaptureValidateRequired(data.reCapture),
 })
 
 //===== checking functions =====

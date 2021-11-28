@@ -1,5 +1,9 @@
-import { UserProfile } from '../../services/public'
-import { emailValidate, nameValidate, phoneValidate } from './fields'
+import { UserProfile } from 'services/public'
+import {
+  emailValidateRequired,
+  nameValidateRequired,
+  phoneValidateRequired,
+} from './fields'
 
 //===== constants =====
 
@@ -27,10 +31,10 @@ export type ProfileValidateObject = Record<
 export const createProfileValidateObject = (
   data: UserProfile
 ): ProfileValidateObject => ({
-  first_name: () => nameValidate(data.first_name),
-  last_name: () => nameValidate(data.last_name),
-  email: () => emailValidate(data.email),
-  phone_number: () => phoneValidate(data.phone_number),
+  first_name: () => nameValidateRequired(data.first_name),
+  last_name: () => nameValidateRequired(data.last_name),
+  email: () => emailValidateRequired(data.email),
+  phone_number: () => phoneValidateRequired(data.phone_number),
 })
 
 //===== checking functions =====

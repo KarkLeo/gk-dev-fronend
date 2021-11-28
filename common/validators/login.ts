@@ -1,8 +1,8 @@
 import { UserLogin } from 'services/public'
 import {
-  emailValidate,
-  passwordSimpleValidate,
-  reCaptureValidate,
+  emailValidateRequired,
+  passwordSimpleValidateRequired,
+  reCaptureValidateRequired,
 } from './fields'
 
 //===== constants =====
@@ -26,9 +26,9 @@ export type LoginValidateObject = Record<keyof UserLogin, () => string | false>
 export const createLoginValidateObject = (
   data: UserLogin
 ): LoginValidateObject => ({
-  email: () => emailValidate(data.email),
-  password: () => passwordSimpleValidate(data.password),
-  reCapture: () => reCaptureValidate(data.reCapture),
+  email: () => emailValidateRequired(data.email),
+  password: () => passwordSimpleValidateRequired(data.password),
+  reCapture: () => reCaptureValidateRequired(data.reCapture),
 })
 
 //===== checking functions =====

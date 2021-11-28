@@ -1,5 +1,8 @@
 import { UserPassword } from 'services/public'
-import { confirmPasswordValidate, passwordSimpleValidate } from './fields'
+import {
+  confirmPasswordValidateRequired,
+  passwordSimpleValidateRequired,
+} from './fields'
 
 //===== constants =====
 
@@ -25,10 +28,10 @@ export type PasswordValidateObject = Record<
 export const createPasswordValidateObject = (
   data: UserPassword
 ): PasswordValidateObject => ({
-  oldPassword: () => passwordSimpleValidate(data.oldPassword),
-  password: () => passwordSimpleValidate(data.password),
+  oldPassword: () => passwordSimpleValidateRequired(data.oldPassword),
+  password: () => passwordSimpleValidateRequired(data.password),
   confirmPassword: () =>
-    confirmPasswordValidate(data.confirmPassword, data.password),
+    confirmPasswordValidateRequired(data.confirmPassword, data.password),
 })
 
 //===== checking functions =====

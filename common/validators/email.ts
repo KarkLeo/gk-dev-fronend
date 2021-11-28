@@ -1,9 +1,5 @@
-import { UserEmail, UserLogin } from 'services/public'
-import {
-  emailValidate,
-  passwordSimpleValidate,
-  reCaptureValidate,
-} from './fields'
+import { UserEmail } from 'services/public'
+import { emailValidateRequired, reCaptureValidateRequired } from './fields'
 
 //===== constants =====
 
@@ -24,8 +20,8 @@ export type EmailValidateObject = Record<keyof UserEmail, () => string | false>
 export const createEmailValidateObject = (
   data: UserEmail
 ): EmailValidateObject => ({
-  email: () => emailValidate(data.email),
-  reCapture: () => reCaptureValidate(data.reCapture),
+  email: () => emailValidateRequired(data.email),
+  reCapture: () => reCaptureValidateRequired(data.reCapture),
 })
 
 //===== checking functions =====
