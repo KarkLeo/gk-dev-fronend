@@ -3,6 +3,10 @@
   padding-bottom: var(--spacing-1);
 }
 
+.root_isMain {
+  padding-bottom: var(--spacing-2);
+}
+
 .root_label {
   display: block;
 
@@ -17,6 +21,11 @@
   font-weight: 400;
   line-height: 1.2;
   color: var(--c-main-black);
+}
+
+.root_isMain .label {
+  font-size: 1.2rem;
+  font-weight: 600;
 }
 
 .field {
@@ -40,6 +49,10 @@
 }
 .field::placeholder {
   color: var(--c-medium-gray);
+}
+
+.root_isMain .field {
+  border-bottom-width: 2px;
 }
 
 .field_error {

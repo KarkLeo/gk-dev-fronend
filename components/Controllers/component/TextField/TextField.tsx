@@ -15,6 +15,7 @@ interface TextFieldProps {
   onChange: (value: string) => void
   onFocus?: () => void
   onBlur?: () => void
+  isMain?: boolean
 }
 
 export const TextField: React.FC<TextFieldProps> = ({
@@ -30,15 +31,21 @@ export const TextField: React.FC<TextFieldProps> = ({
   onChange,
   onBlur,
   onFocus,
+  isMain,
 }) => {
   const changeHandler = useCallback(
     (e: React.ChangeEvent<HTMLInputElement>) => onChange(e.target.value),
     [onChange]
   )
   return (
-    <div className={s.root}>
+    <div className={classNames(s.root, { [s.root_isMain]: isMain })}>
       <label className={s.root_label}>
-        {label && <span className={s.label}>{label}</span>}
+        {label && (
+          <span className={s.label}>
+            {label}
+            {isMain && ' *'}
+          </span>
+        )}
         <input
           className={classNames(s.field, { [s.field_error]: error })}
           type={type}

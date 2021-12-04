@@ -18,19 +18,23 @@ const SimpleOrderForm: React.FC<SimpleOrderFormProps> = (props) => {
   return (
     <div className={s.root}>
       <div className={s.grid}>
-        <TextField
-          value={data.phone_number}
-          onChange={handlers.change('phone_number')}
-          label={t('forms.fields.phone_number')}
-          onFocus={handlers.focus('phone_number')}
-          onBlur={handlers.blur('phone_number')}
-          error={Boolean(error.phone_number)}
-          errorMessage={
-            error.phone_number
-              ? t(('forms.errors.' + error.phone_number) as any)
-              : ''
-          }
-        />
+        <div className={s.grid__item_full}>
+          <TextField
+            value={data.phone_number}
+            onChange={handlers.change('phone_number')}
+            label={t('forms.fields.phone_number')}
+            onFocus={handlers.focus('phone_number')}
+            onBlur={handlers.blur('phone_number')}
+            error={Boolean(error.phone_number)}
+            errorMessage={
+              error.phone_number
+                ? t(('forms.errors.' + error.phone_number) as any)
+                : ''
+            }
+            isMain
+          />
+        </div>
+
         <TextField
           value={data.first_name}
           onChange={handlers.change('first_name')}
@@ -56,7 +60,7 @@ const SimpleOrderForm: React.FC<SimpleOrderFormProps> = (props) => {
           }
         />
         <TextField
-          value={data.phone_number}
+          value={data.email}
           onChange={handlers.change('email')}
           label={t('forms.fields.email')}
           onFocus={handlers.focus('email')}

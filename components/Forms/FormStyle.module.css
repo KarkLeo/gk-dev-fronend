@@ -9,6 +9,10 @@
   grid-column-gap: var(--spacing-2);
 }
 
+.grid__item_full {
+  grid-column: 1 / -1;
+}
+
 .controls {
   display: flex;
   justify-content: center;
