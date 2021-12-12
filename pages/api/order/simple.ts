@@ -1,13 +1,14 @@
 import { NextApiRequest, NextApiResponse } from 'next'
 import { privateServices } from 'services'
-import { OrderRequest } from 'services/public'
 import { createNumber } from 'common/utils/createNumber'
+import { SimpleOrderRequest } from 'services/public'
 import { calculateCostServer } from 'common/utils/calculateСost'
-import { OrderResponse } from 'services/private'
+import { OrderDetailResponse } from 'services/private'
 
 export default async (req: NextApiRequest, res: NextApiResponse<any>) => {
-  const { jwt, userID, delivery_info, description, cart_items } =
-    req.body as OrderRequest
+  const { cart_items, email, description, reCapture, ...delivery_info } =
+    req.body as SimpleOrderRequest
+  const { phone_number } = delivery_info
 
   //===== Create order data =====
 
@@ -29,19 +30,19 @@ export default async (req: NextApiRequest, res: NextApiResponse<any>) => {
 
   if (!number) return res.status(400).json({ error: 'SOME_ERROR' })
 
-  //===== Is wholesaler =====
-
-  const userIsWholesaler = await privateServices.isWholesaler(
-    { id: userID },
-    jwt
-  )
-
   //===== Get products data =====
 
   const productsData = await privateServices.getProductsPriceByCode({
     products: cart_items.map((i) => i.product),
   })
   if (!productsData) return res.status(400).json({ error: 'SOME_ERROR' })
+
+  //===== Find user =====
+
+  const users = await privateServices.getUserIdByPhone({
+    phone: phone_number,
+  })
+  const user = users && users.users.length === 1 ? users.users[0] : null
 
   //===== Cart settings =====
 
@@ -53,45 +54,34 @@ export default async (req: NextApiRequest, res: NextApiResponse<any>) => {
     cart_items,
     productsData ? productsData.products : [],
     settings ? settings.cartSetting : null,
-    userIsWholesaler ? userIsWholesaler.user.is_wholesaler : null
+    user && user.is_wholesaler
   )
 
-  const order = await privateServices.createOrder(
-    {
-      number,
-      date,
-      userID,
-      address: {
-        ...delivery_info,
-        novaposhta_number:
-          delivery_info.novaposhta_number === ''
-            ? null
-            : parseInt(delivery_info.novaposhta_number),
-      },
-      cart: cart.cart,
-      totalCost: cart.totalCost,
-      discount: cart.discount,
-      discountedCost: cart.discountedCost,
-      description,
+  const order = await privateServices.createSimpleOrder({
+    userID: user && user.id,
+    number,
+    date,
+    address: {
+      ...delivery_info,
+      novaposhta_number:
+        delivery_info.novaposhta_number === ''
+          ? null
+          : parseInt(delivery_info.novaposhta_number),
     },
-    jwt
-  )
+    cart: cart.cart,
+    totalCost: cart.totalCost,
+    discount: cart.discount,
+    discountedCost: cart.discountedCost,
+    description: description,
+    user_phone_number: phone_number,
+    user_email: email,
+  })
 
   if (!order) return res.status(400).json({ error: 'SOME_ERROR' })
 
-  //===== Get profile =====
+  //===== Create response =====
 
-  const profile = await privateServices.profileUser(
-    {
-      id: userID,
-    },
-    jwt
-  )
-  if (!profile) return res.status(400).json({ error: 'SOME_ERROR' })
-
-  const body: OrderResponse = {
-    jwt: jwt,
-    user: profile.user,
+  const body: OrderDetailResponse = {
     number,
     cart,
     message,
