@@ -7,7 +7,7 @@ import {
   initSimpleOrderError,
   SimpleOrderValidateObject,
 } from 'common/validators/simple-order'
-import { SimpleOrder } from 'services/public'
+import { SimpleOrderForm } from 'services/public'
 
 const useSimpleOrderForm = (props: SimpleOrderFormProps) => {
   const { initData, onSubmit, onCancel } = props
@@ -33,19 +33,19 @@ const useSimpleOrderForm = (props: SimpleOrderFormProps) => {
   //===== handlers =====
 
   const change = useCallback(
-    (key: keyof SimpleOrder) => (value: string) =>
+    (key: keyof SimpleOrderForm) => (value: string) =>
       setData((prevData) => ({ ...prevData, [key]: value })),
     [setData]
   )
 
   const focus = useCallback(
-    (key: keyof SimpleOrder) => () =>
+    (key: keyof SimpleOrderForm) => () =>
       setError((prevError) => ({ ...prevError, [key]: false })),
     [setError]
   )
 
   const blur = useCallback(
-    (key: keyof SimpleOrder) => () =>
+    (key: keyof SimpleOrderForm) => () =>
       setError((prevError) => ({ ...prevError, [key]: validateData[key]() })),
     [validateData, setError]
   )

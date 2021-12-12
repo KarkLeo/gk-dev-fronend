@@ -1,14 +1,15 @@
 import React from 'react'
-import { SimpleOrder } from 'services/public'
+import { SimpleOrderForm } from 'services/public'
 import useSimpleOrderForm from './useSimpleOrderForm'
 import { useTranslation } from 'next-i18next'
 import { Button, TextField, TextSwitcher } from 'components/Controllers'
 import s from '../FormStyle.module.css'
 import ReCaptcha from '../../ReCature/ReCature'
+import { TextArea } from '../../Controllers/component/TextArea/TextArea'
 
 export interface SimpleOrderFormProps {
-  initData?: SimpleOrder
-  onSubmit?: (data: SimpleOrder) => void
+  initData?: SimpleOrderForm
+  onSubmit?: (data: SimpleOrderForm) => void
   onCancel?: () => void
 }
 
@@ -134,6 +135,19 @@ const SimpleOrderForm: React.FC<SimpleOrderFormProps> = (props) => {
             }
           />
         )}
+        <TextArea
+          label={t('checkout.comment')}
+          value={data.description}
+          onChange={handlers.change('description')}
+          onFocus={handlers.focus('description')}
+          onBlur={handlers.blur('description')}
+          error={Boolean(error.description)}
+          errorMessage={
+            error.description
+              ? t(('forms.errors.' + error.description) as any)
+              : ''
+          }
+        />
       </div>
 
       <div className={s.controls}>

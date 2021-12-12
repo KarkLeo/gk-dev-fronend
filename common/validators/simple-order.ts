@@ -6,11 +6,11 @@ import {
   phoneValidateRequired,
   reCaptureValidateRequired,
 } from './fields'
-import { SimpleOrder } from 'services/public'
+import { SimpleOrderForm } from 'services/public'
 
 //===== constants =====
 
-export const initSimpleOrder: SimpleOrder = {
+export const initSimpleOrder: SimpleOrderForm = {
   first_name: '',
   last_name: '',
   phone_number: '',
@@ -20,10 +20,14 @@ export const initSimpleOrder: SimpleOrder = {
   address: '',
   post_code: '',
   email: '',
+  description: '',
   reCapture: '',
 } as const
 
-export const initSimpleOrderError: Record<keyof SimpleOrder, false | string> = {
+export const initSimpleOrderError: Record<
+  keyof SimpleOrderForm,
+  false | string
+> = {
   first_name: false,
   last_name: false,
   phone_number: false,
@@ -33,18 +37,19 @@ export const initSimpleOrderError: Record<keyof SimpleOrder, false | string> = {
   novaposhta_number: false,
   post_code: false,
   email: false,
+  description: false,
   reCapture: false,
 } as const
 
 //===== validate object =====
 
 export type SimpleOrderValidateObject = Record<
-  keyof SimpleOrder,
+  keyof SimpleOrderForm,
   () => string | false
 >
 
 export const createSimpleOrderValidateObject = (
-  data: SimpleOrder
+  data: SimpleOrderForm
 ): SimpleOrderValidateObject => ({
   first_name: () => nameValidate(data.first_name),
   last_name: () => nameValidate(data.last_name),
@@ -55,25 +60,27 @@ export const createSimpleOrderValidateObject = (
   address: () => addressValidate(data.address),
   post_code: () => numberValidate(data.post_code),
   email: () => emailValidate(data.email),
+  description: () => false,
   reCapture: () => reCaptureValidateRequired(data.reCapture),
 })
 
 //===== checking functions =====
 
-export const checkSimpleOrderFields = (data: SimpleOrder): boolean =>
+export const checkSimpleOrderFields = (data: SimpleOrderForm): boolean =>
   Object.keys(initSimpleOrder).reduce(
     (res, key) =>
       res &&
-      (typeof data[key as keyof SimpleOrder] === 'string' ||
-        typeof data[key as keyof SimpleOrder] === 'boolean'),
+      (typeof data[key as keyof SimpleOrderForm] === 'string' ||
+        typeof data[key as keyof SimpleOrderForm] === 'boolean'),
     true as boolean
   )
 
-export const checkSimpleOrderForm = (data: SimpleOrder): boolean => {
+export const checkSimpleOrderForm = (data: SimpleOrderForm): boolean => {
   const validateObject = createSimpleOrderValidateObject(data)
 
   return Object.keys(validateObject).reduce(
-    (res, key) => res && validateObject[key as keyof SimpleOrder]() === false,
+    (res, key) =>
+      res && validateObject[key as keyof SimpleOrderForm]() === false,
     true as boolean
   )
 }
