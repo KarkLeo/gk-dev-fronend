@@ -26,20 +26,14 @@ const GET_PRODUCTS_PRICE_FROM_CODE = gql`
 `
 
 export const getProductsPriceByCode = async (
-  variables: ProductsPriceByCodeVars,
-  jwt: string
+  variables: ProductsPriceByCodeVars
 ): Promise<ProductsPriceByCodeData | undefined> => {
   try {
-    const res = await graphql.mutate<
+    const res = await graphql.query<
       ProductsPriceByCodeData,
       ProductsPriceByCodeVars
     >({
-      mutation: GET_PRODUCTS_PRICE_FROM_CODE,
-      context: {
-        headers: {
-          Authorization: `Bearer ${jwt}`,
-        },
-      },
+      query: GET_PRODUCTS_PRICE_FROM_CODE,
       variables,
     })
     return res.data || undefined

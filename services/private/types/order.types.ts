@@ -1,3 +1,6 @@
+import { UserAuthResponse } from 'services/public'
+import { CartMessageInfo } from 'store/cart'
+
 export interface OrderCartProduct {
   product: string
   count: number
@@ -11,3 +14,11 @@ export interface OrderCartInfo {
   discount: number
   discountedCost: number
 }
+
+export interface OrderDetailResponse {
+  number: string
+  cart: OrderCartInfo
+  message: CartMessageInfo
+}
+
+export interface OrderResponse extends UserAuthResponse, OrderDetailResponse {}

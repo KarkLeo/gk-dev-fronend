@@ -20,17 +20,11 @@ const TEST_ORDER_NUMBER = gql`
 `
 
 export const testOrderNUmber = async (
-  variables: TestOrderNumberVars,
-  jwt: string
+  variables: TestOrderNumberVars
 ): Promise<TestOrderNumberData | undefined> => {
   try {
-    const res = await graphql.mutate<TestOrderNumberData, TestOrderNumberVars>({
-      mutation: TEST_ORDER_NUMBER,
-      context: {
-        headers: {
-          Authorization: `Bearer ${jwt}`,
-        },
-      },
+    const res = await graphql.query<TestOrderNumberData, TestOrderNumberVars>({
+      query: TEST_ORDER_NUMBER,
       variables,
       fetchPolicy: 'no-cache',
     })
