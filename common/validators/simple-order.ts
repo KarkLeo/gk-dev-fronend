@@ -6,11 +6,11 @@ import {
   phoneValidateRequired,
   reCaptureValidateRequired,
 } from './fields'
-import { SimpleOrderForm } from 'services/public'
+import { SimpleOrderFormType } from 'services/public'
 
 //===== constants =====
 
-export const initSimpleOrder: SimpleOrderForm = {
+export const initSimpleOrder: SimpleOrderFormType = {
   first_name: '',
   last_name: '',
   phone_number: '',
@@ -25,7 +25,7 @@ export const initSimpleOrder: SimpleOrderForm = {
 } as const
 
 export const initSimpleOrderError: Record<
-  keyof SimpleOrderForm,
+  keyof SimpleOrderFormType,
   false | string
 > = {
   first_name: false,
@@ -44,12 +44,12 @@ export const initSimpleOrderError: Record<
 //===== validate object =====
 
 export type SimpleOrderValidateObject = Record<
-  keyof SimpleOrderForm,
+  keyof SimpleOrderFormType,
   () => string | false
 >
 
 export const createSimpleOrderValidateObject = (
-  data: SimpleOrderForm
+  data: SimpleOrderFormType
 ): SimpleOrderValidateObject => ({
   first_name: () => nameValidate(data.first_name),
   last_name: () => nameValidate(data.last_name),
@@ -66,21 +66,21 @@ export const createSimpleOrderValidateObject = (
 
 //===== checking functions =====
 
-export const checkSimpleOrderFields = (data: SimpleOrderForm): boolean =>
+export const checkSimpleOrderFields = (data: SimpleOrderFormType): boolean =>
   Object.keys(initSimpleOrder).reduce(
     (res, key) =>
       res &&
-      (typeof data[key as keyof SimpleOrderForm] === 'string' ||
-        typeof data[key as keyof SimpleOrderForm] === 'boolean'),
+      (typeof data[key as keyof SimpleOrderFormType] === 'string' ||
+        typeof data[key as keyof SimpleOrderFormType] === 'boolean'),
     true as boolean
   )
 
-export const checkSimpleOrderForm = (data: SimpleOrderForm): boolean => {
+export const checkSimpleOrderForm = (data: SimpleOrderFormType): boolean => {
   const validateObject = createSimpleOrderValidateObject(data)
 
   return Object.keys(validateObject).reduce(
     (res, key) =>
-      res && validateObject[key as keyof SimpleOrderForm]() === false,
+      res && validateObject[key as keyof SimpleOrderFormType]() === false,
     true as boolean
   )
 }

@@ -9,12 +9,9 @@ import {
   isNewOrderAddressSelector,
 } from './selectors'
 import { publicServices } from 'services'
-import {
-  cleanCartAction,
-  setCartSettings,
-  setOrderModalAction,
-} from './actions'
+import { setCartSettings, setOrderModalAction } from './actions'
 import prepareCartSettings from 'common/utils/prepareCartSettings'
+import { SimpleOrderFormType } from 'services/public'
 
 export const checkoutThunk = (): AppThunk => async (dispatch, getState) => {
   try {
@@ -34,22 +31,52 @@ export const checkoutThunk = (): AppThunk => async (dispatch, getState) => {
         cart_items,
         description,
       })
-      dispatch(appAuthThunk(res))
+
+      const user = {
+        jwt: res.jwt,
+        user: res.user,
+      }
+
+      const modal = {
+        number: res.number,
+        cart: res.cart,
+        message: res.message,
+      }
+
+      dispatch(appAuthThunk(user))
+
+      // todo Need create check function
       if (isNewAddress) dispatch(createProfileAddressThunk(delivery_info))
-      const ordersCount = res.user.orders.length
-      if (ordersCount)
-        dispatch(
-          setOrderModalAction(
-            res.user.orders[ordersCount - 1].number,
-            res.user.orders[ordersCount - 1].discounted_cost
-          )
-        )
-      else dispatch(cleanCartAction())
+
+      dispatch(setOrderModalAction(modal))
     }
   } catch (e) {
     dispatch(appAuthErrorThunk(e))
   }
 }
+
+export const checkoutSimpleThunk =
+  (form: SimpleOrderFormType): AppThunk =>
+  async (dispatch, getState) => {
+    try {
+      const cart_items = getOrderCartSelector(getState())
+
+      const res = await publicServices.simpleOrders({
+        cart_items,
+        ...form,
+      })
+
+      const modal = {
+        number: res.number,
+        cart: res.cart,
+        message: res.message,
+      }
+
+      dispatch(setOrderModalAction(modal))
+    } catch (e) {
+      dispatch(appAuthErrorThunk(e))
+    }
+  }
 
 export const fetchCartSettingsThunk = (): AppThunk => async (dispatch) => {
   try {

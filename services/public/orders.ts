@@ -1,11 +1,19 @@
 import { client } from '../'
-import { UserAuthResponse } from './types'
-import { OrderRequest } from './types/orders.types'
+import { OrderRequest, SimpleOrderRequest } from './types'
+import { OrderDetailResponse, OrderResponse } from '../private'
 
-export const orders = async (
-  order: OrderRequest
-): Promise<UserAuthResponse> => {
-  const res = await client.post<UserAuthResponse>('/order', {
+export const orders = async (order: OrderRequest): Promise<OrderResponse> => {
+  const res = await client.post<OrderResponse>('/order', {
+    ...order,
+  })
+
+  return res.data
+}
+
+export const simpleOrders = async (
+  order: SimpleOrderRequest
+): Promise<OrderDetailResponse> => {
+  const res = await client.post<OrderDetailResponse>('/order/simple', {
     ...order,
   })
 

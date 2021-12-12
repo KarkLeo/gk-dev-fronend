@@ -5,8 +5,10 @@ import {
   USED_CUSTOMER_DISCOUNT,
 } from 'common/constans/cart-messages'
 
-const useCartMessage = (messageInfo: CartMessageInfo): string | null => {
+const useCartMessage = (messageInfo: CartMessageInfo | null): string | null => {
   const { t } = useTranslation('common')
+
+  if (!messageInfo) return null
 
   switch (messageInfo.message) {
     case NOT_REACHED_WHOLESALER_LIMIT:

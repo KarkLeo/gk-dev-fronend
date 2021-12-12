@@ -2,12 +2,9 @@ import * as actions from './actions'
 import * as cartMessages from 'common/constans/cart-messages'
 import { ProductCardType } from 'services/static'
 import { UserAddress } from 'services/public'
-import { CartSettingsTypes } from 'services/private/types'
+import { CartSettingsTypes, OrderDetailResponse } from 'services/private'
 
-export interface OrderModalType {
-  number: string
-  cost: number
-}
+export interface OrderModalType extends OrderDetailResponse {}
 
 export interface CartState {
   products: Record<string, { product: ProductCardType; count: number }>

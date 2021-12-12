@@ -1,5 +1,5 @@
 import { NextApiRequest, NextApiResponse } from 'next'
-import { privateServices } from 'services'
+import { privateServices, reCaptchaService } from 'services'
 import { createNumber } from 'common/utils/createNumber'
 import { SimpleOrderRequest } from 'services/public'
 import { calculateCostServer } from 'common/utils/calculateСost'
@@ -9,6 +9,12 @@ export default async (req: NextApiRequest, res: NextApiResponse<any>) => {
   const { cart_items, email, description, reCapture, ...delivery_info } =
     req.body as SimpleOrderRequest
   const { phone_number } = delivery_info
+
+  //===== Check re capture =====
+
+  const reCaptcha = await reCaptchaService(reCapture)
+  if (!reCaptcha.success)
+    return res.status(418).json({ error: 'You are a robot' })
 
   //===== Create order data =====
 

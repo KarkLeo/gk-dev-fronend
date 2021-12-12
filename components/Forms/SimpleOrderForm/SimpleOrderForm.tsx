@@ -1,5 +1,5 @@
 import React from 'react'
-import { SimpleOrderForm } from 'services/public'
+import { SimpleOrderFormType } from 'services/public'
 import useSimpleOrderForm from './useSimpleOrderForm'
 import { useTranslation } from 'next-i18next'
 import { Button, TextField, TextSwitcher } from 'components/Controllers'
@@ -8,8 +8,8 @@ import ReCaptcha from '../../ReCature/ReCature'
 import { TextArea } from '../../Controllers/component/TextArea/TextArea'
 
 export interface SimpleOrderFormProps {
-  initData?: SimpleOrderForm
-  onSubmit?: (data: SimpleOrderForm) => void
+  initData?: SimpleOrderFormType
+  onSubmit?: (data: SimpleOrderFormType) => void
   onCancel?: () => void
 }
 
@@ -154,7 +154,6 @@ const SimpleOrderForm: React.FC<SimpleOrderFormProps> = (props) => {
         <Button onClick={handlers.send} disabled={isError}>
           {t('forms.buttons.send')}
         </Button>
-        <Button onClick={handlers.cancel}>{t('forms.buttons.cancel')}</Button>
       </div>
 
       <ReCaptcha onChange={handlers.reCaptcha} />

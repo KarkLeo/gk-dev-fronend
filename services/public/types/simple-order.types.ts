@@ -1,4 +1,4 @@
-export interface SimpleOrderForm {
+export interface SimpleOrderFormType {
   first_name: string
   last_name: string
   phone_number: string
@@ -12,7 +12,7 @@ export interface SimpleOrderForm {
   reCapture: string
 }
 
-export interface SimpleOrderRequest extends SimpleOrderForm {
+export interface SimpleOrderRequest extends SimpleOrderFormType {
   cart_items: {
     product: string
     count: number

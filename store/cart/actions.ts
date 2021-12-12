@@ -1,6 +1,7 @@
 import { ProductCardType } from 'services/static'
 import { UserAddress } from 'services/public'
 import { CartSettingsTypes } from 'services/private/types'
+import { OrderModalType } from './types'
 
 export const addCartProductAction = (product: ProductCardType) => ({
   type: 'CART/ADD_CART_PRODUCT' as const,
@@ -46,9 +47,9 @@ export const setOrderDescriptionAction = (description: string) => ({
 
 //===== modal =====
 
-export const setOrderModalAction = (number: string, cost: number) => ({
+export const setOrderModalAction = (modal: OrderModalType) => ({
   type: 'CART/SET_ORDER_MODAL' as const,
-  modal: { number, cost },
+  modal,
 })
 
 //===== settings =====
