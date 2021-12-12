@@ -1,0 +1,75 @@
+.root {
+  width: 100%;
+  padding-bottom: var(--spacing-1);
+}
+
+.root_isMain {
+  padding-bottom: var(--spacing-2);
+}
+
+.root_label {
+  display: block;
+
+  cursor: pointer;
+}
+
+.label {
+  display: block;
+  margin: 0 0 var(--spacing-1);
+
+  font-size: 1rem;
+  font-weight: 400;
+  line-height: 1.2;
+  color: var(--c-main-black);
+}
+
+.root_isMain .label {
+  font-size: 1.2rem;
+  font-weight: 600;
+}
+
+.field {
+  display: block;
+  width: 100%;
+  min-height: 5rem;
+  padding: var(--spacing-2) var(--spacing-1);
+  box-sizing: border-box;
+
+  font-size: 1.2rem;
+  font-weight: 600;
+  line-height: 1;
+  color: var(--c-main-black);
+
+  background-color: var(--c-main-white);
+  border-top: none;
+  border-right: none;
+  border-left: none;
+  border-bottom: 1px solid var(--c-main-black);
+  border-radius: 0;
+  outline: none;
+  resize: none;
+}
+.field::placeholder {
+  color: var(--c-medium-gray);
+}
+
+.root_isMain .field {
+  border-bottom-width: 2px;
+}
+
+.field_error {
+  border-color: var(--c-error);
+}
+
+.error {
+  display: block;
+  margin-top: var(--spacing-1);
+  min-height: 1rem;
+}
+
+.errorMessage {
+  font-size: 0.8rem;
+  font-weight: 500;
+  line-height: 1;
+  color: var(--c-error);
+}
