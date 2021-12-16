@@ -35,9 +35,29 @@ export default async (req: NextApiRequest, res: NextApiResponse<any>) => {
   )
   if (!profile) return res.status(400).json({ error: 'SOME_ERROR' })
 
-  const body: UserAuthResponse = {
+  let body: UserAuthResponse = {
     jwt: user.register.jwt,
     user: profile.updateUser.user,
+  }
+
+  const orders = await privateServices.getOrdersIdByPhone({
+    phone: data.phone_number,
+  })
+
+  if (orders && orders.orders.length > 0) {
+    const updateProfile = await privateServices.updateUserOrders(
+      {
+        id: user.register.user.id,
+        orders: orders.orders.map((i) => i.id),
+      },
+      user.register.jwt
+    )
+    if (!updateProfile) return res.status(400).json({ error: 'SOME_ERROR' })
+
+    body = {
+      jwt: user.register.jwt,
+      user: updateProfile.updateUser.user,
+    }
   }
 
   return res.status(200).json(body)
