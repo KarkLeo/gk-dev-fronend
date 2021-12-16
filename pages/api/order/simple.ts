@@ -79,8 +79,8 @@ export default async (req: NextApiRequest, res: NextApiResponse<any>) => {
     discount: cart.discount,
     discountedCost: cart.discountedCost,
     description: description,
-    user_phone_number: phone_number,
-    user_email: email,
+    phone: phone_number,
+    email: email,
   })
 
   if (!order) return res.status(400).json({ error: 'SOME_ERROR' })

@@ -15,8 +15,8 @@ export interface CreateSimpleOrderVars extends OrderCartInfo {
   date: string
   address: UserAddressEdit
   description: string
-  user_email: string
-  user_phone_number: string
+  email: string
+  phone: string
 }
 
 const CREATE_SIMPLE_ORDER = gql`
