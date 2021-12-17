@@ -1,6 +1,5 @@
 import * as actions from './actions'
-import { UserAddressResponse } from 'services/public'
-import { OrderResponse } from '../../services/public/types/orders.types'
+import { OrderProfileResponse, UserAddressResponse } from 'services/public'
 
 export interface ProfileState {
   first_name: string
@@ -8,7 +7,7 @@ export interface ProfileState {
   phone_number: string
   email: string
   delivery_info: UserAddressResponse[] | null
-  orders: OrderResponse[]
+  orders: OrderProfileResponse[]
 }
 
 type ActionsName = keyof typeof actions

@@ -1,5 +1,4 @@
-import { UserAddressResponse } from '../../services/public'
-import { OrderResponse } from '../../services/public/types/orders.types'
+import { OrderProfileResponse, UserAddressResponse } from 'services/public'
 
 export const setProfileAction = (profile: {
   first_name: string
@@ -7,7 +6,7 @@ export const setProfileAction = (profile: {
   phone_number: string
   email: string
   delivery_info: UserAddressResponse[] | null
-  orders: OrderResponse[]
+  orders: OrderProfileResponse[]
 }) => ({
   type: 'PROFILE/SET_PROFILE' as const,
   profile,

@@ -1,12 +1,12 @@
 import React from 'react'
-import { OrderResponse } from '../../services/public/types/orders.types'
 import OrderCartItem from './components/OrderCartItem/OrderCartItem'
 import OrderDeliveryInfo from './components/OrderDeliveryInfo/OrderDeliveryInfo'
 import { useTranslation } from 'next-i18next'
 import s from './OrderCard.module.css'
+import { OrderProfileResponse } from 'services/public'
 
 interface OrderCardProps {
-  data: OrderResponse
+  data: OrderProfileResponse
 }
 
 const OrderCard: React.FC<OrderCardProps> = ({ data }) => {

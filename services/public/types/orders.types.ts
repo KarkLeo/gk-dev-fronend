@@ -1,4 +1,4 @@
-import { UserAddress } from './address.types'
+import { UserAddress, UserAddressResponse } from './address.types'
 import { DefaultStrapiImage } from '../../static'
 
 export interface OrderCartProductResponse {
@@ -35,4 +35,16 @@ export interface OrderRequest {
     count: number
   }[]
   description: string
+}
+
+export interface OrderProfileResponse {
+  id: string
+  number: string
+  date: string
+  delivery_info: UserAddressResponse
+  cart_item: OrderCartItemResponse[]
+  total_cost: number
+  discount: number
+  discounted_cost: number
+  description: number
 }

@@ -1,6 +1,5 @@
-import { UserAddressResponse } from '../../public'
+import { OrderProfileResponse, UserAddressResponse } from '../../public'
 import { ProductCardType } from '../../static'
-import { OrderResponse } from '../../public/types/orders.types'
 
 export interface UserResponseTypes {
   id: string
@@ -10,6 +9,6 @@ export interface UserResponseTypes {
   email: string
   delivery_info: UserAddressResponse[] | null
   favorites: ProductCardType[]
-  orders: OrderResponse[]
+  orders: OrderProfileResponse[]
   is_wholesaler: boolean | null
 }
