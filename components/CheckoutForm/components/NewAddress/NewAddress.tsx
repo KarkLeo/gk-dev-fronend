@@ -1,5 +1,4 @@
 import React, { useCallback } from 'react'
-import { AddressForm } from 'components/Forms/AddressForm/AddressForm'
 import { useDispatch, useSelector } from 'react-redux'
 import { getInitOrderAddressSelector } from 'store/cart/selectors'
 import { UserAddress } from 'services/public'
@@ -7,6 +6,7 @@ import { setNewOrderAddressAction } from 'store/cart'
 import { useTranslation } from 'next-i18next'
 import s from './NewAddress.module.css'
 import classNames from 'classnames/bind'
+import { OrderAddressForm } from 'components/Forms/OrderAddressForm/OrderAddressForm'
 
 interface NewAddressProps {
   addressID: string | null
@@ -42,10 +42,9 @@ const NewAddress: React.FC<NewAddressProps> = ({
         {addressID !== null && t('checkout.new_address')}
       </label>
       {addressID === null && (
-        <AddressForm
+        <OrderAddressForm
           initAddress={initAddress}
           onSubmit={setNewAddressHandler}
-          autoForm
           onError={setNewAddressError}
         />
       )}

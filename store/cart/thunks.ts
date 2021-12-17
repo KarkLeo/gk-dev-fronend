@@ -12,6 +12,7 @@ import { publicServices } from 'services'
 import { setCartSettings, setOrderModalAction } from './actions'
 import prepareCartSettings from 'common/utils/prepareCartSettings'
 import { SimpleOrderFormType } from 'services/public'
+import { checkAddressForm } from '../../common/validators/address'
 
 export const checkoutThunk = (): AppThunk => async (dispatch, getState) => {
   try {
@@ -45,8 +46,8 @@ export const checkoutThunk = (): AppThunk => async (dispatch, getState) => {
 
       dispatch(appAuthThunk(user))
 
-      // todo Need create check function
-      if (isNewAddress) dispatch(createProfileAddressThunk(delivery_info))
+      if (isNewAddress && checkAddressForm(delivery_info))
+        dispatch(createProfileAddressThunk(delivery_info))
 
       dispatch(setOrderModalAction(modal))
     }

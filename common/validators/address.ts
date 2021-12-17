@@ -70,3 +70,25 @@ export const checkAddressForm = (data: UserAddress): boolean => {
     true as boolean
   )
 }
+
+export const createOrderAddressValidateObject = (
+  data: UserAddress
+): AddressValidateObject => ({
+  first_name: () => false,
+  last_name: () => false,
+  phone_number: () => false,
+  is_novaposhta: () => false,
+  city: () => false,
+  novaposhta_number: () => false,
+  address: () => false,
+  post_code: () => false,
+})
+
+export const checkOrderAddressForm = (data: UserAddress): boolean => {
+  const validateObject = createOrderAddressValidateObject(data)
+
+  return Object.keys(validateObject).reduce(
+    (res, key) => res && validateObject[key as keyof UserAddress]() === false,
+    true as boolean
+  )
+}

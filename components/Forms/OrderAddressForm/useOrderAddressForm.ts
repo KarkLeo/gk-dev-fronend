@@ -2,15 +2,15 @@ import { useCallback, useEffect, useMemo, useState } from 'react'
 import { UserAddress } from 'services/public'
 import {
   AddressValidateObject,
-  checkAddressForm,
-  createAddressValidateObject,
+  checkOrderAddressForm,
+  createOrderAddressValidateObject,
   initAddressData,
   initAddressError,
 } from 'common/validators/address'
-import { AddressFormProps } from './AddressForm'
+import { OrderAddressFormProps } from './OrderAddressForm'
 
-const useAddressForm = (props: AddressFormProps) => {
-  const { initAddress, onSubmit, onCancel } = props
+const useOrderAddressForm = (props: OrderAddressFormProps) => {
+  const { initAddress, onSubmit, onError } = props
   //===== create local state =====
 
   const [data, setData] = useState(initAddress || initAddressData)
@@ -24,11 +24,11 @@ const useAddressForm = (props: AddressFormProps) => {
   //===== form checking =====
 
   const validateData = useMemo<AddressValidateObject>(
-    () => createAddressValidateObject(data),
+    () => createOrderAddressValidateObject(data),
     [data]
   )
 
-  const checkForm = useMemo<boolean>(() => checkAddressForm(data), [data])
+  const checkForm = useMemo<boolean>(() => checkOrderAddressForm(data), [data])
 
   //===== handlers =====
 
@@ -57,13 +57,15 @@ const useAddressForm = (props: AddressFormProps) => {
     }))
   }, [setData])
 
-  const send = useCallback(() => {
-    onSubmit && onSubmit(data)
-  }, [data, onSubmit])
+  //===== Auto form =====
 
-  const cancel = useCallback(() => {
-    onCancel && onCancel()
-  }, [onCancel])
+  useEffect(() => {
+    if (onSubmit) onSubmit(data)
+  }, [onSubmit, data])
+
+  useEffect(() => {
+    if (onError) onError(!checkForm)
+  }, [onError, checkForm])
 
   return {
     data,
@@ -74,10 +76,8 @@ const useAddressForm = (props: AddressFormProps) => {
       focus,
       blur,
       isNovaposhta,
-      send,
-      cancel,
     },
   }
 }
 
-export default useAddressForm
+export default useOrderAddressForm

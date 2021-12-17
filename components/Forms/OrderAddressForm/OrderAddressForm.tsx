@@ -1,18 +1,18 @@
 import React from 'react'
-import { Button, TextField, TextSwitcher } from 'components/Controllers'
-import useAddressForm from './useAddressForm'
+import { TextField, TextSwitcher } from 'components/Controllers'
+import useOrderAddressForm from './useOrderAddressForm'
 import s from '../FormStyle.module.css'
 import { UserAddress } from 'services/public'
 import { useTranslation } from 'next-i18next'
 
-export interface AddressFormProps {
+export interface OrderAddressFormProps {
   initAddress?: UserAddress
   onSubmit?: (data: UserAddress) => void
-  onCancel?: () => void
+  onError?: (isError: boolean) => void
 }
 
-export const AddressForm: React.FC<AddressFormProps> = (props) => {
-  const { data, error, isError, handlers } = useAddressForm(props)
+export const OrderAddressForm: React.FC<OrderAddressFormProps> = (props) => {
+  const { data, error, handlers } = useOrderAddressForm(props)
   const { t } = useTranslation('common')
   return (
     <div className={s.root}>
@@ -118,12 +118,6 @@ export const AddressForm: React.FC<AddressFormProps> = (props) => {
             }
           />
         )}
-      </div>
-      <div className={s.controls}>
-        <Button onClick={handlers.send} disabled={isError}>
-          {t('forms.buttons.send')}
-        </Button>
-        <Button onClick={handlers.cancel}>{t('forms.buttons.cancel')}</Button>
       </div>
     </div>
   )
