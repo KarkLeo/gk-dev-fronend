@@ -5,6 +5,7 @@ import {
   checkRegisterFields,
   checkRegisterForm,
 } from 'common/validators/register'
+import { normalizePhoneNumber } from 'common/utils/normalizePhone'
 
 export default async (req: NextApiRequest, res: NextApiResponse<any>) => {
   const data = req.body as UserRegister
@@ -29,7 +30,7 @@ export default async (req: NextApiRequest, res: NextApiResponse<any>) => {
       id: user.register.user.id,
       first_name: data.first_name,
       last_name: data.last_name,
-      phone_number: data.phone_number,
+      phone_number: normalizePhoneNumber(data.phone_number),
     },
     user.register.jwt
   )

@@ -2,6 +2,7 @@ import { NextApiRequest, NextApiResponse } from 'next'
 import { UserProfileResponse, UserUpdateRequest } from 'services/public'
 import { privateServices } from 'services'
 import { checkProfileFields } from 'common/validators/profile'
+import { normalizePhoneNumber } from 'common/utils/normalizePhone'
 
 export default async (req: NextApiRequest, res: NextApiResponse<any>) => {
   const { jwt, userID, data } = req.body as UserUpdateRequest
@@ -14,7 +15,7 @@ export default async (req: NextApiRequest, res: NextApiResponse<any>) => {
       id: userID,
       first_name: data.first_name,
       last_name: data.last_name,
-      phone_number: data.phone_number,
+      phone_number: normalizePhoneNumber(data.phone_number),
       email: data.email,
     },
     jwt
