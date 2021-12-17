@@ -4,6 +4,7 @@ import { createNumber } from 'common/utils/createNumber'
 import { SimpleOrderRequest } from 'services/public'
 import { calculateCostServer } from 'common/utils/calculateСost'
 import { OrderDetailResponse } from 'services/private'
+import { normalizePhoneNumber } from 'common/utils/normalizePhone'
 
 export default async (req: NextApiRequest, res: NextApiResponse<any>) => {
   const { cart_items, email, description, reCapture, ...delivery_info } =
@@ -73,13 +74,14 @@ export default async (req: NextApiRequest, res: NextApiResponse<any>) => {
         delivery_info.novaposhta_number === ''
           ? null
           : parseInt(delivery_info.novaposhta_number),
+      phone_number: normalizePhoneNumber(phone_number),
     },
     cart: cart.cart,
     totalCost: cart.totalCost,
     discount: cart.discount,
     discountedCost: cart.discountedCost,
     description: description,
-    phone: phone_number,
+    phone: normalizePhoneNumber(phone_number),
     email: email,
   })
 
